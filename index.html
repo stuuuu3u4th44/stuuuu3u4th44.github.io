@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lovecut — Иркутск</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;500;600&family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Hero pixel overlay (one-time intro) -->
+    <div class="hero-pixel-overlay" id="heroOverlay"></div>
+
+    <!-- ===== HERO / HEADER ===== -->
+    <header class="hero" id="hero">
+        <!-- Rough wave at bottom -->
+        <svg class="hero__wave-svg" viewBox="0 0 1440 120" preserveAspectRatio="none">
+            <path d="M0,80 C40,50 80,95 120,70 C160,45 200,85 240,65 C280,45 320,90 360,72 C400,54 440,88 480,68 C520,48 560,92 600,75 C640,58 680,86 720,70 C760,54 800,90 840,73 C880,56 920,84 960,68 C1000,52 1040,88 1080,72 C1120,56 1160,86 1200,70 C1240,54 1280,88 1320,74 C1360,60 1400,82 1440,70 L1440,120 L0,120 Z" fill="#3a2463"/>
+        </svg>
+
+        <div class="hero__top-photos">
+            <div class="hero__photo-shape shape--trap-left pixelate-hero">
+                <img src="images/photo3.png" alt="работа" loading="eager">
+            </div>
+            <div class="hero__photo-shape shape--hex pixelate-hero">
+                <img src="images/photo1.png" alt="работа" loading="eager">
+            </div>
+            <div class="hero__logo-inline">
+                <span class="logo-text">Lovecut</span>
+            </div>
+            <div class="hero__photo-shape shape--para pixelate-hero">
+                <img src="images/photo2.png" alt="работа" loading="eager">
+            </div>
+            <div class="hero__photo-shape shape--trap-right pixelate-hero">
+                <img src="images/photo4.png" alt="работа" loading="eager">
+            </div>
+        </div>
+
+        <div class="hero__actions">
+            <div class="hero__location">
+                <p class="location-address">Иркутск, Литвинова 18</p>
+                <a href="#" class="location-link" id="openMapBtn">Открыть на карте</a>
+            </div>
+            <button class="btn-booking" id="bookingBtn">запись</button>
+            <button class="btn-examples" id="examplesBtn">примеры</button>
+        </div>
+    </header>
+
+    <!-- ===== SERVICES MARQUEE ===== -->
+    <section class="services" id="services">
+        <div class="services__track-wrapper">
+            <div class="services__track" id="servicesTrack">
+                <div class="services__item"><span class="service-name">стрижка</span><span class="service-price">2000 ₽</span><span class="service-time">1ч</span></div>
+                <div class="services__item"><span class="service-name">стрижка + уход</span><span class="service-price">2500 ₽</span><span class="service-time">1ч</span></div>
+                <div class="services__item"><span class="service-name">завивка S</span><span class="service-price">4000 ₽</span><span class="service-time">3ч</span></div>
+                <div class="services__item"><span class="service-name">завивка L</span><span class="service-price">5000 ₽</span><span class="service-time">3ч</span></div>
+                <div class="services__item"><span class="service-name">завивка XL</span><span class="service-price">5000 ₽</span><span class="service-time">3ч</span></div>
+                <!-- duplicated for seamless loop -->
+                <div class="services__item"><span class="service-name">стрижка</span><span class="service-price">2000 ₽</span><span class="service-time">1ч</span></div>
+                <div class="services__item"><span class="service-name">стрижка + уход</span><span class="service-price">2500 ₽</span><span class="service-time">1ч</span></div>
+                <div class="services__item"><span class="service-name">завивка S</span><span class="service-price">4000 ₽</span><span class="service-time">3ч</span></div>
+                <div class="services__item"><span class="service-name">завивка L</span><span class="service-price">5000 ₽</span><span class="service-time">3ч</span></div>
+                <div class="services__item"><span class="service-name">завивка XL</span><span class="service-price">5000 ₽</span><span class="service-time">3ч</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <section class="main-content" id="mainContent">
+        <!-- Top rough wave -->
+        <svg class="main-wave main-wave--top" viewBox="0 0 1440 100" preserveAspectRatio="none">
+            <path d="M0,0 L1440,0 L1440,50 C1400,30 1360,65 1320,45 C1280,25 1240,60 1200,40 C1160,20 1120,58 1080,38 C1040,18 1000,55 960,35 C920,15 880,52 840,38 C800,24 760,58 720,40 C680,22 640,55 600,38 C560,21 520,54 480,36 C440,18 400,52 360,38 C320,24 280,56 240,40 C200,24 160,52 120,38 C80,24 40,50 0,35 Z" fill="#3a2463"/>
+        </svg>
+
+        <!-- Info bubbles -->
+        <div class="info-bubbles">
+            <div class="bubble bubble--1 fade-in">
+                <p>Оплата только наличными, здесь перевод, лишь бронирует место, деньги которые вы перевели вычтутся из основной оплаты за проведённую услугу.</p>
+            </div>
+            <div class="bubble bubble--2 fade-in">
+                <p>Можно обсудить любой вопрос по стрижке в личных сообщениях, связаться со мной можно благодаря этой кнопке.</p>
+            </div>
+            <div class="bubble bubble--3 fade-in">
+                <p>принятая запись производится только по указанному времени, если не получается прийти вовремя, то вы должны сообщить, если вы отмените вашу бронировку, то так же сообщить.</p>
+            </div>
+        </div>
+
+        <!-- Photo collage + flag pixel area -->
+        <div class="collage-section" id="collageSection">
+            <div class="collage-grid">
+                <!-- Flag in center -->
+                <div class="collage-flag" id="flagArea">
+                    <canvas id="flagCanvas" width="640" height="400"></canvas>
+                </div>
+
+                <!-- Photos around flag -->
+                <div class="collage-photo cp-1 pixelate-target fade-in">
+                    <img src="images/photo1.png" alt="">
+                </div>
+                <div class="collage-photo cp-2 pixelate-target fade-in">
+                    <img src="images/photo2.png" alt="">
+                </div>
+                <div class="collage-photo cp-3 pixelate-target fade-in">
+                    <img src="images/photo3.png" alt="">
+                </div>
+                <div class="collage-photo cp-4 pixelate-target fade-in">
+                    <img src="images/photo4.png" alt="">
+                </div>
+                <div class="collage-photo cp-5 pixelate-target fade-in">
+                    <img src="images/photo1.png" alt="">
+                </div>
+                <div class="collage-photo cp-6 pixelate-target fade-in">
+                    <img src="images/photo3.png" alt="">
+                </div>
+            </div>
+
+            <!-- 3 messy circles with text -->
+            <div class="messy-circle mc-1 pixelate-target fade-in"><span>качество</span></div>
+            <div class="messy-circle mc-2 pixelate-target fade-in"><span>стиль</span></div>
+            <div class="messy-circle mc-3 pixelate-target fade-in"><span>забота</span></div>
+        </div>
+
+        <!-- Circles section -->
+        <div class="circles-row">
+            <div class="circle-card cc-1 fade-in"><span>индивидуальный подход</span></div>
+            <div class="circle-card cc-2 fade-in"><span>опыт работы</span></div>
+            <div class="circle-card cc-btn fade-in"><span>связаться</span></div>
+        </div>
+
+        <!-- Gallery cluster near circles -->
+        <div class="gallery-cluster">
+            <div class="g-img gi-1 gi--px fade-in"><img src="images/photo1.png" alt=""></div>
+            <div class="g-img gi-2 gi--crop fade-in"><img src="images/photo2.png" alt=""></div>
+            <div class="g-img gi-3 gi--px fade-in"><img src="images/photo3.png" alt=""></div>
+            <div class="g-img gi-4 gi--crop fade-in"><img src="images/photo4.png" alt=""></div>
+            <div class="g-img gi-5 fade-in"><img src="images/photo1.png" alt=""></div>
+            <div class="g-img gi-6 gi--px fade-in"><img src="images/photo2.png" alt=""></div>
+            <div class="g-img gi-7 gi--crop fade-in"><img src="images/photo3.png" alt=""></div>
+            <div class="g-img gi-8 fade-in"><img src="images/photo4.png" alt=""></div>
+        </div>
+
+        <!-- Bottom rough wave -->
+        <svg class="main-wave main-wave--bottom" viewBox="0 0 1440 100" preserveAspectRatio="none">
+            <path d="M0,50 C40,30 80,65 120,45 C160,25 200,60 240,40 C280,20 320,58 360,38 C400,18 440,55 480,35 C520,15 560,52 600,38 C640,24 680,58 720,40 C760,22 800,55 840,38 C880,21 920,54 960,36 C1000,18 1040,52 1080,38 C1120,24 1160,56 1200,40 C1240,24 1280,52 1320,38 C1360,24 1400,50 1440,35 L1440,100 L0,100 Z" fill="#3a2463"/>
+        </svg>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer" id="footer">
+        <div class="footer__cards">
+            <div class="footer__card fade-in">
+                <h3>связь</h3>
+                <div class="footer__placeholder"></div>
+            </div>
+            <div class="footer__card fade-in">
+                <h3>faq</h3>
+                <div class="footer__placeholder"></div>
+            </div>
+            <div class="footer__card fade-in">
+                <h3>отзывы</h3>
+                <div class="footer__placeholder"></div>
+            </div>
+            <div class="footer__card fade-in">
+                <h3>о нас</h3>
+                <div class="footer__placeholder"></div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Map Modal -->
+    <div class="map-modal" id="mapModal">
+        <div class="map-modal__overlay" id="mapOverlay"></div>
+        <div class="map-modal__body">
+            <button class="map-modal__close" id="mapClose">&times;</button>
+            <h2 class="map-modal__title">Иркутск, Литвинова 18</h2>
+            <div class="map-modal__frame">
+                <iframe 
+                    id="mapIframe"
+                    width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy"
+                    src="about:blank"
+                    data-src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Иркутск+Литвинова+18&zoom=16">
+                </iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Examples Modal -->
+    <div class="examples-modal" id="examplesModal">
+        <div class="examples-modal__overlay" id="examplesOverlay"></div>
+        <div class="examples-modal__body">
+            <button class="examples-modal__close" id="examplesClose">&times;</button>
+            <h2 class="examples-modal__title">примеры работ</h2>
+            <div class="examples-grid">
+                <div class="example-card ec-1">
+                    <img src="images/photo1.png" alt="">
+                    <div class="example-card__label">стрижка</div>
+                </div>
+                <div class="example-card ec-2">
+                    <img src="images/photo2.png" alt="">
+                    <div class="example-card__label">стрижка + уход</div>
+                </div>
+                <div class="example-card ec-3">
+                    <img src="images/photo3.png" alt="">
+                    <div class="example-card__label">завивка</div>
+                </div>
+                <div class="example-card ec-4">
+                    <img src="images/photo4.png" alt="">
+                    <div class="example-card__label">стрижка</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
