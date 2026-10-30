@@ -304,23 +304,45 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ====================================================================
-       5. SERVICES TICKER HOVER/TOUCH PAUSE CONTROL
+       5. SERVICES TICKER: SMOOTH MOMENTUM BRAKING ON HOVER & 100% SEAMLESS LOOP
        ==================================================================== */
     const servicesSection = document.getElementById('servicesSection');
     const servicesTrack = document.getElementById('servicesTrack');
+    const servicesGroup1 = document.getElementById('servicesGroup1');
 
-    if (servicesSection && servicesTrack) {
-        const pauseTicker = () => {
-            servicesTrack.style.animationPlayState = 'paused';
-        };
-        const resumeTicker = () => {
-            servicesTrack.style.animationPlayState = 'running';
-        };
+    if (servicesSection && servicesTrack && servicesGroup1) {
+        let currentX = 0;
+        const cruisingSpeed = 0.95; // smooth px per frame
+        let currentSpeed = 0.95;
+        let isHovered = false;
 
-        servicesSection.addEventListener('mouseenter', pauseTicker);
-        servicesSection.addEventListener('mouseleave', resumeTicker);
-        servicesSection.addEventListener('touchstart', pauseTicker, { passive: true });
-        servicesSection.addEventListener('touchend', resumeTicker, { passive: true });
+        const onEnter = () => { isHovered = true; };
+        const onLeave = () => { isHovered = false; };
+
+        servicesSection.addEventListener('mouseenter', onEnter);
+        servicesSection.addEventListener('mouseleave', onLeave);
+        servicesSection.addEventListener('touchstart', onEnter, { passive: true });
+        servicesSection.addEventListener('touchend', onLeave, { passive: true });
+
+        function animateTicker() {
+            // Target speed: 0 when hovered (smooth braking), cruisingSpeed when unhovered
+            const targetSpeed = isHovered ? 0 : cruisingSpeed;
+            // Lerp factor 0.045 gives an organic deceleration over ~350ms (not jarring / instant)
+            currentSpeed += (targetSpeed - currentSpeed) * 0.045;
+
+            if (Math.abs(currentSpeed) > 0.001) {
+                currentX -= currentSpeed;
+                const groupWidth = servicesGroup1.offsetWidth;
+                if (groupWidth > 0 && currentX <= -groupWidth) {
+                    currentX += groupWidth; // 100% invisible continuous loop
+                }
+                servicesTrack.style.transform = `translate3d(${currentX.toFixed(2)}px, 0, 0)`;
+            }
+
+            requestAnimationFrame(animateTicker);
+        }
+
+        requestAnimationFrame(animateTicker);
     }
 
     /* ====================================================================

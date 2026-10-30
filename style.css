@@ -319,25 +319,17 @@ body {
 
 .services-marquee-track {
     display: flex;
-    gap: 36px;
     width: max-content;
-    animation: tickerMove 28s linear infinite;
     align-items: center;
+    will-change: transform;
 }
 
-/* PAUSE IMMEDIATELY ON HOVER / TOUCH */
-.services-rectangle:hover .services-marquee-track,
-.services-rectangle:active .services-marquee-track {
-    animation-play-state: paused !important;
-}
-
-@keyframes tickerMove {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-50%);
-    }
+.services-group {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    padding-right: 32px;
+    white-space: nowrap;
 }
 
 .svc-item {
