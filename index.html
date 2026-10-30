@@ -3,200 +3,284 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lovecut — Иркутск</title>
+    <title>Lovecut — парикмахерская Иркутск</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;500;600&family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,700;1,900&family=Unbounded:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- ===== HERO / HEADER ===== -->
-    <header class="hero" id="hero">
-        <div class="hero__row">
-            <div class="hero__photo-shape shape--trap-left">
-                <img src="images/photo3.png" alt="работа">
-            </div>
-            <div class="hero__photo-shape shape--hex">
-                <img src="images/photo1.png" alt="работа">
+    <!-- Jagged edge strokes on the sides (matching the rough mockup borders) -->
+    <div class="side-stroke side-stroke--left" aria-hidden="true">
+        <svg viewBox="0 0 40 1200" preserveAspectRatio="none">
+            <path d="M20,0 Q5,150 25,300 T10,600 T30,900 T15,1200" stroke="#000000" stroke-width="9" fill="none" stroke-linecap="round" opacity="0.8"/>
+            <path d="M25,50 Q10,200 30,380 T15,750 T28,1050" stroke="#1d1842" stroke-width="5" fill="none" opacity="0.6"/>
+        </svg>
+    </div>
+    <div class="side-stroke side-stroke--right" aria-hidden="true">
+        <svg viewBox="0 0 40 1200" preserveAspectRatio="none">
+            <path d="M15,0 Q35,180 10,350 T30,680 T10,950 T25,1200" stroke="#000000" stroke-width="9" fill="none" stroke-linecap="round" opacity="0.8"/>
+            <path d="M20,80 Q30,240 15,420 T25,820 T12,1120" stroke="#1d1842" stroke-width="5" fill="none" opacity="0.6"/>
+        </svg>
+    </div>
+
+    <!-- ===== TOP HEADER (PANEL WITH DIAGONAL SLICES & LOGO) ===== -->
+    <header class="header-panel">
+        <div class="header-grid">
+            <!-- Far left: small cropped bit from mockup -->
+            <div class="h-slice h-slice--1">
+                <img src="images/girl_glasses.png" alt="Lovecut haircut" class="h-img h-img--left">
             </div>
 
-            <div class="hero__logo">
-                <span class="logo-text">Lovecut</span>
+            <!-- Left pane: Red hair photo -->
+            <div class="h-slice h-slice--2">
+                <img src="images/girl_red.png" alt="Lovecut haircut" class="h-img h-img--red">
             </div>
 
-            <div class="hero__photo-shape shape--para">
-                <img src="images/photo2.png" alt="работа">
+            <!-- Center-left pane: Portrait -->
+            <div class="h-slice h-slice--3">
+                <img src="images/girl_blue.png" alt="Lovecut haircut" class="h-img h-img--blue">
             </div>
-            <div class="hero__photo-shape shape--trap-right">
-                <img src="images/photo4.png" alt="работа">
-            </div>
-        </div>
 
-        <div class="hero__actions">
-            <div class="hero__location">
-                <p class="location-address">Иркутск, Литвинова 18</p>
-                <a href="#" class="location-link" id="openMapBtn">Открыть на карте</a>
+            <!-- Center pane: Big Lovecut cursive logo -->
+            <div class="h-slice h-slice--logo">
+                <h1 class="logo-title">Lovecut</h1>
             </div>
-            <button class="btn-booking">запись</button>
-            <button class="btn-examples" id="examplesBtn">примеры</button>
-        </div>
 
-        <!-- Rough wave bottom -->
-        <div class="wave wave--hero-bottom">
-            <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
-                <path d="M0,90 L30,60 L60,85 L90,45 L120,80 L150,40 L180,75 L210,35 L240,70 L270,42 L300,78 L330,38 L360,72 L390,48 L420,82 L450,36 L480,74 L510,44 L540,80 L570,50 L600,76 L630,40 L660,82 L690,46 L720,72 L750,38 L780,78 L810,48 L840,70 L870,42 L900,80 L930,36 L960,74 L990,50 L1020,78 L1050,40 L1080,72 L1110,46 L1140,80 L1170,38 L1200,74 L1230,48 L1260,82 L1290,42 L1320,76 L1350,50 L1380,70 L1410,44 L1440,80 L1440,120 L0,120 Z" fill="#3a2463"/>
-            </svg>
+            <!-- Center-right pane: Glasses girl double -->
+            <div class="h-slice h-slice--4">
+                <img src="images/girl_glasses.png" alt="Lovecut haircut" class="h-img h-img--glasses">
+            </div>
+
+            <!-- Far-right pane: Blonde girl -->
+            <div class="h-slice h-slice--5">
+                <img src="images/girl_blonde.png" alt="Lovecut haircut" class="h-img h-img--blonde">
+            </div>
         </div>
     </header>
 
-    <!-- ===== SERVICES MARQUEE ===== -->
-    <section class="services" id="services">
-        <div class="services__track-wrap">
-            <div class="services__track">
-                <div class="services__item"><span class="svc-name">стрижка</span><span class="svc-price">2000 ₽</span><span class="svc-time">1ч</span></div>
-                <div class="services__item"><span class="svc-name">стрижка + уход</span><span class="svc-price">2500 ₽</span><span class="svc-time">1ч</span></div>
-                <div class="services__item"><span class="svc-name">завивка S</span><span class="svc-price">4000 ₽</span><span class="svc-time">3ч</span></div>
-                <div class="services__item"><span class="svc-name">завивка L</span><span class="svc-price">5000 ₽</span><span class="svc-time">3ч</span></div>
-                <div class="services__item"><span class="svc-name">завивка XL</span><span class="svc-price">5000 ₽</span><span class="svc-time">3ч</span></div>
-                <!-- duplicate for seamless loop -->
-                <div class="services__item"><span class="svc-name">стрижка</span><span class="svc-price">2000 ₽</span><span class="svc-time">1ч</span></div>
-                <div class="services__item"><span class="svc-name">стрижка + уход</span><span class="svc-price">2500 ₽</span><span class="svc-time">1ч</span></div>
-                <div class="services__item"><span class="svc-name">завивка S</span><span class="svc-price">4000 ₽</span><span class="svc-time">3ч</span></div>
-                <div class="services__item"><span class="svc-name">завивка L</span><span class="svc-price">5000 ₽</span><span class="svc-time">3ч</span></div>
-                <div class="services__item"><span class="svc-name">завивка XL</span><span class="svc-price">5000 ₽</span><span class="svc-time">3ч</span></div>
+    <!-- ===== THREE ACTION BLOCKS BELOW HEADER ===== -->
+    <section class="action-blocks-section">
+        <div class="action-blocks-container">
+            <!-- 1. Location box -->
+            <div class="action-box action-box--location">
+                <p class="loc-text">Иркутск, Литвинова 18</p>
+                <button class="loc-link-btn" id="openMapBtn">Открыть на карте</button>
             </div>
+
+            <!-- 2. Booking button (large) -->
+            <button class="action-box action-box--booking" id="bookingBtn">
+                <span class="action-title action-title--lg">запись</span>
+            </button>
+
+            <!-- 3. Examples button -->
+            <button class="action-box action-box--examples" id="examplesBtn">
+                <span class="action-title action-title--md">примеры</span>
+            </button>
         </div>
     </section>
 
-    <!-- ===== MAIN SECTION ===== -->
-    <section class="main-section" id="mainSection">
-        <!-- Wave top (sharp transition from services) -->
-        <div class="wave wave--main-top">
-            <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
-                <path d="M0,0 L1440,0 L1440,60 L1410,35 L1380,65 L1350,30 L1320,58 L1290,25 L1260,55 L1230,32 L1200,62 L1170,28 L1140,56 L1110,30 L1080,60 L1050,26 L1020,54 L990,34 L960,58 L930,28 L900,55 L870,32 L840,60 L810,25 L780,56 L750,30 L720,58 L690,28 L660,55 L630,34 L600,62 L570,26 L540,56 L510,32 L480,60 L450,28 L420,55 L390,34 L360,58 L330,25 L300,55 L270,32 L240,60 L210,28 L180,56 L150,30 L120,58 L90,32 L60,55 L30,28 L0,52 Z" fill="#3a2463"/>
-            </svg>
-        </div>
+    <!-- ===== SERVICES TICKER RECTANGLE (EDGE-TO-EDGE, NO EMPTY SPACE) ===== -->
+    <section class="services-rectangle" id="servicesSection" title="Наведите курсор, чтобы остановить">
+        <div class="services-marquee-track" id="servicesTrack">
+            <!-- 20 items repeated so the rectangle is 100% covered on any monitor with ZERO gaps -->
+            <div class="svc-item"><span class="svc-name">стрижка</span><span class="svc-price">2000 ₽</span><span class="svc-time">1ч</span></div>
+            <div class="svc-item"><span class="svc-name">стрижка + уход</span><span class="svc-price">2500 ₽</span><span class="svc-time">1ч</span></div>
+            <div class="svc-item"><span class="svc-name">завивка S</span><span class="svc-price">4000 ₽</span><span class="svc-time">3ч</span></div>
+            <div class="svc-item"><span class="svc-name">завивка L</span><span class="svc-price">5000 ₽</span><span class="svc-time">3ч</span></div>
+            <div class="svc-item"><span class="svc-name">завивка XL</span><span class="svc-price">5000 ₽</span><span class="svc-time">3ч</span></div>
 
-        <!-- Info bubbles -->
-        <div class="bubbles-area">
-            <div class="bubble bubble--1 reveal">
-                <p>Оплата только наличными, здесь перевод, лишь бронирует место, деньги которые вы перевели вычтутся из основной оплаты за проведённую услугу.</p>
-            </div>
-            <div class="bubble bubble--2 reveal">
-                <p>Можно обсудить любой вопрос по стрижке в личных сообщениях, связаться со мной можно благодаря этой кнопке.</p>
-            </div>
-            <div class="bubble bubble--3 reveal">
-                <p>принятая запись производится только по указанному времени, если не получается прийти вовремя, то вы должны сообщить, если вы отмените вашу бронировку, то так же сообщить.</p>
-            </div>
-        </div>
+            <div class="svc-item"><span class="svc-name">стрижка</span><span class="svc-price">2000 ₽</span><span class="svc-time">1ч</span></div>
+            <div class="svc-item"><span class="svc-name">стрижка + уход</span><span class="svc-price">2500 ₽</span><span class="svc-time">1ч</span></div>
+            <div class="svc-item"><span class="svc-name">завивка S</span><span class="svc-price">4000 ₽</span><span class="svc-time">3ч</span></div>
+            <div class="svc-item"><span class="svc-name">завивка L</span><span class="svc-price">5000 ₽</span><span class="svc-time">3ч</span></div>
+            <div class="svc-item"><span class="svc-name">завивка XL</span><span class="svc-price">5000 ₽</span><span class="svc-time">3ч</span></div>
 
-        <!-- ===== PIXEL COLLAGE (flag + photos + messy circles) ===== -->
-        <div class="pixel-collage" id="pixelCollage">
-            <!-- Flag canvas -->
-            <div class="pc-flag" id="flagWrap">
-                <canvas id="flagCanvas" width="640" height="400"></canvas>
-            </div>
+            <div class="svc-item"><span class="svc-name">стрижка</span><span class="svc-price">2000 ₽</span><span class="svc-time">1ч</span></div>
+            <div class="svc-item"><span class="svc-name">стрижка + уход</span><span class="svc-price">2500 ₽</span><span class="svc-time">1ч</span></div>
+            <div class="svc-item"><span class="svc-name">завивка S</span><span class="svc-price">4000 ₽</span><span class="svc-time">3ч</span></div>
+            <div class="svc-item"><span class="svc-name">завивка L</span><span class="svc-price">5000 ₽</span><span class="svc-time">3ч</span></div>
+            <div class="svc-item"><span class="svc-name">завивка XL</span><span class="svc-price">5000 ₽</span><span class="svc-time">3ч</span></div>
 
-            <!-- Photos around flag -->
-            <div class="pc-photo pc-p1 px-target reveal"><img src="images/photo1.png" alt=""></div>
-            <div class="pc-photo pc-p2 px-target reveal"><img src="images/photo2.png" alt=""></div>
-            <div class="pc-photo pc-p3 px-target reveal"><img src="images/photo3.png" alt=""></div>
-            <div class="pc-photo pc-p4 px-target reveal"><img src="images/photo4.png" alt=""></div>
-            <div class="pc-photo pc-p5 px-target reveal"><img src="images/photo1.png" alt=""></div>
-            <div class="pc-photo pc-p6 px-target reveal"><img src="images/photo3.png" alt=""></div>
-
-            <!-- 3 messy/rough circles -->
-            <div class="rough-circle rc-1 px-target reveal"><span>качество</span></div>
-            <div class="rough-circle rc-2 px-target reveal"><span>стиль</span></div>
-            <div class="rough-circle rc-3 px-target reveal"><span>забота</span></div>
-        </div>
-
-        <!-- ===== VANILLA CIRCLES ===== -->
-        <div class="v-circles">
-            <div class="v-circle vc-1 reveal"><span>индивидуальный подход</span></div>
-            <div class="v-circle vc-2 reveal"><span>опыт работы</span></div>
-            <div class="v-circle vc-btn reveal"><span>связаться</span></div>
-        </div>
-
-        <!-- ===== GALLERY near circles ===== -->
-        <div class="gallery">
-            <div class="g-item g-px reveal"><img src="images/photo1.png" alt=""></div>
-            <div class="g-item g-crop reveal"><img src="images/photo2.png" alt=""></div>
-            <div class="g-item g-px reveal"><img src="images/photo3.png" alt=""></div>
-            <div class="g-item g-crop reveal"><img src="images/photo4.png" alt=""></div>
-            <div class="g-item reveal"><img src="images/photo1.png" alt=""></div>
-            <div class="g-item g-px reveal"><img src="images/photo2.png" alt=""></div>
-            <div class="g-item g-crop reveal"><img src="images/photo3.png" alt=""></div>
-            <div class="g-item reveal"><img src="images/photo4.png" alt=""></div>
-        </div>
-
-        <!-- Wave bottom -->
-        <div class="wave wave--main-bottom">
-            <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
-                <path d="M0,55 L30,30 L60,58 L90,25 L120,52 L150,30 L180,60 L210,28 L240,55 L270,32 L300,58 L330,26 L360,54 L390,32 L420,60 L450,25 L480,55 L510,30 L540,58 L570,28 L600,54 L630,34 L660,58 L690,26 L720,56 L750,30 L780,60 L810,28 L840,55 L870,32 L900,58 L930,26 L960,54 L990,34 L1020,60 L1050,28 L1080,56 L1110,32 L1140,58 L1170,26 L1200,55 L1230,30 L1260,60 L1290,25 L1320,55 L1350,32 L1380,58 L1410,28 L1440,52 L1440,100 L0,100 Z" fill="#3a2463"/>
-            </svg>
+            <div class="svc-item"><span class="svc-name">стрижка</span><span class="svc-price">2000 ₽</span><span class="svc-time">1ч</span></div>
+            <div class="svc-item"><span class="svc-name">стрижка + уход</span><span class="svc-price">2500 ₽</span><span class="svc-time">1ч</span></div>
+            <div class="svc-item"><span class="svc-name">завивка S</span><span class="svc-price">4000 ₽</span><span class="svc-time">3ч</span></div>
+            <div class="svc-item"><span class="svc-name">завивка L</span><span class="svc-price">5000 ₽</span><span class="svc-time">3ч</span></div>
+            <div class="svc-item"><span class="svc-name">завивка XL</span><span class="svc-price">5000 ₽</span><span class="svc-time">3ч</span></div>
         </div>
     </section>
 
-    <!-- ===== FOOTER ===== -->
-    <footer class="footer" id="footer">
-        <div class="footer__grid">
-            <div class="footer__card reveal">
-                <h3>связь</h3>
-                <div class="footer__stub"></div>
+    <!-- ===== ROUGH TRANSITION WAVE ===== -->
+    <div class="coarse-wave-divider">
+        <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+            <polygon points="0,0 1440,0 1440,30 1380,10 1320,38 1260,12 1200,42 1140,15 1080,35 1020,10 960,40 900,12 840,35 780,15 720,40 660,10 600,38 540,12 480,42 420,15 360,38 300,10 240,40 180,12 120,35 60,15 0,38" fill="#1d1842"/>
+        </svg>
+    </div>
+
+    <!-- ===== MAIN CONTENT AREA: 3 MESSY CIRCLES + COLLAGE WITH HETEROGENEOUS PIXELATION ===== -->
+    <main class="main-collage-stage" id="collageStage">
+
+        <!-- ===== MESSY CIRCLE 1 (TOP LEFT) ===== -->
+        <div class="messy-circle messy-circle--1" id="circle1">
+            <svg class="messy-circle-svg" viewBox="0 0 340 320">
+                <!-- Authentic irregular, wobbly, rough hand-drawn loop outline -->
+                <path class="circle-path circle-path--fill" d="M45,150 C38,80 85,32 170,30 C250,28 310,85 305,170 C300,245 255,295 165,298 C75,302 42,230 45,150 Z" fill="#faecd4"/>
+                <path class="circle-path circle-path--stroke" d="M45,150 C38,80 85,32 170,30 C250,28 310,85 305,170 C300,245 255,295 165,298 C75,302 42,230 45,150 C50,90 92,40 175,35" fill="none" stroke="#000000" stroke-width="7" stroke-linecap="round"/>
+                <path class="circle-path circle-path--sketch" d="M50,140 C42,88 90,40 170,36 C245,33 302,88 298,168 C294,238 248,290 168,292 C82,295 48,225 50,140" fill="none" stroke="#1d1842" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+            <div class="messy-circle__content">
+                <p>Оплата только наличными, здесь перевод лишь бронирует место, деньги которые вы перевели вычтутся из основной оплаты за проведённую услугу.</p>
             </div>
-            <div class="footer__card reveal">
-                <h3>faq</h3>
-                <div class="footer__stub"></div>
+        </div>
+
+        <!-- ===== MESSY CIRCLE 2 (BOTTOM LEFT) ===== -->
+        <div class="messy-circle messy-circle--2" id="circle2">
+            <svg class="messy-circle-svg" viewBox="0 0 360 340">
+                <!-- Completely different, rough asymmetrical wobbly loop -->
+                <path class="circle-path circle-path--fill" d="M60,170 C50,75 110,35 190,38 C280,42 320,110 315,195 C310,270 240,315 155,310 C70,305 45,245 60,170 Z" fill="#faecd4"/>
+                <path class="circle-path circle-path--stroke" d="M60,170 C50,75 110,35 190,38 C280,42 320,110 315,195 C310,270 240,315 155,310 C70,305 45,245 60,170 C70,100 120,45 195,45" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+                <path class="circle-path circle-path--sketch" d="M55,180 C48,85 105,42 185,42 C275,46 312,115 308,190 C302,260 235,308 160,302 C78,298 52,238 55,180" fill="none" stroke="#1d1842" stroke-width="3.5" stroke-linecap="round"/>
+            </svg>
+            <div class="messy-circle__content">
+                <p>правила: запись производится только по указанному времени, если не получается прийти вовремя, то вы должны сообщить, если вы отмените вашу бронировку, то так же должны сообщить.</p>
             </div>
-            <div class="footer__card reveal">
-                <h3>отзывы</h3>
-                <div class="footer__stub"></div>
+        </div>
+
+        <!-- ===== MESSY CIRCLE 3 (MIDDLE RIGHT) ===== -->
+        <div class="messy-circle messy-circle--3" id="circle3">
+            <svg class="messy-circle-svg" viewBox="0 0 350 260">
+                <!-- Oval/egg horizontal irregular contour -->
+                <path class="circle-path circle-path--fill" d="M40,130 C35,65 95,25 180,28 C265,30 325,70 320,135 C315,200 250,235 170,232 C85,230 45,190 40,130 Z" fill="#faecd4"/>
+                <path class="circle-path circle-path--stroke" d="M40,130 C35,65 95,25 180,28 C265,30 325,70 320,135 C315,200 250,235 170,232 C85,230 45,190 40,130 C42,75 100,32 175,34" fill="none" stroke="#000000" stroke-width="7" stroke-linecap="round"/>
+                <path class="circle-path circle-path--sketch" d="M48,125 C42,72 100,32 178,34 C258,36 315,75 312,130 C308,192 245,228 172,225 C92,222 52,185 48,125" fill="none" stroke="#1d1842" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>
+            <div class="messy-circle__content">
+                <p>Можно обсудить любой вопрос по стрижке в личных сообщениях, связаться со мной можно благодаря <span class="fake-btn-link" title="Неактивна">этой кнопке</span>.</p>
             </div>
-            <div class="footer__card reveal">
-                <h3>о нас</h3>
-                <div class="footer__stub"></div>
+        </div>
+
+        <!-- ===== CENTRAL PHOTO COLLAGE ===== -->
+        <div class="collage-cluster" id="collageCluster">
+
+            <!-- 1. Redhead 3-in-1 photo (top center) -->
+            <div class="cl-photo cl-photo--redhead" data-src="images/girl_red.png">
+                <canvas class="pixel-fx-canvas"></canvas>
+            </div>
+
+            <!-- 2. Plaid fabric (above flag) -->
+            <div class="cl-photo cl-photo--plaid" data-src="images/plaid.jpg">
+                <canvas class="pixel-fx-canvas"></canvas>
+            </div>
+
+            <!-- 3. US FLAG (centerpiece) -->
+            <div class="cl-photo cl-photo--flag" data-src="images/flag.png">
+                <canvas class="pixel-fx-canvas"></canvas>
+            </div>
+
+            <!-- 4. Guy in sunglasses with 'ИРКУТСК' shirt (left of flag) -->
+            <div class="cl-photo cl-photo--guy" data-src="images/guy_irkutsk.jpg">
+                <canvas class="pixel-fx-canvas"></canvas>
+            </div>
+
+            <!-- 5. Salon photo (far left of guy) -->
+            <div class="cl-photo cl-photo--salon" data-src="images/girl_blue.png">
+                <canvas class="pixel-fx-canvas"></canvas>
+            </div>
+
+            <!-- 6. Dark portrait cluster (bottom left) -->
+            <div class="cl-photo cl-photo--dark" data-src="images/girl_glasses.png">
+                <canvas class="pixel-fx-canvas"></canvas>
+            </div>
+
+            <!-- 7. Graphic smile print (below flag) -->
+            <div class="cl-photo cl-photo--smile" data-src="images/smile.jpg">
+                <canvas class="pixel-fx-canvas"></canvas>
+            </div>
+
+            <!-- 8. Texture / pattern below smile -->
+            <div class="cl-photo cl-photo--texture" data-src="images/plaid.jpg">
+                <canvas class="pixel-fx-canvas"></canvas>
+            </div>
+
+            <!-- 9. Boy with shaved '67' on temple (right side) -->
+            <div class="cl-photo cl-photo--boy67" data-src="images/girl_blonde.png">
+                <canvas class="pixel-fx-canvas"></canvas>
+            </div>
+
+            <!-- 10. Sitting guy photo (bottom) -->
+            <div class="cl-photo cl-photo--sitting" data-src="images/guy_irkutsk.jpg">
+                <canvas class="pixel-fx-canvas"></canvas>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ===== BOTTOM ROUGH TRANSITION WAVE ===== -->
+    <div class="coarse-wave-divider coarse-wave-divider--bottom">
+        <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+            <polygon points="0,60 1440,60 1440,25 1380,48 1320,20 1260,45 1200,18 1140,42 1080,22 1020,48 960,18 900,45 840,22 780,44 720,18 660,48 600,20 540,46 480,18 420,44 360,20 300,48 240,18 180,45 120,22 60,44 0,22" fill="#1d1842"/>
+        </svg>
+    </div>
+
+    <!-- ===== FOOTER: 4 MUTED RECTANGULAR BOXES (NON-FUNCTIONAL) ===== -->
+    <footer class="footer-section" id="footerSection">
+        <div class="footer-boxes-container">
+            <div class="footer-box" tabindex="-1">
+                <span class="footer-box-title">связь:</span>
+            </div>
+            <div class="footer-box" tabindex="-1">
+                <span class="footer-box-title">faq</span>
+            </div>
+            <div class="footer-box" tabindex="-1">
+                <span class="footer-box-title">отзывы</span>
+            </div>
+            <div class="footer-box" tabindex="-1">
+                <span class="footer-box-title">о нас</span>
             </div>
         </div>
     </footer>
 
-    <!-- ===== MAP MODAL ===== -->
-    <div class="modal" id="mapModal">
-        <div class="modal__bg" data-close></div>
-        <div class="modal__box">
-            <button class="modal__x" data-close>&times;</button>
-            <h2 class="modal__title">Иркутск, Литвинова 18</h2>
-            <div class="modal__map-wrap">
-                <iframe id="mapIframe" src="about:blank"
-                    data-src="https://yandex.ru/map-widget/v1/?ll=104.281339%2C52.289584&z=17&pt=104.281339%2C52.289584%2Cpm2rdm"
+    <!-- ===== MAP POPUP MODAL ===== -->
+    <div class="popup-modal" id="mapModal" aria-hidden="true">
+        <div class="popup-modal__backdrop" data-close-modal></div>
+        <div class="popup-modal__window">
+            <div class="popup-modal__header">
+                <span class="popup-modal__title">Иркутск, Литвинова 18</span>
+                <button class="popup-modal__close-btn" data-close-modal>&times;</button>
+            </div>
+            <div class="popup-modal__map-frame">
+                <iframe id="mapFrame" src="about:blank"
+                    data-lazy-src="https://yandex.ru/map-widget/v1/?ll=104.281339%2C52.289584&z=16&pt=104.281339%2C52.289584%2Cpm2rdm"
                     width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
             </div>
         </div>
     </div>
 
-    <!-- ===== EXAMPLES MODAL ===== -->
-    <div class="modal" id="examplesModal">
-        <div class="modal__bg" data-close></div>
-        <div class="modal__box modal__box--wide">
-            <button class="modal__x" data-close>&times;</button>
-            <h2 class="modal__title">примеры работ</h2>
-            <div class="examples-grid">
-                <div class="ex-card ex-card--sharp reveal">
-                    <img src="images/photo1.png" alt="">
-                    <span class="ex-label">стрижка</span>
+    <!-- ===== EXAMPLES POPUP MODAL ===== -->
+    <div class="popup-modal" id="examplesModal" aria-hidden="true">
+        <div class="popup-modal__backdrop" data-close-modal></div>
+        <div class="popup-modal__window popup-modal__window--wide">
+            <div class="popup-modal__header">
+                <span class="popup-modal__title">примеры работ</span>
+                <button class="popup-modal__close-btn" data-close-modal>&times;</button>
+            </div>
+            <div class="examples-showcase-grid">
+                <div class="ex-tile">
+                    <img src="images/girl_blue.png" alt="Стрижка">
+                    <div class="ex-badge">стрижка</div>
                 </div>
-                <div class="ex-card ex-card--round reveal">
-                    <img src="images/photo2.png" alt="">
-                    <span class="ex-label">стрижка + уход</span>
+                <div class="ex-tile">
+                    <img src="images/girl_red.png" alt="Стрижка + уход">
+                    <div class="ex-badge">стрижка + уход</div>
                 </div>
-                <div class="ex-card ex-card--cut reveal">
-                    <img src="images/photo3.png" alt="">
-                    <span class="ex-label">завивка</span>
+                <div class="ex-tile">
+                    <img src="images/girl_blonde.png" alt="Завивка">
+                    <div class="ex-badge">завивка</div>
                 </div>
-                <div class="ex-card ex-card--slant reveal">
-                    <img src="images/photo4.png" alt="">
-                    <span class="ex-label">стрижка</span>
+                <div class="ex-tile">
+                    <img src="images/girl_glasses.png" alt="Стрижка">
+                    <div class="ex-badge">стрижка</div>
                 </div>
             </div>
         </div>
