@@ -422,29 +422,29 @@ body {
 
 /* Blob 1: Top-Left */
 .organic-blob--1 {
-    top: 0px;
-    left: 10px;
-    width: 420px;
-    height: 350px;
-    transform: rotate(-2deg);
+    top: -10px;
+    left: 0px;
+    width: 440px;
+    height: 365px;
+    transform: rotate(-3deg);
 }
 
 /* Blob 2: Bottom-Left */
 .organic-blob--2 {
-    bottom: 20px;
-    left: 20px;
-    width: 440px;
-    height: 370px;
-    transform: rotate(2deg);
+    bottom: 10px;
+    left: 10px;
+    width: 470px;
+    height: 395px;
+    transform: rotate(2.5deg);
 }
 
 /* Blob 3: Middle-Right */
 .organic-blob--3 {
-    top: 260px;
-    right: 15px;
-    width: 430px;
-    height: 310px;
-    transform: rotate(3deg);
+    top: 250px;
+    right: 5px;
+    width: 460px;
+    height: 330px;
+    transform: rotate(3.5deg);
 }
 
 .fake-btn-link {
