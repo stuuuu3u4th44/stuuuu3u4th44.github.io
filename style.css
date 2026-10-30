@@ -430,13 +430,13 @@ body {
     transform: rotate(2deg);
 }
 
-/* Blob 3: Middle-Right */
+/* Blob 3: Middle-Right (positioned cleanly above the boy & officer photos so it never covers them) */
 .organic-blob--3 {
-    top: 250px;
-    right: 5px;
-    width: 460px;
-    height: 330px;
-    transform: rotate(3.5deg);
+    top: 110px;
+    right: -25px;
+    width: 440px;
+    height: 280px;
+    transform: rotate(3deg);
 }
 
 .fake-btn-link {
@@ -455,7 +455,7 @@ body {
 .collage-cluster {
     position: relative;
     width: 480px;
-    height: 720px;
+    height: 760px;
     margin: 40px auto 0;
     z-index: 10;
 }
@@ -514,58 +514,67 @@ body {
     z-index: 6;
 }
 
-/* 5. Salon photo */
+/* 5. Salon photo (striped shirt photo, unburied and placed cleanly above dark portrait) */
 .cl-photo--salon {
-    top: 240px;
-    left: -105px;
-    width: 95px;
-    height: 120px;
+    top: 155px;
+    left: -115px;
+    width: 100px;
+    height: 125px;
     z-index: 4;
 }
 
-/* 6. Dark portrait (placed above circle 2, never overlapping it) */
+/* 6. Dark portrait (placed cleanly below salon photo, not overlapping each other) */
 .cl-photo--dark {
-    top: 220px;
+    top: 295px;
     left: -115px;
     width: 100px;
-    height: 130px;
+    height: 135px;
     z-index: 4;
 }
 
 /* 7. Graphic smile print (below flag) */
 .cl-photo--smile {
     top: 340px;
-    left: 180px;
+    left: 165px;
     width: 165px;
     height: 165px;
     z-index: 6;
     border: 2px solid var(--vanilla);
 }
 
-/* 8. Texture (directly below creepy face) */
+/* 8. Texture (high-res original, placed directly under left part of creepy smile) */
 .cl-photo--texture {
-    top: 512px;
-    left: 180px;
+    top: 495px;
+    left: 115px;
     width: 140px;
-    height: 95px;
+    height: 105px;
     z-index: 5;
 }
 
-/* 9. Boy photo */
+/* 9. Boy photo (pulled out from under Blob 3, fully visible beside creepy face) */
 .cl-photo--boy67 {
-    top: 330px;
-    right: -100px;
-    width: 115px;
-    height: 145px;
-    z-index: 4;
+    top: 410px;
+    left: 340px;
+    width: 105px;
+    height: 135px;
+    z-index: 8;
 }
 
-/* 10. Sitting guy photo (taken out of circle 2 and placed directly under creepy face & texture) */
+/* 10. Military officer photo (beside boy photo) */
+.cl-photo--officer {
+    top: 395px;
+    left: 455px;
+    width: 105px;
+    height: 135px;
+    z-index: 8;
+}
+
+/* 11. Sitting guy photo (high-res original, stepped below and left of the texture) */
 .cl-photo--sitting {
-    top: 615px;
-    left: 180px;
-    width: 125px;
-    height: 125px;
+    top: 595px;
+    left: 45px;
+    width: 120px;
+    height: 126px;
     z-index: 6;
 }
 
