@@ -188,37 +188,32 @@
                 <canvas class="pixel-fx-canvas"></canvas>
             </div>
 
-            <!-- 5. Salon photo (far left) -->
-            <div class="cl-photo cl-photo--salon" data-src="images/girl_blue.png">
-                <canvas class="pixel-fx-canvas"></canvas>
-            </div>
-
-            <!-- 6. Dark portrait cluster (above circle 2, not inside it) -->
+            <!-- 5. Dark portrait cluster (to the left of guy with sunglasses) -->
             <div class="cl-photo cl-photo--dark" data-src="images/girl_glasses.png">
                 <canvas class="pixel-fx-canvas"></canvas>
             </div>
 
-            <!-- 7. Graphic smile print (below flag) -->
+            <!-- 6. Graphic smile print (below flag) -->
             <div class="cl-photo cl-photo--smile" data-src="images/smile.jpg">
                 <canvas class="pixel-fx-canvas"></canvas>
             </div>
 
-            <!-- 8. Texture directly below creepy smile face -->
+            <!-- 7. Texture directly below creepy smile face -->
             <div class="cl-photo cl-photo--texture" data-src="images/texture_pixel.png">
                 <canvas class="pixel-fx-canvas"></canvas>
             </div>
 
-            <!-- 9. Sitting guy photo stepped below and left of texture -->
+            <!-- 8. Sitting guy photo stepped below and left of texture -->
             <div class="cl-photo cl-photo--sitting" data-src="images/guy_sitting.png">
                 <canvas class="pixel-fx-canvas"></canvas>
             </div>
 
-            <!-- 10. Boy photo (right of creepy face, uncovered from under Blob 3) -->
-            <div class="cl-photo cl-photo--boy67" data-src="images/boy57.png">
+            <!-- 9. Boy photo (right of creepy face, original high-res with 67 shaving) -->
+            <div class="cl-photo cl-photo--boy67" data-src="images/boy67.png">
                 <canvas class="pixel-fx-canvas"></canvas>
             </div>
 
-            <!-- 11. Officer photo (far right, beside boy) -->
+            <!-- 10. Officer photo (far right, original high-res at desk) -->
             <div class="cl-photo cl-photo--officer" data-src="images/officer.png">
                 <canvas class="pixel-fx-canvas"></canvas>
             </div>
@@ -285,8 +280,26 @@
                     <img src="images/guy_irkutsk.jpg" alt="Пример работы">
                 </div>
                 <div class="ex-tile">
-                    <img src="images/plaid.jpg" alt="Пример работы">
+                    <img src="images/boy67.png" alt="Пример работы">
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== PHOTO INSPECTOR / LIGHTBOX MODAL (SMOOTH ZOOM & CLOSE INSPECTION) ===== -->
+    <div class="photo-inspector-modal" id="photoInspectorModal" aria-hidden="true">
+        <div class="photo-inspector__backdrop" data-close-inspector></div>
+        <div class="photo-inspector__window">
+            <button class="photo-inspector__close-btn" data-close-inspector aria-label="Закрыть">&times;</button>
+            <div class="photo-inspector__viewport" id="inspectorViewport">
+                <img src="" alt="Фотография Lovecut" class="photo-inspector__img" id="inspectorImg">
+            </div>
+            <div class="photo-inspector__toolbar">
+                <button class="photo-inspector__btn" id="inspectorZoomToggle">
+                    <span id="inspectorZoomIcon">🔍</span>
+                    <span id="inspectorZoomText">Приблизить (2x)</span>
+                </button>
+                <span class="photo-inspector__hint">Кликните по фото для детального рассмотрения • Esc для выхода</span>
             </div>
         </div>
     </div>

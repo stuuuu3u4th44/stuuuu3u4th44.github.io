@@ -432,10 +432,10 @@ body {
 
 /* Blob 3: Middle-Right (positioned cleanly above the boy & officer photos so it never covers them) */
 .organic-blob--3 {
-    top: 110px;
+    top: 60px;
     right: -25px;
     width: 440px;
-    height: 280px;
+    height: 270px;
     transform: rotate(3deg);
 }
 
@@ -467,6 +467,15 @@ body {
     border: 1.5px solid rgba(250, 236, 212, 0.2);
     background-color: #0c0e22;
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.65);
+    cursor: zoom-in;
+    transition: transform 0.28s cubic-bezier(0.2, 0, 0.2, 1), box-shadow 0.28s ease, border-color 0.28s ease;
+}
+
+.cl-photo:hover {
+    transform: scale(1.06) translateY(-4px);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.9);
+    border-color: var(--vanilla);
+    z-index: 15 !important;
 }
 
 .cl-photo canvas {
@@ -474,6 +483,7 @@ body {
     height: 100%;
     display: block;
     image-rendering: pixelated;
+    pointer-events: none;
 }
 
 /* 1. Redhead photo above flag */
@@ -514,25 +524,16 @@ body {
     z-index: 6;
 }
 
-/* 5. Salon photo (striped shirt photo, unburied and placed cleanly above dark portrait) */
-.cl-photo--salon {
-    top: 155px;
-    left: -115px;
-    width: 100px;
-    height: 125px;
-    z-index: 4;
-}
-
-/* 6. Dark portrait (placed cleanly below salon photo, not overlapping each other) */
+/* 5. Dark portrait (placed cleanly to the left of guy in Irkutsk shirt) */
 .cl-photo--dark {
-    top: 295px;
-    left: -115px;
-    width: 100px;
-    height: 135px;
-    z-index: 4;
+    top: 200px;
+    left: -130px;
+    width: 105px;
+    height: 140px;
+    z-index: 6;
 }
 
-/* 7. Graphic smile print (below flag) */
+/* 6. Graphic smile print (below flag) */
 .cl-photo--smile {
     top: 340px;
     left: 165px;
@@ -542,7 +543,7 @@ body {
     border: 2px solid var(--vanilla);
 }
 
-/* 8. Texture (high-res original, placed directly under left part of creepy smile) */
+/* 7. Texture (high-res original, placed directly under left part of creepy smile) */
 .cl-photo--texture {
     top: 495px;
     left: 115px;
@@ -551,25 +552,25 @@ body {
     z-index: 5;
 }
 
-/* 9. Boy photo (pulled out from under Blob 3, fully visible beside creepy face) */
+/* 8. Boy photo (original high-res with 67 shaving, right of creepy face) */
 .cl-photo--boy67 {
-    top: 410px;
+    top: 360px;
     left: 340px;
     width: 105px;
     height: 135px;
     z-index: 8;
 }
 
-/* 10. Military officer photo (beside boy photo) */
+/* 9. Military officer photo (original high-res at desk, beside boy) */
 .cl-photo--officer {
-    top: 395px;
+    top: 345px;
     left: 455px;
     width: 105px;
     height: 135px;
     z-index: 8;
 }
 
-/* 11. Sitting guy photo (high-res original, stepped below and left of the texture) */
+/* 10. Sitting guy photo (high-res original, stepped below and left of the texture) */
 .cl-photo--sitting {
     top: 595px;
     left: 45px;
@@ -709,6 +710,7 @@ body {
     border-radius: 12px;
     border: 2px solid rgba(250, 236, 212, 0.3);
     background-color: #060714;
+    cursor: zoom-in;
     transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
@@ -722,6 +724,140 @@ body {
     height: 100%;
     object-fit: cover;
     display: block;
+}
+
+/* ====================================================================
+   PHOTO INSPECTOR / LIGHTBOX MODAL (SMOOTH ZOOM & CLOSE INSPECTION)
+   ==================================================================== */
+.photo-inspector-modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s cubic-bezier(0.2, 0, 0.2, 1);
+}
+
+.photo-inspector-modal.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.photo-inspector__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(5, 6, 17, 0.88);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+
+.photo-inspector__window {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 92vw;
+    max-height: 92vh;
+    transform: scale(0.92);
+    transition: transform 0.32s cubic-bezier(0.18, 0.89, 0.32, 1.15);
+}
+
+.photo-inspector-modal.active .photo-inspector__window {
+    transform: scale(1);
+}
+
+.photo-inspector__close-btn {
+    position: absolute;
+    top: -46px;
+    right: 0;
+    background: none;
+    border: none;
+    color: var(--vanilla);
+    font-size: 2.2rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 4px 8px;
+    opacity: 0.85;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.photo-inspector__close-btn:hover {
+    transform: scale(1.2);
+    opacity: 1;
+}
+
+.photo-inspector__viewport {
+    position: relative;
+    max-width: 86vw;
+    max-height: 78vh;
+    overflow: hidden;
+    border-radius: 14px;
+    border: 2.5px solid var(--vanilla);
+    background: #0c0e22;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: zoom-in;
+}
+
+.photo-inspector__viewport.is-zoomed {
+    cursor: zoom-out;
+}
+
+.photo-inspector__img {
+    max-width: 100%;
+    max-height: 78vh;
+    object-fit: contain;
+    transition: transform 0.28s cubic-bezier(0.2, 0, 0.2, 1);
+    transform-origin: center center;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.photo-inspector__img.is-zoomed {
+    transform: scale(2.2);
+    transition: transform 0.12s ease-out;
+}
+
+.photo-inspector__toolbar {
+    margin-top: 14px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.photo-inspector__btn {
+    background: var(--vanilla);
+    color: var(--ink-dark);
+    border: none;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-family: var(--font-deco);
+    font-size: 0.82rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: transform 0.2s ease, background 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.photo-inspector__btn:hover {
+    transform: scale(1.05);
+    background: #ffffff;
+}
+
+.photo-inspector__hint {
+    color: var(--vanilla);
+    opacity: 0.7;
+    font-size: 0.8rem;
+    font-family: var(--font-readable);
 }
 
 /* ====================================================================
