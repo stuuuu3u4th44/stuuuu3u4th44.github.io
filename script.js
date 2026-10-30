@@ -1,237 +1,245 @@
-/* ===================================================
+/* ====================================================================
    LOVECUT — Script
-   • Marquee pause on hover
-   • Map & Examples modals
-   • Flag pixel → real animation (IntersectionObserver)
-   • Collage pixel → real with messy circles
-   • Hero one-time pixel flash
-   • Footer one-time pixel flash
-   =================================================== */
+   
+   Features:
+   1. Services marquee (CSS handles pause-on-hover)
+   2. Map & Examples modals
+   3. FLAG + nearby photos: pixel-art 1:1 → full resolution anim
+      - 3 messy circles appear alongside
+      - Re-triggers weaker when scrolling away & back
+   4. Hero: one-time weak pixel flash on page load
+   5. Footer: one-time weak pixel flash when scrolled into view
+   6. Scroll reveal (fade-in)
+   ==================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
+  const $ = (s, c = document) => c.querySelector(s);
+  const $$ = (s, c = document) => [...c.querySelectorAll(s)];
 
-    /* ---- helpers ---- */
-    const $ = (sel, ctx = document) => ctx.querySelector(sel);
-    const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
+  /* ===========================
+     MODALS (map, examples)
+     =========================== */
+  function openModal(id) {
+    const m = $('#' + id);
+    if (!m) return;
+    m.classList.add('open');
+    // lazy-load map iframe
+    const iframe = $('iframe[data-src]', m);
+    if (iframe) { iframe.src = iframe.dataset.src; delete iframe.dataset.src; }
+  }
+  function closeModal(id) {
+    const m = $('#' + id);
+    if (m) m.classList.remove('open');
+  }
 
-    /* ============================================
-       MAP MODAL
-       ============================================ */
-    const mapModal    = $('#mapModal');
-    const mapIframe   = $('#mapIframe');
-    const openMapBtn  = $('#openMapBtn');
-    const mapClose    = $('#mapClose');
-    const mapOverlay  = $('#mapOverlay');
+  // Map
+  const openMap = $('#openMapBtn');
+  if (openMap) openMap.addEventListener('click', e => { e.preventDefault(); openModal('mapModal'); });
 
-    function toggleMap(show) {
-        if (!mapModal) return;
-        if (show) {
-            mapModal.classList.add('active');
-            // lazy-load iframe
-            if (mapIframe && mapIframe.dataset.src) {
-                mapIframe.src = mapIframe.dataset.src;
-                delete mapIframe.dataset.src;
-            }
+  // Examples
+  const openEx = $('#examplesBtn');
+  if (openEx) openEx.addEventListener('click', () => openModal('examplesModal'));
+
+  // Close buttons & overlays
+  document.addEventListener('click', e => {
+    if (e.target.hasAttribute('data-close')) {
+      const modal = e.target.closest('.modal');
+      if (modal) modal.classList.remove('open');
+    }
+  });
+
+  // Booking button — decorative feedback only
+  const bookBtn = $('.btn-booking');
+  if (bookBtn) bookBtn.addEventListener('click', () => {
+    bookBtn.style.transform = 'scale(.93)';
+    setTimeout(() => bookBtn.style.transform = '', 180);
+  });
+
+  /* ===========================
+     FLAG CANVAS
+     =========================== */
+  const canvas = $('#flagCanvas');
+  let ctx;
+  if (canvas) {
+    ctx = canvas.getContext('2d');
+    drawFlag(20); // start heavily pixelated
+  }
+
+  function drawFlag(px) {
+    if (!ctx) return;
+    const W = canvas.width, H = canvas.height;
+    ctx.clearRect(0, 0, W, H);
+    const sh = H / 13;
+
+    // Stripes
+    for (let i = 0; i < 13; i++) {
+      ctx.fillStyle = i % 2 === 0 ? '#B22234' : '#FFFFFF';
+      blockFill(ctx, 0, i * sh, W, sh, px);
+    }
+    // Canton
+    const cW = W * 0.4, cH = 7 * sh;
+    ctx.fillStyle = '#3C3B6E';
+    blockFill(ctx, 0, 0, cW, cH, px);
+    // Stars
+    ctx.fillStyle = '#FFFFFF';
+    const sX = cW / 12, sY = cH / 10;
+    for (let r = 0; r < 9; r++) {
+      const cols = r % 2 === 0 ? 6 : 5;
+      const off = r % 2 === 0 ? 0 : sX * .5;
+      for (let c = 0; c < cols; c++) {
+        const cx = off + (c + 1) * sX, cy = (r + 1) * sY;
+        if (px > 3) {
+          ctx.fillRect(Math.floor(cx / px) * px, Math.floor(cy / px) * px, px, px);
         } else {
-            mapModal.classList.remove('active');
+          star(ctx, cx, cy, Math.max(3, 6 - px));
         }
+      }
     }
+  }
 
-    if (openMapBtn) openMapBtn.addEventListener('click', e => { e.preventDefault(); toggleMap(true); });
-    if (mapClose)   mapClose.addEventListener('click',   () => toggleMap(false));
-    if (mapOverlay) mapOverlay.addEventListener('click',  () => toggleMap(false));
+  function blockFill(ctx, x0, y0, w, h, px) {
+    if (px <= 1) { ctx.fillRect(x0, y0, w, h); return; }
+    for (let x = x0; x < x0 + w; x += px)
+      for (let y = y0; y < y0 + h; y += px)
+        ctx.fillRect(x, y, px, px);
+  }
 
-    /* ============================================
-       EXAMPLES MODAL
-       ============================================ */
-    const exModal   = $('#examplesModal');
-    const exClose   = $('#examplesClose');
-    const exOverlay = $('#examplesOverlay');
-    const exBtn     = $('#examplesBtn');
-
-    function toggleExamples(show) {
-        if (!exModal) return;
-        exModal.classList[show ? 'add' : 'remove']('active');
+  function star(ctx, cx, cy, r) {
+    ctx.beginPath();
+    for (let i = 0; i < 5; i++) {
+      const a = (i * 4 * Math.PI) / 5 - Math.PI / 2;
+      ctx[i ? 'lineTo' : 'moveTo'](cx + r * Math.cos(a), cy + r * Math.sin(a));
     }
+    ctx.closePath(); ctx.fill();
+  }
 
-    if (exBtn)     exBtn.addEventListener('click', () => toggleExamples(true));
-    if (exClose)   exClose.addEventListener('click', () => toggleExamples(false));
-    if (exOverlay) exOverlay.addEventListener('click', () => toggleExamples(false));
+  /* Smooth pixel animation (from → to pixel size) */
+  function animateFlag(from, to, duration, cb) {
+    const t0 = performance.now();
+    (function step(now) {
+      const p = Math.min((now - t0) / duration, 1);
+      const ease = 1 - Math.pow(1 - p, 3); // ease-out cubic
+      const cur = Math.max(1, Math.round(from + (to - from) * ease));
+      drawFlag(cur);
+      if (p < 1) requestAnimationFrame(step);
+      else if (cb) cb();
+    })(t0);
+  }
 
-    /* ---- booking button feedback ---- */
-    const bookBtn = $('#bookingBtn');
-    if (bookBtn) {
-        bookBtn.addEventListener('click', () => {
-            bookBtn.style.transform = 'scale(.94)';
-            setTimeout(() => bookBtn.style.transform = '', 180);
-        });
-    }
+  /* ===========================
+     PIXEL TARGETS (photos + messy circles near flag)
+     =========================== */
+  const pxTargets = $$('.px-target');
+  const roughCircles = $$('.rough-circle');
 
-    /* ============================================
-       FLAG CANVAS — pixel art → real
-       ============================================ */
-    const flagCanvas = $('#flagCanvas');
-    let flagCtx;
-    if (flagCanvas) {
-        flagCtx = flagCanvas.getContext('2d');
-        drawFlag(16);                     // start pixelated (16 px blocks)
-    }
-
-    function drawFlag(px) {
-        if (!flagCtx) return;
-        const W = flagCanvas.width;
-        const H = flagCanvas.height;
-        flagCtx.clearRect(0, 0, W, H);
-
-        const stripeH = H / 13;
-
-        // stripes
-        for (let i = 0; i < 13; i++) {
-            flagCtx.fillStyle = i % 2 === 0 ? '#B22234' : '#FFFFFF';
-            fillBlock(flagCtx, 0, i * stripeH, W, stripeH, px);
+  function setPixelState(on, dur) {
+    pxTargets.forEach((el, i) => {
+      setTimeout(() => {
+        if (on) {
+          el.classList.add('pixelated');
+        } else {
+          el.classList.remove('pixelated');
         }
-
-        // canton
-        const cW = W * 0.4, cH = 7 * stripeH;
-        flagCtx.fillStyle = '#3C3B6E';
-        fillBlock(flagCtx, 0, 0, cW, cH, px);
-
-        // stars (simplified)
-        flagCtx.fillStyle = '#FFFFFF';
-        const rows = 9, sX = cW / 12, sY = cH / 10;
-        for (let r = 0; r < rows; r++) {
-            const cols = r % 2 === 0 ? 6 : 5;
-            const offX = r % 2 === 0 ? 0 : sX * 0.5;
-            for (let c = 0; c < cols; c++) {
-                const cx = offX + (c + 1) * sX;
-                const cy = (r + 1) * sY;
-                if (px > 2) {
-                    flagCtx.fillRect(
-                        Math.floor(cx / px) * px,
-                        Math.floor(cy / px) * px,
-                        px, px
-                    );
-                } else {
-                    star5(flagCtx, cx, cy, 5);
-                }
-            }
-        }
-    }
-
-    function fillBlock(ctx, x0, y0, w, h, px) {
-        if (px <= 1) { ctx.fillRect(x0, y0, w, h); return; }
-        for (let x = x0; x < x0 + w; x += px)
-            for (let y = y0; y < y0 + h; y += px)
-                ctx.fillRect(x, y, px, px);
-    }
-
-    function star5(ctx, cx, cy, r) {
-        ctx.beginPath();
-        for (let i = 0; i < 5; i++) {
-            const a = (i * 4 * Math.PI) / 5 - Math.PI / 2;
-            const m = i === 0 ? 'moveTo' : 'lineTo';
-            ctx[m](cx + r * Math.cos(a), cy + r * Math.sin(a));
-        }
-        ctx.closePath();
-        ctx.fill();
-    }
-
-    /* Smooth pixel animation */
-    function animateFlag(fromPx, toPx, dur) {
-        const t0 = performance.now();
-        (function step(now) {
-            const p = Math.min((now - t0) / dur, 1);
-            const ease = 1 - (1 - p) ** 3;
-            const cur = Math.max(1, Math.round(fromPx + (toPx - fromPx) * ease));
-            drawFlag(cur);
-            if (p < 1) requestAnimationFrame(step);
-        })(t0);
-    }
-
-    /* ============================================
-       PIXEL TARGETS (collage photos + messy circles)
-       ============================================ */
-    const pxTargets = $$('.pixelate-target');
-
-    function setPixelTargets(toPixel, dur) {
-        pxTargets.forEach((el, i) => {
-            setTimeout(() => {
-                if (toPixel) {
-                    el.classList.add('pixel-active');
-                    el.style.transition = `filter ${dur}ms ease`;
-                } else {
-                    el.classList.remove('pixel-active');
-                    el.style.transition = `filter ${dur}ms ease`;
-                }
-            }, i * 120);
-        });
-    }
-
-    /* ---- Observe flag section ---- */
-    const flagArea = $('#flagArea');
-    let flagShown = false;
-
-    if (flagArea) {
-        new IntersectionObserver(entries => {
-            entries.forEach(en => {
-                if (en.isIntersecting && !flagShown) {
-                    flagShown = true;
-                    animateFlag(16, 1, 2200);
-                    setPixelTargets(false, 2200);
-                } else if (!en.isIntersecting && flagShown) {
-                    flagShown = false;
-                    animateFlag(1, 10, 700);      // weaker return
-                    setPixelTargets(true, 700);
-                }
-            });
-        }, { threshold: 0.3 }).observe(flagArea);
-    }
-
-    /* ============================================
-       HERO — one-time pixel flash at page load
-       ============================================ */
-    const heroImgs = $$('.pixelate-hero img');
-    heroImgs.forEach(img => {
-        img.style.imageRendering = 'pixelated';
-        img.style.filter = 'contrast(1.25) brightness(.88)';
+      }, i * 100);
     });
-    setTimeout(() => {
-        heroImgs.forEach(img => {
-            img.style.transition = 'filter 1.4s ease';
-            img.style.filter = 'none';
-            img.style.imageRendering = 'auto';
-        });
-    }, 700);
+    // Rough circles appear/disappear together
+    roughCircles.forEach((c, i) => {
+      setTimeout(() => {
+        if (on) c.classList.remove('show');
+        else c.classList.add('show');
+      }, 300 + i * 200);
+    });
+  }
 
-    /* ============================================
-       FOOTER — one-time pixel flash when scrolled to
-       ============================================ */
-    const footer = $('#footer');
-    let footerDone = false;
-    if (footer) {
-        new IntersectionObserver(entries => {
-            entries.forEach(en => {
-                if (en.isIntersecting && !footerDone) {
-                    footerDone = true;
-                    const cards = $$('.footer__card', footer);
-                    cards.forEach(c => { c.style.filter = 'contrast(1.3) brightness(.85)'; });
-                    setTimeout(() => {
-                        cards.forEach(c => { c.style.transition = 'filter .8s ease'; c.style.filter = ''; });
-                    }, 500);
-                }
+  /* ===========================
+     INTERSECTION OBSERVER — flag area
+     Middle section: pixel→real (strong) on enter,
+     real→pixel (weaker) on leave, repeats weaker each time
+     =========================== */
+  const flagWrap = $('#flagWrap');
+  let flagSeenCount = 0; // Track how many times we've triggered
+
+  if (flagWrap) {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(en => {
+        if (en.isIntersecting) {
+          flagSeenCount++;
+          // Each subsequent trigger is weaker (shorter anim, less extreme start)
+          const strength = Math.max(0.3, 1 - (flagSeenCount - 1) * 0.25);
+          const startPx = Math.round(20 * strength);
+          const dur = Math.round(2200 * strength);
+          animateFlag(startPx, 1, dur);
+          setPixelState(false, dur);
+        } else if (flagSeenCount > 0) {
+          // Going away — weaker return to pixel
+          const strength = Math.max(0.2, 1 - flagSeenCount * 0.3);
+          const endPx = Math.round(14 * strength);
+          animateFlag(1, endPx, Math.round(800 * strength));
+          setPixelState(true, 600);
+        }
+      });
+    }, { threshold: 0.35 });
+    obs.observe(flagWrap);
+  }
+
+  /* ===========================
+     HERO — one-time weak pixel flash at page load
+     =========================== */
+  const heroImgs = $$('.hero__photo-shape img');
+  // Start pixelated
+  heroImgs.forEach(img => {
+    img.style.imageRendering = 'pixelated';
+    img.style.filter = 'contrast(1.2) brightness(.86)';
+  });
+  // Fade to real after short delay
+  setTimeout(() => {
+    heroImgs.forEach(img => {
+      img.style.transition = 'filter 1.3s ease';
+      img.style.filter = 'none';
+      // We can't really transition image-rendering, so switch after filter done
+      setTimeout(() => { img.style.imageRendering = 'auto'; }, 1300);
+    });
+  }, 600);
+
+  /* ===========================
+     FOOTER — one-time weak pixel flash
+     =========================== */
+  const footer = $('#footer');
+  let footerDone = false;
+
+  if (footer) {
+    new IntersectionObserver(entries => {
+      entries.forEach(en => {
+        if (en.isIntersecting && !footerDone) {
+          footerDone = true;
+          const cards = $$('.footer__card', footer);
+          cards.forEach(c => {
+            c.style.filter = 'contrast(1.2) brightness(.84)';
+          });
+          setTimeout(() => {
+            cards.forEach(c => {
+              c.style.transition = 'filter .9s ease';
+              c.style.filter = '';
             });
-        }, { threshold: 0.45 }).observe(footer);
-    }
+          }, 450);
+        }
+      });
+    }, { threshold: 0.4 }).observe(footer);
+  }
 
-    /* ============================================
-       SCROLL FADE-IN
-       ============================================ */
-    const fadeObs = new IntersectionObserver(entries => {
-        entries.forEach(en => { if (en.isIntersecting) en.target.classList.add('visible'); });
-    }, { threshold: 0.12 });
+  /* ===========================
+     SCROLL REVEAL (fade-in)
+     =========================== */
+  const revealObs = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (en.isIntersecting) en.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
 
-    $$('.fade-in').forEach(el => fadeObs.observe(el));
+  $$('.reveal').forEach(el => revealObs.observe(el));
 
-    /* done */
-    console.log('Lovecut loaded ✓');
+  /* ===========================
+     DONE
+     =========================== */
+  console.log('Lovecut loaded ✓');
 });

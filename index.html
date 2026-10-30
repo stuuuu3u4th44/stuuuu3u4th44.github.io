@@ -11,31 +11,25 @@
 </head>
 <body>
 
-    <!-- Hero pixel overlay (one-time intro) -->
-    <div class="hero-pixel-overlay" id="heroOverlay"></div>
-
     <!-- ===== HERO / HEADER ===== -->
     <header class="hero" id="hero">
-        <!-- Rough wave at bottom -->
-        <svg class="hero__wave-svg" viewBox="0 0 1440 120" preserveAspectRatio="none">
-            <path d="M0,80 C40,50 80,95 120,70 C160,45 200,85 240,65 C280,45 320,90 360,72 C400,54 440,88 480,68 C520,48 560,92 600,75 C640,58 680,86 720,70 C760,54 800,90 840,73 C880,56 920,84 960,68 C1000,52 1040,88 1080,72 C1120,56 1160,86 1200,70 C1240,54 1280,88 1320,74 C1360,60 1400,82 1440,70 L1440,120 L0,120 Z" fill="#3a2463"/>
-        </svg>
+        <div class="hero__row">
+            <div class="hero__photo-shape shape--trap-left">
+                <img src="images/photo3.png" alt="работа">
+            </div>
+            <div class="hero__photo-shape shape--hex">
+                <img src="images/photo1.png" alt="работа">
+            </div>
 
-        <div class="hero__top-photos">
-            <div class="hero__photo-shape shape--trap-left pixelate-hero">
-                <img src="images/photo3.png" alt="работа" loading="eager">
-            </div>
-            <div class="hero__photo-shape shape--hex pixelate-hero">
-                <img src="images/photo1.png" alt="работа" loading="eager">
-            </div>
-            <div class="hero__logo-inline">
+            <div class="hero__logo">
                 <span class="logo-text">Lovecut</span>
             </div>
-            <div class="hero__photo-shape shape--para pixelate-hero">
-                <img src="images/photo2.png" alt="работа" loading="eager">
+
+            <div class="hero__photo-shape shape--para">
+                <img src="images/photo2.png" alt="работа">
             </div>
-            <div class="hero__photo-shape shape--trap-right pixelate-hero">
-                <img src="images/photo4.png" alt="работа" loading="eager">
+            <div class="hero__photo-shape shape--trap-right">
+                <img src="images/photo4.png" alt="работа">
             </div>
         </div>
 
@@ -44,171 +38,165 @@
                 <p class="location-address">Иркутск, Литвинова 18</p>
                 <a href="#" class="location-link" id="openMapBtn">Открыть на карте</a>
             </div>
-            <button class="btn-booking" id="bookingBtn">запись</button>
+            <button class="btn-booking">запись</button>
             <button class="btn-examples" id="examplesBtn">примеры</button>
+        </div>
+
+        <!-- Rough wave bottom -->
+        <div class="wave wave--hero-bottom">
+            <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path d="M0,90 L30,60 L60,85 L90,45 L120,80 L150,40 L180,75 L210,35 L240,70 L270,42 L300,78 L330,38 L360,72 L390,48 L420,82 L450,36 L480,74 L510,44 L540,80 L570,50 L600,76 L630,40 L660,82 L690,46 L720,72 L750,38 L780,78 L810,48 L840,70 L870,42 L900,80 L930,36 L960,74 L990,50 L1020,78 L1050,40 L1080,72 L1110,46 L1140,80 L1170,38 L1200,74 L1230,48 L1260,82 L1290,42 L1320,76 L1350,50 L1380,70 L1410,44 L1440,80 L1440,120 L0,120 Z" fill="#3a2463"/>
+            </svg>
         </div>
     </header>
 
     <!-- ===== SERVICES MARQUEE ===== -->
     <section class="services" id="services">
-        <div class="services__track-wrapper">
-            <div class="services__track" id="servicesTrack">
-                <div class="services__item"><span class="service-name">стрижка</span><span class="service-price">2000 ₽</span><span class="service-time">1ч</span></div>
-                <div class="services__item"><span class="service-name">стрижка + уход</span><span class="service-price">2500 ₽</span><span class="service-time">1ч</span></div>
-                <div class="services__item"><span class="service-name">завивка S</span><span class="service-price">4000 ₽</span><span class="service-time">3ч</span></div>
-                <div class="services__item"><span class="service-name">завивка L</span><span class="service-price">5000 ₽</span><span class="service-time">3ч</span></div>
-                <div class="services__item"><span class="service-name">завивка XL</span><span class="service-price">5000 ₽</span><span class="service-time">3ч</span></div>
-                <!-- duplicated for seamless loop -->
-                <div class="services__item"><span class="service-name">стрижка</span><span class="service-price">2000 ₽</span><span class="service-time">1ч</span></div>
-                <div class="services__item"><span class="service-name">стрижка + уход</span><span class="service-price">2500 ₽</span><span class="service-time">1ч</span></div>
-                <div class="services__item"><span class="service-name">завивка S</span><span class="service-price">4000 ₽</span><span class="service-time">3ч</span></div>
-                <div class="services__item"><span class="service-name">завивка L</span><span class="service-price">5000 ₽</span><span class="service-time">3ч</span></div>
-                <div class="services__item"><span class="service-name">завивка XL</span><span class="service-price">5000 ₽</span><span class="service-time">3ч</span></div>
+        <div class="services__track-wrap">
+            <div class="services__track">
+                <div class="services__item"><span class="svc-name">стрижка</span><span class="svc-price">2000 ₽</span><span class="svc-time">1ч</span></div>
+                <div class="services__item"><span class="svc-name">стрижка + уход</span><span class="svc-price">2500 ₽</span><span class="svc-time">1ч</span></div>
+                <div class="services__item"><span class="svc-name">завивка S</span><span class="svc-price">4000 ₽</span><span class="svc-time">3ч</span></div>
+                <div class="services__item"><span class="svc-name">завивка L</span><span class="svc-price">5000 ₽</span><span class="svc-time">3ч</span></div>
+                <div class="services__item"><span class="svc-name">завивка XL</span><span class="svc-price">5000 ₽</span><span class="svc-time">3ч</span></div>
+                <!-- duplicate for seamless loop -->
+                <div class="services__item"><span class="svc-name">стрижка</span><span class="svc-price">2000 ₽</span><span class="svc-time">1ч</span></div>
+                <div class="services__item"><span class="svc-name">стрижка + уход</span><span class="svc-price">2500 ₽</span><span class="svc-time">1ч</span></div>
+                <div class="services__item"><span class="svc-name">завивка S</span><span class="svc-price">4000 ₽</span><span class="svc-time">3ч</span></div>
+                <div class="services__item"><span class="svc-name">завивка L</span><span class="svc-price">5000 ₽</span><span class="svc-time">3ч</span></div>
+                <div class="services__item"><span class="svc-name">завивка XL</span><span class="svc-price">5000 ₽</span><span class="svc-time">3ч</span></div>
             </div>
         </div>
     </section>
 
-    <!-- ===== MAIN CONTENT ===== -->
-    <section class="main-content" id="mainContent">
-        <!-- Top rough wave -->
-        <svg class="main-wave main-wave--top" viewBox="0 0 1440 100" preserveAspectRatio="none">
-            <path d="M0,0 L1440,0 L1440,50 C1400,30 1360,65 1320,45 C1280,25 1240,60 1200,40 C1160,20 1120,58 1080,38 C1040,18 1000,55 960,35 C920,15 880,52 840,38 C800,24 760,58 720,40 C680,22 640,55 600,38 C560,21 520,54 480,36 C440,18 400,52 360,38 C320,24 280,56 240,40 C200,24 160,52 120,38 C80,24 40,50 0,35 Z" fill="#3a2463"/>
-        </svg>
+    <!-- ===== MAIN SECTION ===== -->
+    <section class="main-section" id="mainSection">
+        <!-- Wave top (sharp transition from services) -->
+        <div class="wave wave--main-top">
+            <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                <path d="M0,0 L1440,0 L1440,60 L1410,35 L1380,65 L1350,30 L1320,58 L1290,25 L1260,55 L1230,32 L1200,62 L1170,28 L1140,56 L1110,30 L1080,60 L1050,26 L1020,54 L990,34 L960,58 L930,28 L900,55 L870,32 L840,60 L810,25 L780,56 L750,30 L720,58 L690,28 L660,55 L630,34 L600,62 L570,26 L540,56 L510,32 L480,60 L450,28 L420,55 L390,34 L360,58 L330,25 L300,55 L270,32 L240,60 L210,28 L180,56 L150,30 L120,58 L90,32 L60,55 L30,28 L0,52 Z" fill="#3a2463"/>
+            </svg>
+        </div>
 
         <!-- Info bubbles -->
-        <div class="info-bubbles">
-            <div class="bubble bubble--1 fade-in">
+        <div class="bubbles-area">
+            <div class="bubble bubble--1 reveal">
                 <p>Оплата только наличными, здесь перевод, лишь бронирует место, деньги которые вы перевели вычтутся из основной оплаты за проведённую услугу.</p>
             </div>
-            <div class="bubble bubble--2 fade-in">
+            <div class="bubble bubble--2 reveal">
                 <p>Можно обсудить любой вопрос по стрижке в личных сообщениях, связаться со мной можно благодаря этой кнопке.</p>
             </div>
-            <div class="bubble bubble--3 fade-in">
+            <div class="bubble bubble--3 reveal">
                 <p>принятая запись производится только по указанному времени, если не получается прийти вовремя, то вы должны сообщить, если вы отмените вашу бронировку, то так же сообщить.</p>
             </div>
         </div>
 
-        <!-- Photo collage + flag pixel area -->
-        <div class="collage-section" id="collageSection">
-            <div class="collage-grid">
-                <!-- Flag in center -->
-                <div class="collage-flag" id="flagArea">
-                    <canvas id="flagCanvas" width="640" height="400"></canvas>
-                </div>
-
-                <!-- Photos around flag -->
-                <div class="collage-photo cp-1 pixelate-target fade-in">
-                    <img src="images/photo1.png" alt="">
-                </div>
-                <div class="collage-photo cp-2 pixelate-target fade-in">
-                    <img src="images/photo2.png" alt="">
-                </div>
-                <div class="collage-photo cp-3 pixelate-target fade-in">
-                    <img src="images/photo3.png" alt="">
-                </div>
-                <div class="collage-photo cp-4 pixelate-target fade-in">
-                    <img src="images/photo4.png" alt="">
-                </div>
-                <div class="collage-photo cp-5 pixelate-target fade-in">
-                    <img src="images/photo1.png" alt="">
-                </div>
-                <div class="collage-photo cp-6 pixelate-target fade-in">
-                    <img src="images/photo3.png" alt="">
-                </div>
+        <!-- ===== PIXEL COLLAGE (flag + photos + messy circles) ===== -->
+        <div class="pixel-collage" id="pixelCollage">
+            <!-- Flag canvas -->
+            <div class="pc-flag" id="flagWrap">
+                <canvas id="flagCanvas" width="640" height="400"></canvas>
             </div>
 
-            <!-- 3 messy circles with text -->
-            <div class="messy-circle mc-1 pixelate-target fade-in"><span>качество</span></div>
-            <div class="messy-circle mc-2 pixelate-target fade-in"><span>стиль</span></div>
-            <div class="messy-circle mc-3 pixelate-target fade-in"><span>забота</span></div>
+            <!-- Photos around flag -->
+            <div class="pc-photo pc-p1 px-target reveal"><img src="images/photo1.png" alt=""></div>
+            <div class="pc-photo pc-p2 px-target reveal"><img src="images/photo2.png" alt=""></div>
+            <div class="pc-photo pc-p3 px-target reveal"><img src="images/photo3.png" alt=""></div>
+            <div class="pc-photo pc-p4 px-target reveal"><img src="images/photo4.png" alt=""></div>
+            <div class="pc-photo pc-p5 px-target reveal"><img src="images/photo1.png" alt=""></div>
+            <div class="pc-photo pc-p6 px-target reveal"><img src="images/photo3.png" alt=""></div>
+
+            <!-- 3 messy/rough circles -->
+            <div class="rough-circle rc-1 px-target reveal"><span>качество</span></div>
+            <div class="rough-circle rc-2 px-target reveal"><span>стиль</span></div>
+            <div class="rough-circle rc-3 px-target reveal"><span>забота</span></div>
         </div>
 
-        <!-- Circles section -->
-        <div class="circles-row">
-            <div class="circle-card cc-1 fade-in"><span>индивидуальный подход</span></div>
-            <div class="circle-card cc-2 fade-in"><span>опыт работы</span></div>
-            <div class="circle-card cc-btn fade-in"><span>связаться</span></div>
+        <!-- ===== VANILLA CIRCLES ===== -->
+        <div class="v-circles">
+            <div class="v-circle vc-1 reveal"><span>индивидуальный подход</span></div>
+            <div class="v-circle vc-2 reveal"><span>опыт работы</span></div>
+            <div class="v-circle vc-btn reveal"><span>связаться</span></div>
         </div>
 
-        <!-- Gallery cluster near circles -->
-        <div class="gallery-cluster">
-            <div class="g-img gi-1 gi--px fade-in"><img src="images/photo1.png" alt=""></div>
-            <div class="g-img gi-2 gi--crop fade-in"><img src="images/photo2.png" alt=""></div>
-            <div class="g-img gi-3 gi--px fade-in"><img src="images/photo3.png" alt=""></div>
-            <div class="g-img gi-4 gi--crop fade-in"><img src="images/photo4.png" alt=""></div>
-            <div class="g-img gi-5 fade-in"><img src="images/photo1.png" alt=""></div>
-            <div class="g-img gi-6 gi--px fade-in"><img src="images/photo2.png" alt=""></div>
-            <div class="g-img gi-7 gi--crop fade-in"><img src="images/photo3.png" alt=""></div>
-            <div class="g-img gi-8 fade-in"><img src="images/photo4.png" alt=""></div>
+        <!-- ===== GALLERY near circles ===== -->
+        <div class="gallery">
+            <div class="g-item g-px reveal"><img src="images/photo1.png" alt=""></div>
+            <div class="g-item g-crop reveal"><img src="images/photo2.png" alt=""></div>
+            <div class="g-item g-px reveal"><img src="images/photo3.png" alt=""></div>
+            <div class="g-item g-crop reveal"><img src="images/photo4.png" alt=""></div>
+            <div class="g-item reveal"><img src="images/photo1.png" alt=""></div>
+            <div class="g-item g-px reveal"><img src="images/photo2.png" alt=""></div>
+            <div class="g-item g-crop reveal"><img src="images/photo3.png" alt=""></div>
+            <div class="g-item reveal"><img src="images/photo4.png" alt=""></div>
         </div>
 
-        <!-- Bottom rough wave -->
-        <svg class="main-wave main-wave--bottom" viewBox="0 0 1440 100" preserveAspectRatio="none">
-            <path d="M0,50 C40,30 80,65 120,45 C160,25 200,60 240,40 C280,20 320,58 360,38 C400,18 440,55 480,35 C520,15 560,52 600,38 C640,24 680,58 720,40 C760,22 800,55 840,38 C880,21 920,54 960,36 C1000,18 1040,52 1080,38 C1120,24 1160,56 1200,40 C1240,24 1280,52 1320,38 C1360,24 1400,50 1440,35 L1440,100 L0,100 Z" fill="#3a2463"/>
-        </svg>
+        <!-- Wave bottom -->
+        <div class="wave wave--main-bottom">
+            <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                <path d="M0,55 L30,30 L60,58 L90,25 L120,52 L150,30 L180,60 L210,28 L240,55 L270,32 L300,58 L330,26 L360,54 L390,32 L420,60 L450,25 L480,55 L510,30 L540,58 L570,28 L600,54 L630,34 L660,58 L690,26 L720,56 L750,30 L780,60 L810,28 L840,55 L870,32 L900,58 L930,26 L960,54 L990,34 L1020,60 L1050,28 L1080,56 L1110,32 L1140,58 L1170,26 L1200,55 L1230,30 L1260,60 L1290,25 L1320,55 L1350,32 L1380,58 L1410,28 L1440,52 L1440,100 L0,100 Z" fill="#3a2463"/>
+            </svg>
+        </div>
     </section>
 
     <!-- ===== FOOTER ===== -->
     <footer class="footer" id="footer">
-        <div class="footer__cards">
-            <div class="footer__card fade-in">
+        <div class="footer__grid">
+            <div class="footer__card reveal">
                 <h3>связь</h3>
-                <div class="footer__placeholder"></div>
+                <div class="footer__stub"></div>
             </div>
-            <div class="footer__card fade-in">
+            <div class="footer__card reveal">
                 <h3>faq</h3>
-                <div class="footer__placeholder"></div>
+                <div class="footer__stub"></div>
             </div>
-            <div class="footer__card fade-in">
+            <div class="footer__card reveal">
                 <h3>отзывы</h3>
-                <div class="footer__placeholder"></div>
+                <div class="footer__stub"></div>
             </div>
-            <div class="footer__card fade-in">
+            <div class="footer__card reveal">
                 <h3>о нас</h3>
-                <div class="footer__placeholder"></div>
+                <div class="footer__stub"></div>
             </div>
         </div>
     </footer>
 
-    <!-- Map Modal -->
-    <div class="map-modal" id="mapModal">
-        <div class="map-modal__overlay" id="mapOverlay"></div>
-        <div class="map-modal__body">
-            <button class="map-modal__close" id="mapClose">&times;</button>
-            <h2 class="map-modal__title">Иркутск, Литвинова 18</h2>
-            <div class="map-modal__frame">
-                <iframe 
-                    id="mapIframe"
-                    width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy"
-                    src="about:blank"
-                    data-src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Иркутск+Литвинова+18&zoom=16">
-                </iframe>
+    <!-- ===== MAP MODAL ===== -->
+    <div class="modal" id="mapModal">
+        <div class="modal__bg" data-close></div>
+        <div class="modal__box">
+            <button class="modal__x" data-close>&times;</button>
+            <h2 class="modal__title">Иркутск, Литвинова 18</h2>
+            <div class="modal__map-wrap">
+                <iframe id="mapIframe" src="about:blank"
+                    data-src="https://yandex.ru/map-widget/v1/?ll=104.281339%2C52.289584&z=17&pt=104.281339%2C52.289584%2Cpm2rdm"
+                    width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
             </div>
         </div>
     </div>
 
-    <!-- Examples Modal -->
-    <div class="examples-modal" id="examplesModal">
-        <div class="examples-modal__overlay" id="examplesOverlay"></div>
-        <div class="examples-modal__body">
-            <button class="examples-modal__close" id="examplesClose">&times;</button>
-            <h2 class="examples-modal__title">примеры работ</h2>
+    <!-- ===== EXAMPLES MODAL ===== -->
+    <div class="modal" id="examplesModal">
+        <div class="modal__bg" data-close></div>
+        <div class="modal__box modal__box--wide">
+            <button class="modal__x" data-close>&times;</button>
+            <h2 class="modal__title">примеры работ</h2>
             <div class="examples-grid">
-                <div class="example-card ec-1">
+                <div class="ex-card ex-card--sharp reveal">
                     <img src="images/photo1.png" alt="">
-                    <div class="example-card__label">стрижка</div>
+                    <span class="ex-label">стрижка</span>
                 </div>
-                <div class="example-card ec-2">
+                <div class="ex-card ex-card--round reveal">
                     <img src="images/photo2.png" alt="">
-                    <div class="example-card__label">стрижка + уход</div>
+                    <span class="ex-label">стрижка + уход</span>
                 </div>
-                <div class="example-card ec-3">
+                <div class="ex-card ex-card--cut reveal">
                     <img src="images/photo3.png" alt="">
-                    <div class="example-card__label">завивка</div>
+                    <span class="ex-label">завивка</span>
                 </div>
-                <div class="example-card ec-4">
+                <div class="ex-card ex-card--slant reveal">
                     <img src="images/photo4.png" alt="">
-                    <div class="example-card__label">стрижка</div>
+                    <span class="ex-label">стрижка</span>
                 </div>
             </div>
         </div>
