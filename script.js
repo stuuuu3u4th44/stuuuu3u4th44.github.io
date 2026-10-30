@@ -408,20 +408,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ====================================================================
-       7. PHOTO INSPECTOR / LIGHTBOX WITH SMOOTH ZOOM & 2X EXAMINE
+       7. PHOTO INSPECTOR / LIGHTBOX (SMOOTH PHOTO EXAMINATION)
        ==================================================================== */
     const photoInspector = document.getElementById('photoInspectorModal');
     const inspectorImg = document.getElementById('inspectorImg');
-    const inspectorViewport = document.getElementById('inspectorViewport');
-    const inspectorZoomToggle = document.getElementById('inspectorZoomToggle');
-    const inspectorZoomText = document.getElementById('inspectorZoomText');
-
-    let isZoomed = false;
 
     function openInspector(imgSrc) {
         if (!photoInspector || !inspectorImg || !imgSrc) return;
         inspectorImg.src = imgSrc;
-        resetZoom();
         photoInspector.classList.add('active');
         document.body.style.overflow = 'hidden';
     }
@@ -429,50 +423,15 @@ document.addEventListener('DOMContentLoaded', () => {
     function closeInspector() {
         if (!photoInspector) return;
         photoInspector.classList.remove('active');
-        resetZoom();
         document.body.style.overflow = '';
     }
 
-    function resetZoom() {
-        isZoomed = false;
-        if (inspectorImg) {
-            inspectorImg.classList.remove('is-zoomed');
-            inspectorImg.style.transformOrigin = 'center center';
-        }
-        if (inspectorViewport) {
-            inspectorViewport.classList.remove('is-zoomed');
-        }
-        if (inspectorZoomText) {
-            inspectorZoomText.textContent = 'Приблизить (2x)';
-        }
-    }
-
-    function toggleZoom(e) {
-        isZoomed = !isZoomed;
-        if (isZoomed) {
-            if (inspectorImg) inspectorImg.classList.add('is-zoomed');
-            if (inspectorViewport) inspectorViewport.classList.add('is-zoomed');
-            if (inspectorZoomText) inspectorZoomText.textContent = 'Отдалить (1x)';
-            if (e && e.type === 'click' && inspectorViewport) {
-                updateZoomOrigin(e);
-            }
-        } else {
-            resetZoom();
-        }
-    }
-
-    function updateZoomOrigin(e) {
-        if (!isZoomed || !inspectorViewport || !inspectorImg) return;
-        const rect = inspectorViewport.getBoundingClientRect();
-        const xPercent = Math.max(0, Math.min(100, ((e.clientX - rect.left) / rect.width) * 100));
-        const yPercent = Math.max(0, Math.min(100, ((e.clientY - rect.top) / rect.height) * 100));
-        inspectorImg.style.transformOrigin = `${xPercent}% ${yPercent}%`;
-    }
-
-    // Connect all clickable photos
+    // Connect all clickable photos (improved hitboxes)
     // 1. Collage photos (.cl-photo)
     document.querySelectorAll('.cl-photo').forEach(photo => {
-        photo.addEventListener('click', () => {
+        photo.style.cursor = 'pointer';
+        photo.addEventListener('click', (e) => {
+            e.stopPropagation();
             const src = photo.dataset.src;
             if (src) openInspector(src);
         });
@@ -482,7 +441,9 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.bento-card').forEach(card => {
         const img = card.querySelector('.bento-img');
         if (img) {
-            card.addEventListener('click', () => {
+            card.style.cursor = 'pointer';
+            card.addEventListener('click', (e) => {
+                e.stopPropagation();
                 openInspector(img.src);
             });
         }
@@ -492,37 +453,29 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.ex-tile').forEach(tile => {
         const img = tile.querySelector('img');
         if (img) {
-            tile.addEventListener('click', () => {
+            tile.style.cursor = 'pointer';
+            tile.addEventListener('click', (e) => {
+                e.stopPropagation();
                 openInspector(img.src);
             });
         }
     });
 
-    // Inspector viewport click toggles zoom
-    if (inspectorViewport) {
-        inspectorViewport.addEventListener('click', (e) => {
-            toggleZoom(e);
-        });
-        inspectorViewport.addEventListener('mousemove', (e) => {
-            if (isZoomed) {
-                updateZoomOrigin(e);
-            }
-        });
-    }
-
-    if (inspectorZoomToggle) {
-        inspectorZoomToggle.addEventListener('click', (e) => {
+    // 4. Svyaz meme photo (.svyaz-meme-img)
+    const svyazMeme = document.querySelector('.svyaz-meme-img');
+    if (svyazMeme) {
+        svyazMeme.addEventListener('click', (e) => {
             e.stopPropagation();
-            toggleZoom();
+            openInspector(svyazMeme.src);
         });
     }
 
-    // Close on backdrop or [data-close-inspector]
+    // Close on backdrop, close button, viewport click, or [data-close-inspector]
     document.addEventListener('click', (e) => {
-        if (e.target.hasAttribute('data-close-inspector')) {
+        if (e.target.hasAttribute('data-close-inspector') || e.target.closest('[data-close-inspector]')) {
             closeInspector();
         }
     });
 
-    console.log('Lovecut site v3 initialized successfully.');
+    console.log('Lovecut site v4 initialized successfully.');
 });

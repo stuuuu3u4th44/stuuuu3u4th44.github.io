@@ -399,17 +399,37 @@ body {
 .organic-blob__content {
     position: relative;
     z-index: 2;
-    padding: 40px;
-    text-align: center;
-    max-width: 320px;
+    color: var(--ink-dark);
 }
 
 .organic-blob__content p {
     font-family: var(--font-body);
-    font-size: 0.86rem;
+    font-size: 1.05rem;
     font-weight: 600;
     color: var(--ink-dark);
-    line-height: 1.55;
+    line-height: 1.44;
+    margin: 0;
+}
+
+/* Blob 1: Asymmetric organic placement (hugging top/left curve, spacious on right) */
+.organic-blob__content--1 {
+    padding: 55px 35px 35px 55px;
+    text-align: left;
+    max-width: 360px;
+}
+
+/* Blob 2: Asymmetric organic placement (sits lower and left, irregular balance) */
+.organic-blob__content--2 {
+    padding: 65px 42px 40px 52px;
+    text-align: left;
+    max-width: 375px;
+}
+
+/* Blob 3: Asymmetric organic placement (hugging top/left, space towards right tip) */
+.organic-blob__content--3 {
+    padding: 42px 65px 35px 42px;
+    text-align: left;
+    max-width: 345px;
 }
 
 /* Blob 1: Top-Left */
@@ -486,21 +506,21 @@ body {
     pointer-events: none;
 }
 
-/* 1. Redhead photo above flag */
+/* 1. Redhead photo above flag (large portrait 3:4) */
 .cl-photo--redhead {
     top: 0;
     left: 170px;
-    width: 140px;
-    height: 175px;
+    width: 120px;
+    height: 160px;
     z-index: 2;
 }
 
-/* 2. Plaid fabric */
+/* 2. Plaid fabric (portrait 3:4) */
 .cl-photo--plaid {
-    top: 145px;
-    left: 80px;
-    width: 155px;
-    height: 155px;
+    top: 125px;
+    left: 75px;
+    width: 114px;
+    height: 152px;
     z-index: 3;
 }
 
@@ -515,72 +535,72 @@ body {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.85);
 }
 
-/* 4. Guy with sunglasses & ИРКУТСК shirt */
+/* 4. Guy with sunglasses & ИРКУТСК shirt (large portrait 3:4) */
 .cl-photo--guy {
-    top: 200px;
-    left: -15px;
-    width: 110px;
-    height: 140px;
+    top: 190px;
+    left: -25px;
+    width: 120px;
+    height: 160px;
     z-index: 6;
 }
 
-/* 5. Dark portrait (placed cleanly to the left of guy in Irkutsk shirt) */
+/* 5. Dark portrait (portrait 3:4) */
 .cl-photo--dark {
     top: 200px;
-    left: -130px;
+    left: -145px;
     width: 105px;
     height: 140px;
     z-index: 6;
 }
 
-/* 6. Graphic smile print (below flag) */
+/* 6. Graphic smile print (below flag, portrait 3:4) */
 .cl-photo--smile {
     top: 340px;
     left: 165px;
-    width: 165px;
-    height: 165px;
+    width: 135px;
+    height: 180px;
     z-index: 6;
     border: 2px solid var(--vanilla);
 }
 
-/* 7. Texture (high-res original, placed directly under left part of creepy smile) */
+/* 7. Texture (portrait 3:4) */
 .cl-photo--texture {
     top: 495px;
-    left: 115px;
-    width: 140px;
-    height: 105px;
+    left: 105px;
+    width: 105px;
+    height: 140px;
     z-index: 5;
 }
 
-/* 8. Boy photo (original high-res with 67 shaving, right of creepy face) */
+/* 8. Boy photo (original high-res with 67 shaving, portrait 3:4) */
 .cl-photo--boy67 {
     top: 360px;
-    left: 340px;
+    left: 325px;
     width: 105px;
-    height: 135px;
+    height: 140px;
     z-index: 8;
 }
 
-/* 9. Military officer photo (original high-res at desk, beside boy) */
+/* 9. Military officer photo / трудовик (small portrait 3:4) */
 .cl-photo--officer {
-    top: 345px;
-    left: 455px;
-    width: 105px;
-    height: 135px;
+    top: 350px;
+    left: 445px;
+    width: 90px;
+    height: 120px;
     z-index: 8;
 }
 
-/* 10. Sitting guy photo (high-res original, stepped below and left of the texture) */
+/* 10. Sitting guy photo (portrait 3:4) */
 .cl-photo--sitting {
     top: 595px;
     left: 45px;
-    width: 120px;
-    height: 126px;
+    width: 105px;
+    height: 140px;
     z-index: 6;
 }
 
 /* ====================================================================
-   FOOTER (4 VANILLA RECTANGULAR BOXES, NON-FUNCTIONAL)
+   FOOTER (4 VANILLA RECTANGULAR BOXES)
    ==================================================================== */
 .footer-section {
     position: relative;
@@ -600,7 +620,7 @@ body {
     background-color: var(--vanilla);
     border: 2px solid var(--border-dark);
     border-radius: 14px;
-    min-height: 130px;
+    min-height: 145px;
     padding: 16px;
     display: flex;
     flex-direction: column;
@@ -609,6 +629,82 @@ body {
     cursor: default;
     user-select: none;
     transition: filter 0.6s ease;
+}
+
+.footer-box-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    position: relative;
+}
+
+.svyaz-meme-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: zoom-in;
+}
+
+.svyaz-meme-img {
+    width: 26px;
+    height: 26px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1.5px solid var(--border-dark);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+    transition: transform 0.35s cubic-bezier(0.18, 0.89, 0.32, 1.25), box-shadow 0.35s ease, border-color 0.25s ease;
+    transform-origin: bottom left;
+    position: relative;
+    z-index: 10;
+}
+
+.svyaz-meme-wrap:hover .svyaz-meme-img {
+    transform: scale(7.5) translateY(-25%);
+    border-radius: 4px;
+    border: 2px solid var(--vanilla);
+    box-shadow: 0 16px 42px rgba(0, 0, 0, 0.95);
+    z-index: 999;
+}
+
+.contacts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    user-select: text;
+}
+
+.contact-row {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    font-family: var(--font-readable);
+    font-size: 0.8rem;
+    line-height: 1.35;
+}
+
+.contact-label {
+    font-family: var(--font-deco);
+    font-weight: 700;
+    color: var(--ink-dark);
+    font-size: 0.74rem;
+    opacity: 0.85;
+}
+
+.contact-link {
+    color: var(--ink-dark);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px dashed rgba(26, 27, 46, 0.35);
+    transition: color 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+}
+
+.contact-link:hover {
+    color: #000000;
+    border-bottom-style: solid;
+    border-color: #000000;
+    transform: translateX(2px);
 }
 
 .footer-box-title {
@@ -792,8 +888,8 @@ body {
 
 .photo-inspector__viewport {
     position: relative;
-    max-width: 86vw;
-    max-height: 78vh;
+    max-width: 88vw;
+    max-height: 82vh;
     overflow: hidden;
     border-radius: 14px;
     border: 2.5px solid var(--vanilla);
@@ -802,61 +898,33 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: zoom-in;
-}
-
-.photo-inspector__viewport.is-zoomed {
-    cursor: zoom-out;
+    cursor: pointer;
 }
 
 .photo-inspector__img {
     max-width: 100%;
-    max-height: 78vh;
+    max-height: 82vh;
     object-fit: contain;
-    transition: transform 0.28s cubic-bezier(0.2, 0, 0.2, 1);
-    transform-origin: center center;
+    display: block;
     user-select: none;
     -webkit-user-drag: none;
+    transition: transform 0.25s ease;
 }
 
-.photo-inspector__img.is-zoomed {
-    transform: scale(2.2);
-    transition: transform 0.12s ease-out;
+.photo-inspector__viewport:hover .photo-inspector__img {
+    transform: scale(1.02);
 }
 
 .photo-inspector__toolbar {
     margin-top: 14px;
     display: flex;
     align-items: center;
-    gap: 16px;
-}
-
-.photo-inspector__btn {
-    background: var(--vanilla);
-    color: var(--ink-dark);
-    border: none;
-    padding: 8px 18px;
-    border-radius: 20px;
-    font-family: var(--font-deco);
-    font-size: 0.82rem;
-    font-weight: 700;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    transition: transform 0.2s ease, background 0.2s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-}
-
-.photo-inspector__btn:hover {
-    transform: scale(1.05);
-    background: #ffffff;
 }
 
 .photo-inspector__hint {
     color: var(--vanilla);
-    opacity: 0.7;
-    font-size: 0.8rem;
+    opacity: 0.75;
+    font-size: 0.82rem;
     font-family: var(--font-readable);
 }
 
