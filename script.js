@@ -195,9 +195,9 @@ document.addEventListener('DOMContentLoaded', () => {
        ==================================================================== */
     const collageStage = document.getElementById('collageStage');
     const messyCircles = [
-        document.getElementById('circle1'),
-        document.getElementById('circle2'),
-        document.getElementById('circle3')
+        document.getElementById('blob1'),
+        document.getElementById('blob2'),
+        document.getElementById('blob3')
     ].filter(Boolean);
 
     let middleVisitCount = 0;
@@ -252,7 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
        3. ONE-TIME WEAK PIXEL FLASH AT PAGE START (HERO)
        ==================================================================== */
     function runHeroIntroPixel() {
-        const headerImgs = document.querySelectorAll('.h-img');
+        const headerImgs = document.querySelectorAll('.bento-img');
         if (!headerImgs.length) return;
 
         // Apply weak pixelation / contrast on load

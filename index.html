@@ -11,56 +11,72 @@
 </head>
 <body>
 
-    <!-- Jagged edge strokes on the sides (matching the rough mockup borders) -->
-    <div class="side-stroke side-stroke--left" aria-hidden="true">
-        <svg viewBox="0 0 40 1200" preserveAspectRatio="none">
-            <path d="M20,0 Q5,150 25,300 T10,600 T30,900 T15,1200" stroke="#000000" stroke-width="9" fill="none" stroke-linecap="round" opacity="0.8"/>
-            <path d="M25,50 Q10,200 30,380 T15,750 T28,1050" stroke="#1d1842" stroke-width="5" fill="none" opacity="0.6"/>
+    <!-- ===== BACKGROUND ORGANIC FLUID WAVES (SMOOTH & DARK DEEP-BLUEBERRY) ===== -->
+    <div class="bg-waves-canvas" aria-hidden="true">
+        <svg viewBox="0 0 1440 2400" preserveAspectRatio="none">
+            <!-- Deepest backdrop wave -->
+            <path d="M0,0 C320,180 180,480 340,780 C500,1080 120,1380 280,1680 C440,1980 200,2250 360,2400 L0,2400 Z" fill="#0c0e22" opacity="0.95"/>
+            <!-- Layer 2 fluid wave -->
+            <path d="M0,0 C220,120 90,380 240,650 C390,920 60,1240 210,1520 C360,1800 130,2100 240,2400 L0,2400 Z" fill="#121535" opacity="0.9"/>
+            <!-- Layer 3 fluid wave (warm/accent tone) -->
+            <path d="M0,0 C140,80 40,280 160,520 C280,760 30,1050 140,1320 C250,1590 60,1890 150,2180 C210,2300 120,2360 140,2400 L0,2400 Z" fill="#181c46" opacity="0.85"/>
+            <!-- Layer 4 smooth wave contour -->
+            <path d="M0,0 C80,60 15,220 95,420 C175,620 20,880 90,1140 C160,1400 35,1680 95,1950 C140,2150 40,2320 80,2400 L0,2400 Z" fill="#1f245a" opacity="0.8"/>
+            <!-- Right side ambient soft wave -->
+            <path d="M1440,0 C1280,300 1390,650 1240,1000 C1090,1350 1340,1700 1210,2050 C1140,2250 1280,2350 1230,2400 L1440,2400 Z" fill="#0d1028" opacity="0.7"/>
         </svg>
     </div>
-    <div class="side-stroke side-stroke--right" aria-hidden="true">
-        <svg viewBox="0 0 40 1200" preserveAspectRatio="none">
-            <path d="M15,0 Q35,180 10,350 T30,680 T10,950 T25,1200" stroke="#000000" stroke-width="9" fill="none" stroke-linecap="round" opacity="0.8"/>
-            <path d="M20,80 Q30,240 15,420 T25,820 T12,1120" stroke="#1d1842" stroke-width="5" fill="none" opacity="0.6"/>
-        </svg>
-    </div>
 
-    <!-- ===== TOP HEADER (PANEL WITH DIAGONAL SLICES & LOGO) ===== -->
-    <header class="header-panel">
-        <div class="header-grid">
-            <!-- Far left: small cropped bit from mockup -->
-            <div class="h-slice h-slice--1">
-                <img src="images/girl_glasses.png" alt="Lovecut haircut" class="h-img h-img--left">
+    <!-- ===== TOP HEADER: ACCURATELY MEASURED BENTO GRID AROUND LOGO ===== -->
+    <header class="top-hero-section">
+        <div class="bento-container">
+            <!-- Row 1: Top photos -->
+            <div class="bento-card bento-card--col1-top">
+                <img src="images/girl_red.png" alt="Lovecut haircut" class="bento-img">
+            </div>
+            <div class="bento-card bento-card--col2-top">
+                <img src="images/girl_blue.png" alt="Lovecut haircut" class="bento-img">
+            </div>
+            <div class="bento-card bento-card--col3-top">
+                <img src="images/guy_irkutsk.jpg" alt="Lovecut haircut" class="bento-img">
+            </div>
+            <div class="bento-card bento-card--col4-top">
+                <img src="images/plaid.jpg" alt="Lovecut style" class="bento-img">
+            </div>
+            <div class="bento-card bento-card--col5-top">
+                <img src="images/girl_glasses.png" alt="Lovecut haircut" class="bento-img">
+            </div>
+            <div class="bento-card bento-card--col6-top">
+                <img src="images/girl_blonde.png" alt="Lovecut haircut" class="bento-img">
             </div>
 
-            <!-- Left pane: Red hair photo -->
-            <div class="h-slice h-slice--2">
-                <img src="images/girl_red.png" alt="Lovecut haircut" class="h-img h-img--red">
+            <!-- Row 2: Left tall, Center LOGO box, Right tall -->
+            <div class="bento-card bento-card--col1-mid">
+                <img src="images/girl_blonde.png" alt="Lovecut haircut" class="bento-img">
             </div>
 
-            <!-- Center-left pane: Portrait -->
-            <div class="h-slice h-slice--3">
-                <img src="images/girl_blue.png" alt="Lovecut haircut" class="h-img h-img--blue">
+            <!-- Center Logo Box (Vanilla, dot grid pattern, clean border, rounded corners) -->
+            <div class="bento-card bento-card--logo">
+                <div class="logo-box-inner">
+                    <h1 class="logo-title">Lovecut</h1>
+                </div>
             </div>
 
-            <!-- Center pane: Big Lovecut cursive logo -->
-            <div class="h-slice h-slice--logo">
-                <h1 class="logo-title">Lovecut</h1>
+            <div class="bento-card bento-card--col6-mid">
+                <img src="images/girl_red.png" alt="Lovecut haircut" class="bento-img">
             </div>
 
-            <!-- Center-right pane: Glasses girl double -->
-            <div class="h-slice h-slice--4">
-                <img src="images/girl_glasses.png" alt="Lovecut haircut" class="h-img h-img--glasses">
+            <!-- Row 3: Bottom horizontal photos -->
+            <div class="bento-card bento-card--col2-bot">
+                <img src="images/smile.jpg" alt="Lovecut haircut" class="bento-img">
             </div>
-
-            <!-- Far-right pane: Blonde girl -->
-            <div class="h-slice h-slice--5">
-                <img src="images/girl_blonde.png" alt="Lovecut haircut" class="h-img h-img--blonde">
+            <div class="bento-card bento-card--col4-bot">
+                <img src="images/girl_blue.png" alt="Lovecut haircut" class="bento-img">
             </div>
         </div>
     </header>
 
-    <!-- ===== THREE ACTION BLOCKS BELOW HEADER ===== -->
+    <!-- ===== THREE ACTION BLOCKS (VANILLA THEME) ===== -->
     <section class="action-blocks-section">
         <div class="action-blocks-container">
             <!-- 1. Location box -->
@@ -81,10 +97,10 @@
         </div>
     </section>
 
-    <!-- ===== SERVICES TICKER RECTANGLE (EDGE-TO-EDGE, NO EMPTY SPACE) ===== -->
+    <!-- ===== SERVICES TICKER RECTANGLE (VANILLA BACKGROUND, ZERO GAPS, PAUSES ON HOVER) ===== -->
     <section class="services-rectangle" id="servicesSection" title="Наведите курсор, чтобы остановить">
         <div class="services-marquee-track" id="servicesTrack">
-            <!-- 20 items repeated so the rectangle is 100% covered on any monitor with ZERO gaps -->
+            <!-- 20 items repeated so the rectangle is 100% covered horizontally with ZERO gaps -->
             <div class="svc-item"><span class="svc-name">стрижка</span><span class="svc-price">2000 ₽</span><span class="svc-time">1ч</span></div>
             <div class="svc-item"><span class="svc-name">стрижка + уход</span><span class="svc-price">2500 ₽</span><span class="svc-time">1ч</span></div>
             <div class="svc-item"><span class="svc-name">завивка S</span><span class="svc-price">4000 ₽</span><span class="svc-time">3ч</span></div>
@@ -111,59 +127,51 @@
         </div>
     </section>
 
-    <!-- ===== ROUGH TRANSITION WAVE ===== -->
-    <div class="coarse-wave-divider">
-        <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
-            <polygon points="0,0 1440,0 1440,30 1380,10 1320,38 1260,12 1200,42 1140,15 1080,35 1020,10 960,40 900,12 840,35 780,15 720,40 660,10 600,38 540,12 480,42 420,15 360,38 300,10 240,40 180,12 120,35 60,15 0,38" fill="#1d1842"/>
-        </svg>
-    </div>
-
-    <!-- ===== MAIN CONTENT AREA: 3 MESSY CIRCLES + COLLAGE WITH HETEROGENEOUS PIXELATION ===== -->
+    <!-- ===== MAIN CONTENT STAGE: 3 ORGANIC WOBBLY BLOBS + CENTRAL COLLAGE WITH DYNAMIC PIXELATION ===== -->
     <main class="main-collage-stage" id="collageStage">
 
-        <!-- ===== MESSY CIRCLE 1 (TOP LEFT) ===== -->
-        <div class="messy-circle messy-circle--1" id="circle1">
-            <svg class="messy-circle-svg" viewBox="0 0 340 320">
-                <!-- Authentic irregular, wobbly, rough hand-drawn loop outline -->
-                <path class="circle-path circle-path--fill" d="M45,150 C38,80 85,32 170,30 C250,28 310,85 305,170 C300,245 255,295 165,298 C75,302 42,230 45,150 Z" fill="#faecd4"/>
-                <path class="circle-path circle-path--stroke" d="M45,150 C38,80 85,32 170,30 C250,28 310,85 305,170 C300,245 255,295 165,298 C75,302 42,230 45,150 C50,90 92,40 175,35" fill="none" stroke="#000000" stroke-width="7" stroke-linecap="round"/>
-                <path class="circle-path circle-path--sketch" d="M50,140 C42,88 90,40 170,36 C245,33 302,88 298,168 C294,238 248,290 168,292 C82,295 48,225 50,140" fill="none" stroke="#1d1842" stroke-width="3" stroke-linecap="round"/>
+        <!-- ===== ORGANIC BLOB 1 (TOP LEFT) ===== -->
+        <div class="organic-blob organic-blob--1" id="blob1">
+            <svg class="organic-blob-svg" viewBox="0 0 460 380">
+                <!-- Organic amorphous rock/blob shape modeled after the reference photo -->
+                <path class="blob-shadow" d="M85,160 C55,80 110,40 215,35 C320,30 425,75 420,180 C415,285 365,345 235,350 C115,355 50,290 85,160 Z" fill="#070815" opacity="0.6" transform="translate(6, 8)"/>
+                <path class="blob-body" d="M85,160 C55,80 110,40 215,35 C320,30 425,75 420,180 C415,285 365,345 235,350 C115,355 50,290 85,160 Z" fill="#faecd4"/>
+                <path class="blob-contour" d="M85,160 C55,80 110,40 215,35 C320,30 425,75 420,180 C415,285 365,345 235,350 C115,355 50,290 85,160 Z" fill="none" stroke="#241b12" stroke-width="4.5" stroke-linecap="round"/>
             </svg>
-            <div class="messy-circle__content">
+            <div class="organic-blob__content">
                 <p>Оплата только наличными, здесь перевод лишь бронирует место, деньги которые вы перевели вычтутся из основной оплаты за проведённую услугу.</p>
             </div>
         </div>
 
-        <!-- ===== MESSY CIRCLE 2 (BOTTOM LEFT) ===== -->
-        <div class="messy-circle messy-circle--2" id="circle2">
-            <svg class="messy-circle-svg" viewBox="0 0 360 340">
-                <!-- Completely different, rough asymmetrical wobbly loop -->
-                <path class="circle-path circle-path--fill" d="M60,170 C50,75 110,35 190,38 C280,42 320,110 315,195 C310,270 240,315 155,310 C70,305 45,245 60,170 Z" fill="#faecd4"/>
-                <path class="circle-path circle-path--stroke" d="M60,170 C50,75 110,35 190,38 C280,42 320,110 315,195 C310,270 240,315 155,310 C70,305 45,245 60,170 C70,100 120,45 195,45" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
-                <path class="circle-path circle-path--sketch" d="M55,180 C48,85 105,42 185,42 C275,46 312,115 308,190 C302,260 235,308 160,302 C78,298 52,238 55,180" fill="none" stroke="#1d1842" stroke-width="3.5" stroke-linecap="round"/>
+        <!-- ===== ORGANIC BLOB 2 (BOTTOM LEFT) ===== -->
+        <div class="organic-blob organic-blob--2" id="blob2">
+            <svg class="organic-blob-svg" viewBox="0 0 480 400">
+                <!-- Distinct organic asymmetrical contour with dips and bumps -->
+                <path class="blob-shadow" d="M100,190 C60,85 140,35 250,38 C370,42 450,110 435,220 C420,315 330,375 210,368 C95,360 55,285 100,190 Z" fill="#070815" opacity="0.6" transform="translate(6, 8)"/>
+                <path class="blob-body" d="M100,190 C60,85 140,35 250,38 C370,42 450,110 435,220 C420,315 330,375 210,368 C95,360 55,285 100,190 Z" fill="#faecd4"/>
+                <path class="blob-contour" d="M100,190 C60,85 140,35 250,38 C370,42 450,110 435,220 C420,315 330,375 210,368 C95,360 55,285 100,190 Z" fill="none" stroke="#241b12" stroke-width="5" stroke-linecap="round"/>
             </svg>
-            <div class="messy-circle__content">
-                <p>правила: запись производится только по указанному времени, если не получается прийти вовремя, то вы должны сообщить, если вы отмените вашу бронировку, то так же должны сообщить.</p>
+            <div class="organic-blob__content">
+                <p>правила: запись производится только по указанному времени, если не получается прийти вовремя, то вы должны сообщить, если вы отмените вашу бронировку, то так же сообщить.</p>
             </div>
         </div>
 
-        <!-- ===== MESSY CIRCLE 3 (MIDDLE RIGHT) ===== -->
-        <div class="messy-circle messy-circle--3" id="circle3">
-            <svg class="messy-circle-svg" viewBox="0 0 350 260">
-                <!-- Oval/egg horizontal irregular contour -->
-                <path class="circle-path circle-path--fill" d="M40,130 C35,65 95,25 180,28 C265,30 325,70 320,135 C315,200 250,235 170,232 C85,230 45,190 40,130 Z" fill="#faecd4"/>
-                <path class="circle-path circle-path--stroke" d="M40,130 C35,65 95,25 180,28 C265,30 325,70 320,135 C315,200 250,235 170,232 C85,230 45,190 40,130 C42,75 100,32 175,34" fill="none" stroke="#000000" stroke-width="7" stroke-linecap="round"/>
-                <path class="circle-path circle-path--sketch" d="M48,125 C42,72 100,32 178,34 C258,36 315,75 312,130 C308,192 245,228 172,225 C92,222 52,185 48,125" fill="none" stroke="#1d1842" stroke-width="2.5" stroke-linecap="round"/>
+        <!-- ===== ORGANIC BLOB 3 (MIDDLE RIGHT) ===== -->
+        <div class="organic-blob organic-blob--3" id="blob3">
+            <svg class="organic-blob-svg" viewBox="0 0 470 330">
+                <!-- Elongated organic amorphous shape -->
+                <path class="blob-shadow" d="M60,165 C45,80 130,35 250,38 C370,40 445,85 435,175 C425,260 340,305 230,300 C110,295 55,245 60,165 Z" fill="#070815" opacity="0.6" transform="translate(6, 8)"/>
+                <path class="blob-body" d="M60,165 C45,80 130,35 250,38 C370,40 445,85 435,175 C425,260 340,305 230,300 C110,295 55,245 60,165 Z" fill="#faecd4"/>
+                <path class="blob-contour" d="M60,165 C45,80 130,35 250,38 C370,40 445,85 435,175 C425,260 340,305 230,300 C110,295 55,245 60,165 Z" fill="none" stroke="#241b12" stroke-width="4.5" stroke-linecap="round"/>
             </svg>
-            <div class="messy-circle__content">
+            <div class="organic-blob__content">
                 <p>Можно обсудить любой вопрос по стрижке в личных сообщениях, связаться со мной можно благодаря <span class="fake-btn-link" title="Неактивна">этой кнопке</span>.</p>
             </div>
         </div>
 
         <!-- ===== CENTRAL PHOTO COLLAGE ===== -->
         <div class="collage-cluster" id="collageCluster">
-
-            <!-- 1. Redhead 3-in-1 photo (top center) -->
+            <!-- 1. Redhead photo (top center) -->
             <div class="cl-photo cl-photo--redhead" data-src="images/girl_red.png">
                 <canvas class="pixel-fx-canvas"></canvas>
             </div>
@@ -173,17 +181,17 @@
                 <canvas class="pixel-fx-canvas"></canvas>
             </div>
 
-            <!-- 3. US FLAG (centerpiece) -->
+            <!-- 3. US FLAG (Centerpiece) -->
             <div class="cl-photo cl-photo--flag" data-src="images/flag.png">
                 <canvas class="pixel-fx-canvas"></canvas>
             </div>
 
-            <!-- 4. Guy in sunglasses with 'ИРКУТСК' shirt (left of flag) -->
+            <!-- 4. Guy with sunglasses & ИРКУТСК shirt (left of flag) -->
             <div class="cl-photo cl-photo--guy" data-src="images/guy_irkutsk.jpg">
                 <canvas class="pixel-fx-canvas"></canvas>
             </div>
 
-            <!-- 5. Salon photo (far left of guy) -->
+            <!-- 5. Salon photo (far left) -->
             <div class="cl-photo cl-photo--salon" data-src="images/girl_blue.png">
                 <canvas class="pixel-fx-canvas"></canvas>
             </div>
@@ -198,12 +206,12 @@
                 <canvas class="pixel-fx-canvas"></canvas>
             </div>
 
-            <!-- 8. Texture / pattern below smile -->
+            <!-- 8. Texture below smile -->
             <div class="cl-photo cl-photo--texture" data-src="images/plaid.jpg">
                 <canvas class="pixel-fx-canvas"></canvas>
             </div>
 
-            <!-- 9. Boy with shaved '67' on temple (right side) -->
+            <!-- 9. Boy photo (right) -->
             <div class="cl-photo cl-photo--boy67" data-src="images/girl_blonde.png">
                 <canvas class="pixel-fx-canvas"></canvas>
             </div>
@@ -216,14 +224,7 @@
 
     </main>
 
-    <!-- ===== BOTTOM ROUGH TRANSITION WAVE ===== -->
-    <div class="coarse-wave-divider coarse-wave-divider--bottom">
-        <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
-            <polygon points="0,60 1440,60 1440,25 1380,48 1320,20 1260,45 1200,18 1140,42 1080,22 1020,48 960,18 900,45 840,22 780,44 720,18 660,48 600,20 540,46 480,18 420,44 360,20 300,48 240,18 180,45 120,22 60,44 0,22" fill="#1d1842"/>
-        </svg>
-    </div>
-
-    <!-- ===== FOOTER: 4 MUTED RECTANGULAR BOXES (NON-FUNCTIONAL) ===== -->
+    <!-- ===== FOOTER: 4 VANILLA MUTED RECTANGULAR BOXES (NON-FUNCTIONAL) ===== -->
     <footer class="footer-section" id="footerSection">
         <div class="footer-boxes-container">
             <div class="footer-box" tabindex="-1">

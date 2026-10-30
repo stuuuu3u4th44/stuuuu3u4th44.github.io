@@ -2,28 +2,26 @@
    LOVECUT — Stylesheet
    
    PALETTE:
-   - Deep Blueberry Dark-Blue Background: #0a0b1c
-   - Coarse Blueberry Wave / Accent:      #1d1842 / #261e56
-   - Vanilla Cream (Logo, Circles, Text): #faecd4 / #f5e6c8
-   - Ink Black / Deep Charcoal:           #000000 / #05060f
+   - Deep Blueberry Dark-Blue Background: #060714 (even darker, deep navy)
+   - Fluid Wave Contours:                #0c0e22 / #121535 / #181c46 / #1f245a
+   - Vanilla Everywhere (Zero pure white):#faecd4 / #f7ebd7 / #f3e4cb
+   - Blueberry Ink for Text on Vanilla:  #090a18 / #161226
    
    FONTS (3 max):
    1. 'Playfair Display' — Logo script
-   2. 'Inter'            — Body & reading texts (readable)
+   2. 'Inter'            — Body & readable text
    3. 'Unbounded'        — Decorative (circular 'c', 'e', 'o' glyphs)
    ==================================================================== */
 
 :root {
-    --bg-dark-blueberry: #0a0b1c;
-    --bg-blueberry-deep: #0e1026;
-    --wave-coarse: #1d1842;
-    --wave-border: #261e56;
+    --bg-deep-navy: #060714;
+    --bg-dark-blueberry: #090a1a;
     --vanilla: #faecd4;
-    --vanilla-pure: #f5e6c8;
-    --vanilla-bright: #fff5e3;
+    --vanilla-tint: #f7ebd7;
+    --vanilla-soft: #f2e2ca;
     --ink-dark: #090a18;
-    --gray-block-bg: #d9d9d9;
-    --gray-block-border: #8c8c8c;
+    --ink-muted: #3a3228;
+    --border-dark: #1e1913;
     --font-logo: 'Playfair Display', serif;
     --font-body: 'Inter', sans-serif;
     --font-deco: 'Unbounded', sans-serif;
@@ -37,11 +35,11 @@
 
 html {
     scroll-behavior: smooth;
-    background-color: var(--bg-dark-blueberry);
+    background-color: var(--bg-deep-navy);
 }
 
 body {
-    background-color: var(--bg-dark-blueberry);
+    background-color: var(--bg-deep-navy);
     color: var(--vanilla);
     font-family: var(--font-body);
     line-height: 1.5;
@@ -51,161 +49,177 @@ body {
 }
 
 /* ====================================================================
-   SIDE STROKES (rough ink lines on left and right margins from mockup)
+   SMOOTH ORGANIC FLUID WAVES (FLOWING DOWN THE BACKGROUND)
    ==================================================================== */
-.side-stroke {
-    position: fixed;
+.bg-waves-canvas {
+    position: absolute;
     top: 0;
-    bottom: 0;
-    width: 32px;
-    z-index: 99;
-    pointer-events: none;
-    opacity: 0.85;
-}
-
-.side-stroke--left {
-    left: 2px;
-}
-
-.side-stroke--right {
-    right: 2px;
-}
-
-.side-stroke svg {
+    left: 0;
     width: 100%;
     height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.bg-waves-canvas svg {
+    width: 100%;
+    height: 100%;
+    display: block;
 }
 
 /* ====================================================================
-   TOP HEADER PANEL (PANEL WITH DIAGONAL SLICE DIVIDERS & LOGO)
+   TOP HERO SECTION: BENTO GRID AROUND LOGO (EXACT MEASURED PIXELS)
    ==================================================================== */
-.header-panel {
-    width: 100%;
-    background: #ffffff;
-    border-bottom: 2px solid #000000;
+.top-hero-section {
     position: relative;
     z-index: 10;
+    padding: 24px 20px 20px;
+    max-width: 1020px;
+    margin: 0 auto;
 }
 
-.header-grid {
-    display: flex;
-    align-items: stretch;
-    height: 110px;
+.bento-container {
+    display: grid;
+    grid-template-columns: 140px 140px 1fr 1fr 140px 140px;
+    grid-template-rows: 140px 160px 130px;
+    gap: 12px;
     width: 100%;
-    position: relative;
+}
+
+.bento-card {
+    border-radius: 16px;
     overflow: hidden;
-}
-
-.h-slice {
     position: relative;
-    overflow: hidden;
-    height: 100%;
-    background: #ffffff;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.55);
+    border: 1px solid rgba(250, 236, 212, 0.12);
+    background-color: #0c0e20;
 }
 
-/* Slice widths and angled dividers */
-.h-slice--1 {
-    width: 45px;
-    border-right: 2px solid #000000;
-    transform: skewX(-14deg);
-    margin-left: -15px;
-}
-
-.h-slice--2 {
-    width: 120px;
-    border-right: 2px solid #000000;
-    transform: skewX(-14deg);
-}
-
-.h-slice--3 {
-    width: 130px;
-    border-right: 2px solid #000000;
-    transform: skewX(-14deg);
-}
-
-.h-slice--logo {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #ffffff;
-    padding: 0 20px;
-    border-right: 2px solid #000000;
-}
-
-.h-slice--4 {
-    width: 135px;
-    border-right: 2px solid #000000;
-}
-
-.h-slice--5 {
-    width: 130px;
-}
-
-/* Un-skew the images inside skewed slices */
-.h-slice--1 .h-img,
-.h-slice--2 .h-img,
-.h-slice--3 .h-img {
-    transform: skewX(14deg) scale(1.15);
-}
-
-.h-img {
+.bento-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
+    transition: transform 0.4s ease;
 }
 
-.h-img--red {
-    object-position: 18% 25%;
+.bento-card:hover .bento-img {
+    transform: scale(1.04);
 }
 
-.h-img--blue {
-    object-position: 50% 15%;
+/* Row 1 cards */
+.bento-card--col1-top {
+    grid-column: 1;
+    grid-row: 1;
 }
 
-.h-img--glasses {
-    object-position: 25% 20%;
+.bento-card--col2-top {
+    grid-column: 2;
+    grid-row: 1;
 }
 
-.h-img--blonde {
-    object-position: 50% 25%;
+.bento-card--col3-top {
+    grid-column: 3;
+    grid-row: 1;
+}
+
+.bento-card--col4-top {
+    grid-column: 4;
+    grid-row: 1;
+}
+
+.bento-card--col5-top {
+    grid-column: 5;
+    grid-row: 1;
+}
+
+.bento-card--col6-top {
+    grid-column: 6;
+    grid-row: 1;
+}
+
+/* Row 2 tall side cards */
+.bento-card--col1-mid {
+    grid-column: 1;
+    grid-row: 2 / 4; /* Spans rows 2 and 3 */
+}
+
+.bento-card--col6-mid {
+    grid-column: 6;
+    grid-row: 2 / 4; /* Spans rows 2 and 3 */
+}
+
+/* Center Logo Box (Vanilla, dot grid pattern, clean border, rounded corners) */
+.bento-card--logo {
+    grid-column: 2 / 6;
+    grid-row: 2;
+    background-color: var(--vanilla);
+    border: 2px solid var(--border-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+}
+
+.logo-box-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: radial-gradient(#3a2e22 1.2px, transparent 1.2px);
+    background-size: 14px 14px;
+    background-position: 0 0;
 }
 
 .logo-title {
     font-family: var(--font-logo);
-    font-size: clamp(2.8rem, 6vw, 4.6rem);
+    font-size: clamp(2.8rem, 6.5vw, 4.8rem);
     font-style: italic;
     font-weight: 900;
-    color: #1a1028; /* In header banner, prominent dark font matching mockup */
+    color: var(--ink-dark);
     letter-spacing: -1px;
     line-height: 1;
     user-select: none;
-    text-shadow: 1px 1px 0px rgba(0,0,0,0.15);
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.12);
+}
+
+/* Row 3 bottom wide cards */
+.bento-card--col2-bot {
+    grid-column: 2 / 4;
+    grid-row: 3;
+}
+
+.bento-card--col4-bot {
+    grid-column: 4 / 6;
+    grid-row: 3;
 }
 
 /* ====================================================================
-   THREE ACTION BLOCKS (grey rectangular blocks from mockup)
+   THREE ACTION BLOCKS (VANILLA THEME)
    ==================================================================== */
 .action-blocks-section {
-    padding: 30px 4% 30px;
-    background-color: var(--bg-dark-blueberry);
+    position: relative;
+    z-index: 10;
+    padding: 24px 20px 24px;
 }
 
 .action-blocks-container {
     display: flex;
     justify-content: center;
     align-items: stretch;
-    gap: 22px;
+    gap: 18px;
     max-width: 960px;
     margin: 0 auto;
     flex-wrap: wrap;
 }
 
 .action-box {
-    background-color: var(--gray-block-bg);
-    border: 2px solid #000000;
-    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.45);
+    background-color: var(--vanilla);
+    border: 2px solid var(--border-dark);
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -215,36 +229,37 @@ body {
 }
 
 .action-box:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.55);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.6);
+    background-color: var(--vanilla-tint);
 }
 
 .action-box:active {
-    transform: translate(1px, 1px);
-    box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.6);
+    transform: translateY(1px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
 }
 
 .action-box--location {
-    padding: 18px 24px;
+    padding: 16px 24px;
     width: 250px;
-    min-height: 105px;
+    min-height: 95px;
     cursor: default;
 }
 
 .loc-text {
     font-family: var(--font-body);
     font-size: 0.88rem;
-    font-weight: 500;
-    color: #000000;
-    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--ink-dark);
+    margin-bottom: 6px;
     text-align: center;
 }
 
 .loc-link-btn {
     font-family: var(--font-body);
-    font-size: 0.85rem;
+    font-size: 0.84rem;
     font-weight: 700;
-    color: #000000;
+    color: var(--ink-dark);
     text-decoration: underline;
     background: none;
     border: none;
@@ -253,24 +268,24 @@ body {
 }
 
 .loc-link-btn:hover {
-    color: #3a2463;
+    color: #4a2810;
 }
 
 .action-box--booking {
     width: 260px;
-    min-height: 105px;
+    min-height: 95px;
     padding: 10px 20px;
 }
 
 .action-box--examples {
     width: 200px;
-    min-height: 105px;
+    min-height: 95px;
     padding: 10px 20px;
 }
 
 .action-title {
     font-family: var(--font-deco);
-    color: #000000;
+    color: var(--ink-dark);
     letter-spacing: -0.5px;
     text-transform: lowercase;
 }
@@ -286,30 +301,31 @@ body {
 }
 
 /* ====================================================================
-   SERVICES TICKER RECTANGLE (100% COVERAGE, NO EMPTY HOLES, PAUSES ON HOVER)
+   SERVICES TICKER RECTANGLE (VANILLA BACKGROUND, ZERO GAPS, PAUSES ON HOVER)
    ==================================================================== */
 .services-rectangle {
     width: 100%;
-    background-color: #ffffff;
-    border-top: 2px solid #000000;
-    border-bottom: 2px solid #000000;
-    padding: 16px 0;
+    background-color: var(--vanilla);
+    border-top: 2px solid var(--border-dark);
+    border-bottom: 2px solid var(--border-dark);
+    padding: 14px 0;
     overflow: hidden;
     position: relative;
     cursor: pointer;
     user-select: none;
-    z-index: 8;
+    z-index: 10;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.45);
 }
 
 .services-marquee-track {
     display: flex;
-    gap: 40px;
+    gap: 36px;
     width: max-content;
     animation: tickerMove 28s linear infinite;
     align-items: center;
 }
 
-/* PAUSE WHEN HOVERED AS REQUESTED */
+/* PAUSE IMMEDIATELY ON HOVER / TOUCH */
 .services-rectangle:hover .services-marquee-track,
 .services-rectangle:active .services-marquee-track {
     animation-play-state: paused !important;
@@ -330,139 +346,119 @@ body {
     gap: 12px;
     white-space: nowrap;
     padding: 4px 14px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    background: #fbfbfb;
-    border-radius: 2px;
+    border: 1px solid rgba(30, 25, 19, 0.25);
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 6px;
 }
 
 .svc-name {
     font-family: var(--font-deco);
     font-size: 0.95rem;
     font-weight: 700;
-    color: #000000;
+    color: var(--ink-dark);
 }
 
 .svc-price {
     font-family: var(--font-body);
     font-size: 0.92rem;
     font-weight: 700;
-    color: #121528;
+    color: var(--ink-dark);
 }
 
 .svc-time {
     font-family: var(--font-body);
     font-size: 0.8rem;
-    color: #555555;
-    font-weight: 500;
+    color: var(--ink-muted);
+    font-weight: 600;
 }
 
 /* ====================================================================
-   COARSE / ROUGH JAGGED WAVES (SHARP ABRUPT TRANSITION)
-   ==================================================================== */
-.coarse-wave-divider {
-    width: 100%;
-    line-height: 0;
-    position: relative;
-    z-index: 5;
-    background-color: var(--bg-dark-blueberry);
-}
-
-.coarse-wave-divider svg {
-    display: block;
-    width: 100%;
-    height: 48px;
-}
-
-.coarse-wave-divider--bottom {
-    margin-top: 40px;
-}
-
-/* ====================================================================
-   MAIN COLLAGE STAGE (MESSY CIRCLES + COLLAGE WITH HETEROGENEOUS PIXELS)
+   MAIN COLLAGE STAGE (3 ORGANIC BLOBS + CENTRAL PHOTO COLLAGE)
    ==================================================================== */
 .main-collage-stage {
     position: relative;
-    min-height: 850px;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 40px 20px 80px;
+    z-index: 10;
+    min-height: 880px;
+    max-width: 1150px;
+    margin: 40px auto 60px;
+    padding: 20px 20px 60px;
 }
 
 /* ====================================================================
-   MESSY / ROUGH HAND-DRAWN CIRCLES (AUTHENTIC ORGANIC OUTLINES)
+   ORGANIC BLOBS (MODELED AFTER THE BROWN AMORPHOUS BLOB IN REFERENCE)
    ==================================================================== */
-.messy-circle {
+.organic-blob {
     position: absolute;
     z-index: 15;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.9, 0.3, 1);
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.9, 0.3, 1), filter 0.8s ease;
 }
 
-.messy-circle-svg {
+.organic-blob-svg {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
-    filter: drop-shadow(4px 6px 0px rgba(0, 0, 0, 0.6));
     pointer-events: none;
 }
 
-.messy-circle__content {
+.organic-blob__content {
     position: relative;
     z-index: 2;
-    padding: 30px;
+    padding: 40px;
     text-align: center;
+    max-width: 320px;
 }
 
-.messy-circle__content p {
+.organic-blob__content p {
     font-family: var(--font-body);
-    font-size: 0.84rem;
+    font-size: 0.86rem;
     font-weight: 600;
     color: var(--ink-dark);
-    line-height: 1.5;
+    line-height: 1.55;
 }
 
-/* Circle 1: Top-Left */
-.messy-circle--1 {
-    top: 20px;
+/* Blob 1: Top-Left */
+.organic-blob--1 {
+    top: 0px;
+    left: 10px;
+    width: 420px;
+    height: 350px;
+    transform: rotate(-2deg);
+}
+
+/* Blob 2: Bottom-Left */
+.organic-blob--2 {
+    bottom: 20px;
     left: 20px;
-    width: 330px;
-    height: 310px;
-    transform: rotate(-3deg);
-}
-
-/* Circle 2: Bottom-Left */
-.messy-circle--2 {
-    bottom: 40px;
-    left: 30px;
-    width: 350px;
-    height: 330px;
+    width: 440px;
+    height: 370px;
     transform: rotate(2deg);
 }
 
-/* Circle 3: Middle-Right */
-.messy-circle--3 {
-    top: 280px;
-    right: 25px;
-    width: 340px;
-    height: 250px;
-    transform: rotate(4deg);
+/* Blob 3: Middle-Right */
+.organic-blob--3 {
+    top: 260px;
+    right: 15px;
+    width: 430px;
+    height: 310px;
+    transform: rotate(3deg);
 }
 
 .fake-btn-link {
     text-decoration: underline;
     font-weight: 700;
-    color: #121528;
+    color: var(--ink-dark);
     cursor: default;
     background: rgba(0, 0, 0, 0.08);
-    padding: 1px 4px;
-    border-radius: 2px;
+    padding: 1px 6px;
+    border-radius: 4px;
 }
 
 /* ====================================================================
-   CENTRAL PHOTO COLLAGE (FLAG + PHOTOS AROUND IT)
+   CENTRAL PHOTO COLLAGE (FLAG + PHOTOS WITH MULTI-SCALE PIXELS)
    ==================================================================== */
 .collage-cluster {
     position: relative;
@@ -475,9 +471,10 @@ body {
 .cl-photo {
     position: absolute;
     overflow: hidden;
-    border: 1px solid rgba(0, 0, 0, 0.5);
-    background-color: #121528;
-    box-shadow: 3px 4px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    border: 1.5px solid rgba(250, 236, 212, 0.2);
+    background-color: #0c0e22;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.65);
 }
 
 .cl-photo canvas {
@@ -512,8 +509,8 @@ body {
     width: 255px;
     height: 150px;
     z-index: 5;
-    border: 2px solid #000000;
-    box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.7);
+    border: 2px solid var(--vanilla);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.85);
 }
 
 /* 4. Guy with sunglasses & ИРКУТСК shirt */
@@ -550,7 +547,7 @@ body {
     width: 165px;
     height: 165px;
     z-index: 6;
-    border: 2px solid #000000;
+    border: 2px solid var(--vanilla);
 }
 
 /* 8. Texture */
@@ -562,7 +559,7 @@ body {
     z-index: 5;
 }
 
-/* 9. Boy with '67' on temple */
+/* 9. Boy photo */
 .cl-photo--boy67 {
     top: 330px;
     right: -100px;
@@ -581,13 +578,12 @@ body {
 }
 
 /* ====================================================================
-   FOOTER (4 NON-FUNCTIONAL RECTANGULAR BOXES FROM MOCKUP)
+   FOOTER (4 VANILLA RECTANGULAR BOXES, NON-FUNCTIONAL)
    ==================================================================== */
 .footer-section {
-    padding: 40px 4% 60px;
-    background-color: var(--bg-dark-blueberry);
     position: relative;
     z-index: 10;
+    padding: 30px 20px 60px;
 }
 
 .footer-boxes-container {
@@ -599,14 +595,15 @@ body {
 }
 
 .footer-box {
-    background-color: var(--gray-block-bg);
-    border: 2px solid #000000;
-    min-height: 140px;
+    background-color: var(--vanilla);
+    border: 2px solid var(--border-dark);
+    border-radius: 14px;
+    min-height: 130px;
     padding: 16px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
     cursor: default;
     user-select: none;
     transition: filter 0.6s ease;
@@ -616,7 +613,7 @@ body {
     font-family: var(--font-deco);
     font-size: 0.88rem;
     font-weight: 700;
-    color: #000000;
+    color: var(--ink-dark);
     text-transform: lowercase;
 }
 
@@ -639,17 +636,18 @@ body {
 .popup-modal__backdrop {
     position: absolute;
     inset: 0;
-    background-color: rgba(10, 11, 28, 0.92);
-    backdrop-filter: blur(5px);
+    background-color: rgba(6, 7, 20, 0.92);
+    backdrop-filter: blur(6px);
 }
 
 .popup-modal__window {
     position: relative;
     width: 90%;
     max-width: 700px;
-    background-color: var(--bg-blueberry-deep);
+    background-color: #0c0e22;
     border: 3px solid var(--vanilla);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    border-radius: 16px;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.85);
     z-index: 2;
     overflow: hidden;
 }
@@ -663,22 +661,22 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 14px 20px;
-    background-color: #000000;
-    border-bottom: 2px solid var(--vanilla);
+    background-color: var(--vanilla);
+    border-bottom: 2px solid var(--border-dark);
 }
 
 .popup-modal__title {
     font-family: var(--font-deco);
     font-size: 0.95rem;
     font-weight: 700;
-    color: var(--vanilla);
+    color: var(--ink-dark);
     text-transform: lowercase;
 }
 
 .popup-modal__close-btn {
     background: none;
     border: none;
-    color: var(--vanilla);
+    color: var(--ink-dark);
     font-size: 1.8rem;
     cursor: pointer;
     line-height: 1;
@@ -705,8 +703,9 @@ body {
     position: relative;
     overflow: hidden;
     height: 220px;
+    border-radius: 12px;
     border: 2px solid rgba(250, 236, 212, 0.3);
-    background-color: #000000;
+    background-color: #060714;
 }
 
 .ex-tile img {
@@ -722,7 +721,7 @@ body {
     left: 0;
     right: 0;
     padding: 8px 12px;
-    background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+    background: linear-gradient(transparent, rgba(6, 7, 20, 0.9));
     font-family: var(--font-deco);
     font-size: 0.8rem;
     font-weight: 600;
@@ -733,42 +732,49 @@ body {
    RESPONSIVE DESIGN
    ==================================================================== */
 @media (max-width: 1024px) {
-    .main-collage-stage {
-        overflow: hidden;
+    .bento-container {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: auto;
     }
     
-    .messy-circle--1 {
-        left: 5px;
-        width: 300px;
-        height: 280px;
-    }
+    .bento-card--col1-top { grid-column: 1; grid-row: 1; height: 130px; }
+    .bento-card--col2-top { grid-column: 2; grid-row: 1; height: 130px; }
+    .bento-card--col3-top { grid-column: 3; grid-row: 1; height: 130px; }
+    .bento-card--col4-top { grid-column: 4; grid-row: 1; height: 130px; }
     
-    .messy-circle--2 {
-        left: 5px;
-        width: 310px;
-        height: 290px;
-    }
+    .bento-card--logo { grid-column: 1 / 5; grid-row: 2; height: 140px; }
     
-    .messy-circle--3 {
-        right: 5px;
-        width: 290px;
-        height: 220px;
-    }
+    .bento-card--col1-mid { grid-column: 1; grid-row: 3; height: 130px; }
+    .bento-card--col5-top { grid-column: 2; grid-row: 3; height: 130px; }
+    .bento-card--col6-top { grid-column: 3; grid-row: 3; height: 130px; }
+    .bento-card--col6-mid { grid-column: 4; grid-row: 3; height: 130px; }
+    
+    .bento-card--col2-bot { grid-column: 1 / 3; grid-row: 4; height: 120px; }
+    .bento-card--col4-bot { grid-column: 3 / 5; grid-row: 4; height: 120px; }
+
+    .organic-blob--1 { left: 0px; width: 360px; height: 320px; }
+    .organic-blob--2 { left: 0px; width: 370px; height: 330px; }
+    .organic-blob--3 { right: 0px; width: 360px; height: 280px; }
 }
 
 @media (max-width: 768px) {
-    .side-stroke {
-        display: none;
+    .bento-container {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
     }
     
-    .header-grid {
-        height: 85px;
-    }
-    
-    .logo-title {
-        font-size: 2.4rem;
-    }
-    
+    .bento-card--col1-top { grid-column: 1; grid-row: 1; height: 120px; }
+    .bento-card--col2-top { grid-column: 2; grid-row: 1; height: 120px; }
+    .bento-card--logo { grid-column: 1 / 3; grid-row: 2; height: 130px; }
+    .bento-card--col3-top { grid-column: 1; grid-row: 3; height: 120px; }
+    .bento-card--col4-top { grid-column: 2; grid-row: 3; height: 120px; }
+    .bento-card--col5-top { grid-column: 1; grid-row: 4; height: 120px; }
+    .bento-card--col6-top { grid-column: 2; grid-row: 4; height: 120px; }
+    .bento-card--col1-mid { display: none; }
+    .bento-card--col6-mid { display: none; }
+    .bento-card--col2-bot { grid-column: 1; grid-row: 5; height: 110px; }
+    .bento-card--col4-bot { grid-column: 2; grid-row: 5; height: 110px; }
+
     .action-blocks-container {
         flex-direction: column;
         align-items: center;
@@ -784,17 +790,17 @@ body {
         flex-direction: column;
         align-items: center;
         gap: 30px;
-        padding-top: 20px;
+        padding-top: 10px;
         min-height: auto;
     }
     
-    .messy-circle {
+    .organic-blob {
         position: relative;
         inset: auto !important;
         transform: none !important;
         width: 100%;
-        max-width: 340px;
-        height: 280px;
+        max-width: 360px;
+        height: 310px;
     }
     
     .collage-cluster {
