@@ -377,64 +377,6 @@ body {
 }
 
 /* ====================================================================
-   SUBTLE RETRO PIXEL ACCENTS (NEAR 3 CIRCLES)
-   - Zero canvas / Zero lag (lightweight vector SVG)
-   - Tasteful color harmony matching dark theme + vanilla accents
-   - Timed hardware-accelerated dissolution
-   ==================================================================== */
-@keyframes blobPixelFade {
-    0% {
-        opacity: 0;
-        transform: scale(0.94);
-    }
-    15% {
-        opacity: 0.95;
-        transform: scale(1);
-    }
-    70% {
-        opacity: 0.95;
-        transform: scale(1);
-    }
-    100% {
-        opacity: 0;
-        transform: scale(0.96);
-    }
-}
-
-.blob-pixels {
-    position: absolute;
-    pointer-events: none;
-    z-index: -1; /* gracefully behind the blob body */
-    image-rendering: pixelated;
-    shape-rendering: crispEdges;
-    opacity: 0;
-    animation: blobPixelFade 2.2s cubic-bezier(0.2, 0.8, 0.3, 1) forwards;
-    animation-delay: 0.3s;
-    will-change: opacity, transform;
-}
-
-.blob-pixels--1 {
-    top: -15px;
-    right: -45px;
-    width: 160px;
-    height: 140px;
-}
-
-.blob-pixels--2 {
-    bottom: -20px;
-    right: -35px;
-    width: 180px;
-    height: 100px;
-}
-
-.blob-pixels--3 {
-    bottom: -15px;
-    left: -40px;
-    width: 150px;
-    height: 160px;
-}
-
-/* ====================================================================
    ORGANIC BLOBS (MODELED AFTER THE BROWN AMORPHOUS BLOB IN REFERENCE)
    ==================================================================== */
 .organic-blob {
@@ -572,18 +514,6 @@ body {
     pointer-events: none;
 }
 
-@keyframes photoPixelFade {
-    0% {
-        opacity: 1;
-    }
-    60% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
-}
-
 .cl-photo canvas.pixel-fx-canvas {
     position: absolute;
     inset: 0;
@@ -593,10 +523,8 @@ body {
     image-rendering: pixelated;
     pointer-events: none;
     z-index: 2;
-    animation: photoPixelFade 1.6s cubic-bezier(0.2, 0.8, 0.3, 1) forwards;
-    animation-delay: 0.3s;
-    will-change: opacity;
 }
+
 
 /* 1. Redhead photo above flag (portrait 3:4: 114px x 152px) */
 .cl-photo--redhead {

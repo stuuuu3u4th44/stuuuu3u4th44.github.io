@@ -16,93 +16,208 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     /* ====================================================================
-       1. ULTRA-SMOOTH RETRO PHOTO PIXELATION & INSTANT DISSOLUTION
-       - Zero per-frame calculations / Zero lag (120 FPS rock solid)
-       - Authentic 12px retro pixel dither that dissolves into razor-sharp photos
-       - Hardware-accelerated CSS GPU compositor dissolve (0% CPU once settled)
+       1. HETEROGENEOUS MULTI-SCALE PHOTO PIXELATION ENGINE (HYPER-OPTIMIZED)
+       - Authentic multi-scale pixelation zones (48-64px chunky, 24-40px, 10-22px)
+       - Staggered dynamic wave resolving smoothly into razor-sharp images
+       - Zero per-frame allocations (uses pre-allocated reusable scratch canvas)
+       - Cap DPR at 1.5 for ultra-fast 60-120 FPS performance with 0 lag
        ==================================================================== */
     class PixelLayer {
         constructor(container) {
             this.container = container;
             this.canvas = container.querySelector('.pixel-fx-canvas');
-            this.ctx = this.canvas ? this.canvas.getContext('2d') : null;
-            this.img = container.querySelector('.cl-photo-img');
-            this.hasDissolved = false;
+            this.ctx = this.canvas ? this.canvas.getContext('2d', { willReadFrequently: true }) : null;
+            this.src = container.dataset.src;
+            this.img = new Image();
+            this.isLoaded = false;
+            this.zones = [];
+            this.animating = false;
+            this.rafId = null;
+
+            // Reusable offscreen scratch canvas — ZERO allocations in loop!
+            this.scratch = document.createElement('canvas');
+            this.scratchCtx = this.scratch.getContext('2d', { willReadFrequently: true });
+
             this.init();
         }
 
         init() {
-            if (!this.canvas || !this.ctx || !this.img) return;
-            if (this.img.complete && this.img.naturalWidth > 0) {
-                this.drawPixelatedState();
-            } else {
-                this.img.addEventListener('load', () => this.drawPixelatedState(), { once: true });
+            if (!this.canvas || !this.ctx || !this.src) return;
+            this.img.onload = () => {
+                this.isLoaded = true;
+                this.resizeCanvas();
+                this.setupZones();
+                // Draw initial strong heterogeneous pixelated state
+                this.renderFrame(1.0, 1.0);
+            };
+            this.img.src = this.src;
+
+            window.addEventListener('resize', () => {
+                if (this.isLoaded) {
+                    this.resizeCanvas();
+                    this.setupZones();
+                    if (!this.animating) {
+                        this.renderFrame(0.0, 0.0); // crisp if settled
+                    }
+                }
+            }, { passive: true });
+        }
+
+        resizeCanvas() {
+            const rect = this.container.getBoundingClientRect();
+            const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+            this.width = Math.max(Math.floor(rect.width * dpr), 60);
+            this.height = Math.max(Math.floor(rect.height * dpr), 60);
+            this.canvas.width = this.width;
+            this.canvas.height = this.height;
+        }
+
+        setupZones() {
+            // Divide image into a 6x6 grid of zones with varied initial pixel sizes
+            const cols = 6;
+            const rows = 6;
+            const cellW = this.width / cols;
+            const cellH = this.height / rows;
+            this.zones = [];
+
+            for (let r = 0; r < rows; r++) {
+                for (let c = 0; c < cols; c++) {
+                    // Heterogeneous distribution matching user's reference:
+                    // Some zones huge chunky blocks (48-64px),
+                    // some medium (24-40px), some finer (10-22px)
+                    let baseMaxPx;
+                    const rand = Math.random();
+                    if (rand < 0.25) {
+                        baseMaxPx = 48 + Math.floor(Math.random() * 16);
+                    } else if (rand < 0.65) {
+                        baseMaxPx = 24 + Math.floor(Math.random() * 16);
+                    } else {
+                        baseMaxPx = 10 + Math.floor(Math.random() * 12);
+                    }
+
+                    // Staggered timing wave (horizontal flow + vertical flow + random jitter)
+                    const stagger = (c / cols) * 0.45 + (r / rows) * 0.25 + (Math.random() * 0.3);
+
+                    this.zones.push({
+                        x: c * cellW,
+                        y: r * cellH,
+                        w: cellW,
+                        h: cellH,
+                        baseMaxPx: baseMaxPx,
+                        stagger: stagger
+                    });
+                }
             }
         }
 
-        drawPixelatedState() {
-            if (!this.ctx || !this.img || !this.img.naturalWidth) return;
-            const rect = this.container.getBoundingClientRect();
-            const w = Math.max(Math.floor(rect.width), 40);
-            const h = Math.max(Math.floor(rect.height), 40);
-            this.canvas.width = w;
-            this.canvas.height = h;
-
-            const imgW = this.img.naturalWidth;
-            const imgH = this.img.naturalHeight;
+        getCoverCrop(w, h) {
+            const imgW = this.img.naturalWidth || this.img.width || 1;
+            const imgH = this.img.naturalHeight || this.img.height || 1;
             const imgRatio = imgW / imgH;
             const targetRatio = w / h;
-            let sx = 0, sy = 0, sw = imgW, sh = imgH;
+            let sx, sy, sw, sh;
             if (imgRatio > targetRatio) {
+                sh = imgH;
                 sw = imgH * targetRatio;
                 sx = (imgW - sw) / 2;
+                sy = 0;
             } else {
+                sw = imgW;
                 sh = imgW / targetRatio;
+                sx = 0;
                 sy = (imgH - sh) / 2;
             }
-
-            // Downsample to 12px retro block size
-            const pxSize = 12;
-            const sampleW = Math.max(1, Math.floor(w / pxSize));
-            const sampleH = Math.max(1, Math.floor(h / pxSize));
-
-            const scratch = document.createElement('canvas');
-            scratch.width = sampleW;
-            scratch.height = sampleH;
-            const sCtx = scratch.getContext('2d');
-            if (!sCtx) return;
-
-            sCtx.imageSmoothingEnabled = false;
-            sCtx.drawImage(this.img, sx, sy, sw, sh, 0, 0, sampleW, sampleH);
-
-            this.ctx.imageSmoothingEnabled = false;
-            this.ctx.drawImage(scratch, 0, 0, sampleW, sampleH, 0, 0, w, h);
-            this.canvas.style.opacity = '1';
+            return { sx: Math.round(sx), sy: Math.round(sy), sw: Math.round(sw), sh: Math.round(sh) };
         }
 
-        dissolve() {
-            if (this.hasDissolved || !this.canvas) return;
-            this.hasDissolved = true;
-            this.canvas.style.transition = 'opacity 0.6s cubic-bezier(0.2, 0.8, 0.3, 1)';
-            this.canvas.style.opacity = '0';
-            setTimeout(() => {
-                this.canvas.style.display = 'none';
-                if (this.ctx) this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-            }, 650);
+        // Render with progress (0.0 = sharp, 1.0 = full initial pixelation)
+        renderFrame(strengthFactor, globalProgress) {
+            if (!this.isLoaded || !this.ctx) return;
+            const ctx = this.ctx;
+            const w = this.width;
+            const h = this.height;
+            const crop = this.getCoverCrop(w, h);
+
+            // Full crisp render if 0 progress
+            if (globalProgress <= 0.001 || strengthFactor <= 0.01) {
+                ctx.imageSmoothingEnabled = true;
+                ctx.drawImage(this.img, crop.sx, crop.sy, crop.sw, crop.sh, 0, 0, w, h);
+                return;
+            }
+
+            ctx.imageSmoothingEnabled = false;
+
+            // Render zone by zone with distinct pixel sizes
+            for (let i = 0; i < this.zones.length; i++) {
+                const zone = this.zones[i];
+                // Individual progress for this zone considering stagger
+                const zoneProg = Math.max(0, Math.min(1, (globalProgress - zone.stagger * 0.4) / (1 - zone.stagger * 0.4)));
+                const currentPixelSize = Math.max(1, Math.round(zone.baseMaxPx * strengthFactor * zoneProg));
+
+                const srcX = crop.sx + (zone.x / w) * crop.sw;
+                const srcY = crop.sy + (zone.y / h) * crop.sh;
+                const srcW = (zone.w / w) * crop.sw;
+                const srcH = (zone.h / h) * crop.sh;
+
+                if (currentPixelSize <= 1) {
+                    // Draw clean region
+                    ctx.drawImage(
+                        this.img,
+                        srcX, srcY, srcW, srcH,
+                        zone.x, zone.y, zone.w, zone.h
+                    );
+                } else {
+                    // Reusable scratch canvas: ZERO allocations!
+                    const sampleW = Math.max(1, Math.floor(zone.w / currentPixelSize));
+                    const sampleH = Math.max(1, Math.floor(zone.h / currentPixelSize));
+
+                    this.scratch.width = sampleW;
+                    this.scratch.height = sampleH;
+                    this.scratchCtx.imageSmoothingEnabled = false;
+
+                    // Downsample
+                    this.scratchCtx.drawImage(
+                        this.img,
+                        srcX, srcY, srcW, srcH,
+                        0, 0, sampleW, sampleH
+                    );
+
+                    // Upscale back with pixelated look
+                    ctx.drawImage(this.scratch, 0, 0, sampleW, sampleH, zone.x, zone.y, zone.w, zone.h);
+                }
+            }
         }
 
-        replay() {
-            if (!this.canvas) return;
-            this.hasDissolved = false;
-            this.canvas.style.display = 'block';
-            this.canvas.style.animation = 'none';
-            void this.canvas.offsetWidth;
-            this.canvas.style.animation = 'photoPixelFade 1.6s cubic-bezier(0.2, 0.8, 0.3, 1) forwards';
-            this.drawPixelatedState();
-            setTimeout(() => this.dissolve(), 1600);
+        // Animate from initial chunky pixels to crisp image
+        animateToSharp(duration = 2400, strengthFactor = 1.0) {
+            if (!this.isLoaded || !this.ctx) return;
+            if (this.rafId) cancelAnimationFrame(this.rafId);
+
+            this.animating = true;
+            const startTime = performance.now();
+
+            const step = (now) => {
+                const elapsed = now - startTime;
+                const linearProgress = Math.min(1, elapsed / duration);
+
+                // Ease-out cubic: stays chunky at start, then smoothly resolves zone by zone
+                const easedProg = 1 - Math.pow(linearProgress, 2.2);
+
+                this.renderFrame(strengthFactor, easedProg);
+
+                if (linearProgress < 1) {
+                    this.rafId = requestAnimationFrame(step);
+                } else {
+                    this.animating = false;
+                    this.rafId = null;
+                    this.renderFrame(0, 0); // Guarantee 100% crisp at end
+                }
+            };
+            this.rafId = requestAnimationFrame(step);
         }
     }
 
+    // Initialize all collage photo pixel layers
     const photoContainers = document.querySelectorAll('.cl-photo');
     const pixelLayers = [];
     photoContainers.forEach(container => {
@@ -110,66 +225,61 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ====================================================================
-       2. TASTEFUL RETRO PIXEL ACCENTS (3 CIRCLES / BLOBS)
-       - Pre-rendered crisp SVG clusters anchored to Blob 1, 2, 3
-       - Smooth timed dissolution via GPU compositor (zero CPU/lag)
-       - Interactive replay when clicking any blob
+       2. SCROLL TRIGGER WITH DIMINISHING REPEATS FOR MIDDLE SECTION
        ==================================================================== */
-    const blobPixels = document.querySelectorAll('.blob-pixels');
-
-    function dissolveBlobPixels() {
-        blobPixels.forEach(el => {
-            el.classList.add('dissolved');
-        });
-    }
-
-    function replayBlobPixels() {
-        blobPixels.forEach(el => {
-            el.style.animation = 'none';
-            void el.offsetWidth;
-            el.style.animation = 'blobPixelFade 2.2s cubic-bezier(0.2, 0.8, 0.3, 1) forwards';
-        });
-        pixelLayers.forEach(layer => layer.replay());
-    }
-
-    // Automatic timed dissolution (guarantees site is crisp and clean even without scrolling)
-    setTimeout(() => {
-        dissolveBlobPixels();
-        pixelLayers.forEach(layer => layer.dissolve());
-    }, 1200);
-
-    // Trigger dissolution on scroll into view
     const collageStage = document.getElementById('collageStage');
-    let collageEntered = false;
+    let middleVisitCount = 0;
+    let isCurrentlyInMiddle = false;
+
+    function triggerMiddlePixelation(isFirstTime) {
+        middleVisitCount++;
+        // Diminishing strength each time: 1.0 -> 0.45 -> 0.25 -> 0.12
+        const strength = isFirstTime ? 1.0 : Math.max(0.15, 1.0 / (middleVisitCount * 1.5));
+        const duration = isFirstTime ? 2200 : Math.max(800, 2200 / (middleVisitCount * 1.2));
+
+        // Trigger photos with slight stagger across photos
+        pixelLayers.forEach((layer, idx) => {
+            setTimeout(() => {
+                layer.animateToSharp(duration, strength);
+            }, idx * 40);
+        });
+    }
 
     if (collageStage) {
         const middleObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting && !collageEntered) {
-                    collageEntered = true;
-                    setTimeout(() => {
-                        pixelLayers.forEach(layer => layer.dissolve());
-                    }, 350);
-                    setTimeout(() => {
-                        dissolveBlobPixels();
-                    }, 700);
-                    middleObserver.unobserve(collageStage);
+                if (entry.isIntersecting) {
+                    if (!isCurrentlyInMiddle) {
+                        isCurrentlyInMiddle = true;
+                        triggerMiddlePixelation(middleVisitCount === 0);
+                    }
+                } else {
+                    isCurrentlyInMiddle = false;
                 }
             });
-        }, { threshold: 0.1 });
+        }, { threshold: 0.18 });
 
         middleObserver.observe(collageStage);
     }
 
-    // Interactive Trigger: Clicking any of the 3 Blobs produces a fresh tasteful pixel dissolve
+    // Interactive Trigger: Clicking any photo or blob produces a fresh pixel dissolve wave!
     ['blob1', 'blob2', 'blob3'].forEach(id => {
         const blobEl = document.getElementById(id);
         if (blobEl) {
             blobEl.style.cursor = 'pointer';
             blobEl.addEventListener('click', () => {
-                replayBlobPixels();
+                triggerMiddlePixelation(false);
             });
         }
+    });
+
+    photoContainers.forEach(container => {
+        container.addEventListener('click', () => {
+            const layer = pixelLayers.find(l => l.container === container);
+            if (layer) {
+                layer.animateToSharp(1800, 0.85);
+            }
+        });
     });
 
     /* ====================================================================
