@@ -60,8 +60,6 @@ body {
     pointer-events: none;
     z-index: 1;
     overflow: hidden;
-    filter: blur(55px);
-    transform: scale(1.05);
 }
 
 .bg-waves-canvas svg {
