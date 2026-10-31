@@ -129,6 +129,8 @@
 
     <!-- ===== MAIN CONTENT STAGE: 3 ORGANIC WOBBLY BLOBS + CENTRAL COLLAGE WITH DYNAMIC PIXELATION ===== -->
     <main class="main-collage-stage" id="collageStage">
+        <!-- Canvas for multi-scale stage pixelation (near 3 circles) -->
+        <canvas class="stage-pixel-canvas" id="stagePixelCanvas"></canvas>
 
         <!-- ===== ORGANIC BLOB 1 (TOP LEFT) ===== -->
         <div class="organic-blob organic-blob--1" id="blob1">
@@ -170,51 +172,61 @@
         <div class="collage-cluster" id="collageCluster">
             <!-- 1. Redhead photo (top center) -->
             <div class="cl-photo cl-photo--redhead" data-src="images/girl_red.png">
+                <img src="images/girl_red.png" alt="Lovecut haircut" class="cl-photo-img" loading="eager">
                 <canvas class="pixel-fx-canvas"></canvas>
             </div>
 
             <!-- 2. Plaid fabric (above flag) -->
             <div class="cl-photo cl-photo--plaid" data-src="images/plaid.jpg">
+                <img src="images/plaid.jpg" alt="Lovecut style" class="cl-photo-img" loading="eager">
                 <canvas class="pixel-fx-canvas"></canvas>
             </div>
 
             <!-- 3. US FLAG (Centerpiece) -->
             <div class="cl-photo cl-photo--flag" data-src="images/flag.png">
+                <img src="images/flag.png" alt="Lovecut flag" class="cl-photo-img" loading="eager">
                 <canvas class="pixel-fx-canvas"></canvas>
             </div>
 
             <!-- 4. Guy with sunglasses & ИРКУТСК shirt (left of flag) -->
             <div class="cl-photo cl-photo--guy" data-src="images/guy_irkutsk.jpg">
+                <img src="images/guy_irkutsk.jpg" alt="Lovecut haircut" class="cl-photo-img" loading="eager">
                 <canvas class="pixel-fx-canvas"></canvas>
             </div>
 
             <!-- 5. Dark portrait cluster (to the left of guy with sunglasses) -->
             <div class="cl-photo cl-photo--dark" data-src="images/girl_glasses.png">
+                <img src="images/girl_glasses.png" alt="Lovecut haircut" class="cl-photo-img" loading="eager">
                 <canvas class="pixel-fx-canvas"></canvas>
             </div>
 
             <!-- 6. Graphic smile print (below flag) -->
             <div class="cl-photo cl-photo--smile" data-src="images/smile.png">
+                <img src="images/smile.png" alt="Lovecut print" class="cl-photo-img" loading="eager">
                 <canvas class="pixel-fx-canvas"></canvas>
             </div>
 
             <!-- 7. Texture directly below creepy smile face -->
             <div class="cl-photo cl-photo--texture" data-src="images/texture_pixel.png">
+                <img src="images/texture_pixel.png" alt="Lovecut texture" class="cl-photo-img" loading="eager">
                 <canvas class="pixel-fx-canvas"></canvas>
             </div>
 
             <!-- 8. Sitting guy photo stepped below and left of texture -->
             <div class="cl-photo cl-photo--sitting" data-src="images/guy_sitting.png">
+                <img src="images/guy_sitting.png" alt="Lovecut haircut" class="cl-photo-img" loading="eager">
                 <canvas class="pixel-fx-canvas"></canvas>
             </div>
 
             <!-- 9. Boy photo (right of creepy face, original high-res with 67 shaving) -->
             <div class="cl-photo cl-photo--boy67" data-src="images/boy67.png">
+                <img src="images/boy67.png" alt="Lovecut haircut" class="cl-photo-img" loading="eager">
                 <canvas class="pixel-fx-canvas"></canvas>
             </div>
 
             <!-- 10. Officer photo (far right, original high-res at desk) -->
             <div class="cl-photo cl-photo--officer" data-src="images/officer.png">
+                <img src="images/officer.png" alt="Lovecut photo" class="cl-photo-img" loading="eager">
                 <canvas class="pixel-fx-canvas"></canvas>
             </div>
         </div>

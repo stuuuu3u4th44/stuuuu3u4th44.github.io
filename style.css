@@ -376,6 +376,23 @@ body {
     padding: 20px 20px 60px;
 }
 
+.stage-pixel-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 14; /* seamlessly behind the 3 circles (z-index: 15) so text is 100% untouched, but above collage background (z-index: 10) */
+    image-rendering: pixelated;
+    display: block;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    transition: opacity 1.4s ease-out;
+    will-change: opacity;
+}
+
 /* ====================================================================
    ORGANIC BLOBS (MODELED AFTER THE BROWN AMORPHOUS BLOB IN REFERENCE)
    ==================================================================== */
@@ -398,7 +415,7 @@ body {
 
 .organic-blob__content {
     position: relative;
-    z-index: 2;
+    z-index: 20 !important;
     color: var(--ink-dark);
 }
 
@@ -493,6 +510,7 @@ body {
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.65);
     cursor: zoom-in;
     transition: transform 0.28s cubic-bezier(0.2, 0, 0.2, 1), box-shadow 0.28s ease, border-color 0.28s ease;
+    will-change: transform;
 }
 
 .cl-photo:hover {
@@ -502,12 +520,28 @@ body {
     z-index: 15 !important;
 }
 
-.cl-photo canvas {
+.cl-photo-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.cl-photo canvas.pixel-fx-canvas {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     display: block;
     image-rendering: pixelated;
     pointer-events: none;
+    z-index: 2;
+    transition: opacity 0.7s cubic-bezier(0.2, 0.8, 0.3, 1);
+    will-change: opacity;
 }
 
 /* 1. Redhead photo above flag (portrait 3:4: 114px x 152px) */
