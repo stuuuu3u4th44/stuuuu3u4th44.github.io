@@ -98,17 +98,38 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
+        getCoverCrop(w, h) {
+            const imgW = this.img.naturalWidth || this.img.width || 1;
+            const imgH = this.img.naturalHeight || this.img.height || 1;
+            const imgRatio = imgW / imgH;
+            const targetRatio = w / h;
+            let sx, sy, sw, sh;
+            if (imgRatio > targetRatio) {
+                sh = imgH;
+                sw = imgH * targetRatio;
+                sx = (imgW - sw) / 2;
+                sy = 0;
+            } else {
+                sw = imgW;
+                sh = imgW / targetRatio;
+                sx = 0;
+                sy = (imgH - sh) / 2;
+            }
+            return { sx: Math.round(sx), sy: Math.round(sy), sw: Math.round(sw), sh: Math.round(sh) };
+        }
+
         // Render with progress (0.0 = sharp, 1.0 = full initial pixelation)
         renderFrame(strengthFactor, globalProgress) {
             if (!this.isLoaded || !this.ctx) return;
             const ctx = this.ctx;
             const w = this.width;
             const h = this.height;
+            const crop = this.getCoverCrop(w, h);
 
             // Full crisp render if 0 progress
             if (globalProgress <= 0.001 || strengthFactor <= 0.01) {
                 ctx.imageSmoothingEnabled = true;
-                ctx.drawImage(this.img, 0, 0, w, h);
+                ctx.drawImage(this.img, crop.sx, crop.sy, crop.sw, crop.sh, 0, 0, w, h);
                 return;
             }
 
@@ -120,14 +141,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 const zoneProg = Math.max(0, Math.min(1, (globalProgress - zone.stagger * 0.4) / (1 - zone.stagger * 0.4)));
                 const currentPixelSize = Math.max(1, Math.round(zone.baseMaxPx * strengthFactor * zoneProg));
 
+                const srcX = crop.sx + (zone.x / w) * crop.sw;
+                const srcY = crop.sy + (zone.y / h) * crop.sh;
+                const srcW = (zone.w / w) * crop.sw;
+                const srcH = (zone.h / h) * crop.sh;
+
                 if (currentPixelSize <= 1) {
                     // Draw clean region
                     ctx.drawImage(
                         this.img,
-                        (zone.x / w) * this.img.naturalWidth,
-                        (zone.y / h) * this.img.naturalHeight,
-                        (zone.w / w) * this.img.naturalWidth,
-                        (zone.h / h) * this.img.naturalHeight,
+                        srcX, srcY, srcW, srcH,
                         zone.x, zone.y, zone.w, zone.h
                     );
                 } else {
@@ -145,10 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Downsample
                     offCtx.drawImage(
                         this.img,
-                        (zone.x / w) * this.img.naturalWidth,
-                        (zone.y / h) * this.img.naturalHeight,
-                        (zone.w / w) * this.img.naturalWidth,
-                        (zone.h / h) * this.img.naturalHeight,
+                        srcX, srcY, srcW, srcH,
                         0, 0, sampleW, sampleH
                     );
 
@@ -214,20 +234,6 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 layer.animateToSharp(duration, strength);
             }, idx * 45); // slight stagger across photos
-        });
-
-        // Trigger 3 messy circles (pixel-fade appearance)
-        messyCircles.forEach((circle, idx) => {
-            circle.style.opacity = '0';
-            circle.style.filter = `blur(${Math.round(8 * strength)}px)`;
-            circle.style.transform = `scale(${0.92 + (idx % 2 ? 0.05 : -0.05)})`;
-
-            setTimeout(() => {
-                circle.style.transition = `opacity ${duration}ms ease, filter ${duration}ms ease, transform ${duration}ms cubic-bezier(0.2, 0.9, 0.3, 1)`;
-                circle.style.opacity = '1';
-                circle.style.filter = 'blur(0px)';
-                circle.style.transform = idx === 0 ? 'rotate(-3deg)' : (idx === 1 ? 'rotate(2deg)' : 'rotate(4deg)');
-            }, 180 + idx * 160);
         });
     }
 

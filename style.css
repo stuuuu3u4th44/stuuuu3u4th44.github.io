@@ -60,6 +60,8 @@ body {
     pointer-events: none;
     z-index: 1;
     overflow: hidden;
+    filter: blur(55px);
+    transform: scale(1.05);
 }
 
 .bg-waves-canvas svg {
@@ -404,32 +406,36 @@ body {
 
 .organic-blob__content p {
     font-family: var(--font-body);
-    font-size: 1.05rem;
+    font-size: 1.08rem;
     font-weight: 600;
     color: var(--ink-dark);
-    line-height: 1.44;
+    line-height: 1.4;
     margin: 0;
 }
 
 /* Blob 1: Asymmetric organic placement (hugging top/left curve, spacious on right) */
 .organic-blob__content--1 {
-    padding: 55px 35px 35px 55px;
+    padding: 78px 30px 25px 50px;
     text-align: left;
     max-width: 360px;
+    line-height: 1.38;
 }
 
 /* Blob 2: Asymmetric organic placement (sits lower and left, irregular balance) */
 .organic-blob__content--2 {
-    padding: 65px 42px 40px 52px;
+    padding: 50px 28px 25px 50px;
     text-align: left;
-    max-width: 375px;
+    max-width: 390px;
+    line-height: 1.30;
+    font-size: 1.05rem;
 }
 
 /* Blob 3: Asymmetric organic placement (hugging top/left, space towards right tip) */
 .organic-blob__content--3 {
-    padding: 42px 65px 35px 42px;
+    padding: 62px 28px 25px 46px;
     text-align: left;
-    max-width: 345px;
+    max-width: 365px;
+    line-height: 1.38;
 }
 
 /* Blob 1: Top-Left */
@@ -443,19 +449,19 @@ body {
 
 /* Blob 2: Bottom-Left (clean, clear of any collage photos) */
 .organic-blob--2 {
-    bottom: 10px;
+    bottom: 5px;
     left: -20px;
-    width: 470px;
-    height: 395px;
+    width: 485px;
+    height: 410px;
     transform: rotate(2deg);
 }
 
 /* Blob 3: Middle-Right (positioned cleanly above the boy & officer photos so it never covers them) */
 .organic-blob--3 {
-    top: 60px;
+    top: 55px;
     right: -25px;
-    width: 440px;
-    height: 270px;
+    width: 465px;
+    height: 295px;
     transform: rotate(3deg);
 }
 
@@ -506,16 +512,16 @@ body {
     pointer-events: none;
 }
 
-/* 1. Redhead photo above flag (large portrait 3:4) */
+/* 1. Redhead photo above flag (portrait 3:4: 114px x 152px) */
 .cl-photo--redhead {
     top: 0;
-    left: 170px;
-    width: 120px;
-    height: 160px;
+    left: 175px;
+    width: 114px;
+    height: 152px;
     z-index: 2;
 }
 
-/* 2. Plaid fabric (portrait 3:4) */
+/* 2. Plaid fabric (portrait 3:4: 114px x 152px) */
 .cl-photo--plaid {
     top: 125px;
     left: 75px;
@@ -528,74 +534,74 @@ body {
 .cl-photo--flag {
     top: 220px;
     left: 70px;
-    width: 255px;
-    height: 150px;
+    width: 245px;
+    height: 153px;
     z-index: 5;
     border: 2px solid var(--vanilla);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.85);
 }
 
-/* 4. Guy with sunglasses & ИРКУТСК shirt (large portrait 3:4) */
+/* 4. Guy with sunglasses & ИРКУТСК shirt (portrait 3:4: 130px x 173px) */
 .cl-photo--guy {
     top: 190px;
     left: -25px;
-    width: 120px;
-    height: 160px;
+    width: 130px;
+    height: 173px;
     z-index: 6;
 }
 
-/* 5. Dark portrait (portrait 3:4) */
+/* 5. Dark portrait (portrait 3:4: 114px x 152px) */
 .cl-photo--dark {
     top: 200px;
     left: -145px;
-    width: 105px;
-    height: 140px;
+    width: 114px;
+    height: 152px;
     z-index: 6;
 }
 
-/* 6. Graphic smile print (below flag, portrait 3:4) */
+/* 6. Graphic smile print (below flag, portrait 3:4: 122px x 163px) */
 .cl-photo--smile {
     top: 340px;
-    left: 165px;
-    width: 135px;
-    height: 180px;
+    left: 170px;
+    width: 122px;
+    height: 163px;
     z-index: 6;
     border: 2px solid var(--vanilla);
 }
 
-/* 7. Texture (portrait 3:4) */
+/* 7. Texture (portrait 3:4: 110px x 146px) */
 .cl-photo--texture {
     top: 495px;
     left: 105px;
-    width: 105px;
-    height: 140px;
+    width: 110px;
+    height: 146px;
     z-index: 5;
 }
 
-/* 8. Boy photo (original high-res with 67 shaving, portrait 3:4) */
+/* 8. Boy photo (original high-res with 67 shaving, portrait 3:4: 130px x 173px) */
 .cl-photo--boy67 {
-    top: 360px;
-    left: 325px;
-    width: 105px;
-    height: 140px;
+    top: 355px;
+    left: 315px;
+    width: 130px;
+    height: 173px;
     z-index: 8;
 }
 
-/* 9. Military officer photo / трудовик (small portrait 3:4) */
+/* 9. Military officer photo / трудовик (portrait 3:4: 118px x 157px) */
 .cl-photo--officer {
-    top: 350px;
-    left: 445px;
-    width: 90px;
-    height: 120px;
+    top: 360px;
+    left: 460px;
+    width: 118px;
+    height: 157px;
     z-index: 8;
 }
 
-/* 10. Sitting guy photo (portrait 3:4) */
+/* 10. Sitting guy photo (portrait 3:4: 110px x 146px) */
 .cl-photo--sitting {
     top: 595px;
     left: 45px;
-    width: 105px;
-    height: 140px;
+    width: 110px;
+    height: 146px;
     z-index: 6;
 }
 
