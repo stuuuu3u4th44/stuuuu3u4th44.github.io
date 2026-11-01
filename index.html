@@ -260,15 +260,15 @@
                     </div>
                 </div>
             </div>
-            <div class="footer-box" tabindex="-1">
+                        <button class="footer-box footer-box--btn" id="faqBtn" type="button">
                 <span class="footer-box-title">faq</span>
-            </div>
-            <div class="footer-box" tabindex="-1">
+            </button>
+            <button class="footer-box footer-box--btn" id="reviewsBtn" type="button">
                 <span class="footer-box-title">отзывы</span>
-            </div>
-            <div class="footer-box" tabindex="-1">
+            </button>
+            <button class="footer-box footer-box--btn" id="aboutBtn" type="button">
                 <span class="footer-box-title">о нас</span>
-            </div>
+            </button>
         </div>
     </footer>
 
@@ -297,25 +297,49 @@
                 <button class="popup-modal__close-btn" data-close-modal>&times;</button>
             </div>
             <div class="examples-showcase-grid">
-                <div class="ex-tile">
-                    <span class="ex-slot-icon">+</span>
-                </div>
-                <div class="ex-tile">
-                    <span class="ex-slot-icon">+</span>
-                </div>
-                <div class="ex-tile">
-                    <span class="ex-slot-icon">+</span>
-                </div>
-                <div class="ex-tile">
-                    <span class="ex-slot-icon">+</span>
-                </div>
-                <div class="ex-tile">
-                    <span class="ex-slot-icon">+</span>
-                </div>
-                <div class="ex-tile">
-                    <span class="ex-slot-icon">+</span>
-                </div>
+                <div class="ex-tile"></div>
+                <div class="ex-tile"></div>
+                <div class="ex-tile"></div>
+                <div class="ex-tile"></div>
+                <div class="ex-tile"></div>
+                <div class="ex-tile"></div>
             </div>
+        </div>
+    </div>
+
+    <!-- ===== FAQ POPUP MODAL ===== -->
+    <div class="popup-modal" id="faqModal" aria-hidden="true">
+        <div class="popup-modal__backdrop" data-close-modal></div>
+        <div class="popup-modal__window">
+            <div class="popup-modal__header">
+                <span class="popup-modal__title">faq</span>
+                <button class="popup-modal__close-btn" data-close-modal>&times;</button>
+            </div>
+            <div class="popup-modal__body popup-modal__body--empty"></div>
+        </div>
+    </div>
+
+    <!-- ===== REVIEWS POPUP MODAL ===== -->
+    <div class="popup-modal" id="reviewsModal" aria-hidden="true">
+        <div class="popup-modal__backdrop" data-close-modal></div>
+        <div class="popup-modal__window">
+            <div class="popup-modal__header">
+                <span class="popup-modal__title">отзывы</span>
+                <button class="popup-modal__close-btn" data-close-modal>&times;</button>
+            </div>
+            <div class="popup-modal__body popup-modal__body--empty"></div>
+        </div>
+    </div>
+
+    <!-- ===== ABOUT US POPUP MODAL ===== -->
+    <div class="popup-modal" id="aboutModal" aria-hidden="true">
+        <div class="popup-modal__backdrop" data-close-modal></div>
+        <div class="popup-modal__window">
+            <div class="popup-modal__header">
+                <span class="popup-modal__title">о нас</span>
+                <button class="popup-modal__close-btn" data-close-modal>&times;</button>
+            </div>
+            <div class="popup-modal__body popup-modal__body--empty"></div>
         </div>
     </div>
 

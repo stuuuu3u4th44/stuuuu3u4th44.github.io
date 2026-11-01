@@ -240,35 +240,42 @@ body {
 }
 
 .action-box--location {
-    padding: 16px 24px;
-    width: 250px;
+    padding: 12px 26px;
+    width: auto;
+    min-width: 320px;
     min-height: 95px;
     cursor: default;
 }
 
 .loc-text {
-    font-family: var(--font-body);
-    font-size: 0.88rem;
-    font-weight: 600;
+    font-family: var(--font-deco);
+    font-size: 1.45rem;
+    font-weight: 700;
     color: var(--ink-dark);
-    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
     text-align: center;
+    margin: 0;
+    white-space: nowrap;
 }
 
 .loc-link-btn {
     font-family: var(--font-body);
-    font-size: 0.88rem;
-    font-weight: 700;
+    font-size: 0.78rem;
+    font-weight: 600;
     color: var(--ink-dark);
+    opacity: 0.75;
     text-decoration: underline;
     background: none;
     border: none;
     cursor: pointer;
-    transition: color 0.2s;
+    margin-top: 6px;
+    transition: opacity 0.2s ease, color 0.2s ease;
 }
 
 .loc-link-btn:hover {
-    color: #4a2810;
+    opacity: 1;
+    color: #2b3377;
 }
 
 .action-box--booking,
@@ -728,6 +735,32 @@ body {
     text-transform: lowercase;
 }
 
+.footer-box--btn {
+    cursor: pointer;
+    font-family: inherit;
+    text-align: left;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.2s ease;
+}
+
+.footer-box--btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(8, 10, 26, 0.6);
+    background-color: var(--vanilla-tint);
+}
+
+.footer-box--btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 6px rgba(8, 10, 26, 0.5);
+}
+
+.popup-modal__body {
+    padding: 30px;
+}
+
+.popup-modal__body--empty {
+    min-height: 220px;
+}
+
 /* ====================================================================
    POPUP MODALS (MAP & EXAMPLES)
    ==================================================================== */
@@ -821,33 +854,16 @@ body {
     overflow: hidden;
     height: 240px;
     border-radius: 16px;
-    border: 2px dashed rgba(250, 236, 212, 0.35);
-    background-color: #161b42;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    border: 2px dashed rgba(250, 236, 212, 0.22);
+    background-color: #14183d;
     cursor: default;
     transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
 }
 
 .ex-tile:hover {
     transform: translateY(-3px);
-    border-color: var(--vanilla);
-    background-color: #1c2254;
-}
-
-.ex-slot-icon {
-    font-family: var(--font-deco);
-    font-size: 2.5rem;
-    font-weight: 300;
-    color: rgba(250, 236, 212, 0.4);
-    transition: transform 0.2s ease, color 0.2s ease;
-    user-select: none;
-}
-
-.ex-tile:hover .ex-slot-icon {
-    transform: scale(1.15);
-    color: var(--vanilla);
+    border-color: rgba(250, 236, 212, 0.45);
+    background-color: #191f4c;
 }
 
 /* ====================================================================

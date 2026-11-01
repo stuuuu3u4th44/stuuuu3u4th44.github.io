@@ -1,4 +1,4 @@
-/* ====================================================================
+﻿/* ====================================================================
    LOVECUT — Interactive & Multi-Scale Heterogeneous Pixelation Engine
    
    Features:
@@ -404,6 +404,22 @@ document.addEventListener('DOMContentLoaded', () => {
             examplesModal.classList.add('active');
         });
     }
+
+    // Footer Modals (FAQ, Reviews, About Us)
+    [
+        { btnId: 'faqBtn', modalId: 'faqModal' },
+        { btnId: 'reviewsBtn', modalId: 'reviewsModal' },
+        { btnId: 'aboutBtn', modalId: 'aboutModal' }
+    ].forEach(({ btnId, modalId }) => {
+        const btn = document.getElementById(btnId);
+        const modal = document.getElementById(modalId);
+        if (btn && modal) {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                modal.classList.add('active');
+            });
+        }
+    });
 
     // Generic Modal Close via [data-close-modal]
     document.addEventListener('click', (e) => {
