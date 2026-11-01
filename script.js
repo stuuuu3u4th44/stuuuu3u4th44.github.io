@@ -1,4 +1,4 @@
-﻿/* ====================================================================
+/* ====================================================================
    LOVECUT — Interactive & Multi-Scale Heterogeneous Pixelation Engine
    
    Features:
@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
             this.src = container.dataset.src;
             this.img = new Image();
             this.isLoaded = false;
+            this.pendingWave = null;
             this.zones = [];
             this.animating = false;
             this.rafId = null;
@@ -43,18 +44,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
         init() {
             if (!this.canvas || !this.ctx || !this.src) return;
-            this.img.onload = () => {
+            const onReady = () => {
+                if (this.isLoaded) return;
                 this.isLoaded = true;
                 this.resizeCanvas();
                 this.setupZones();
-                // Crisp clear default state on initial visit (no stuck pixel bug)
-                this.renderFrame(0.0, 0.0);
+                if (this.pendingWave) {
+                    const { duration, strengthFactor } = this.pendingWave;
+                    this.pendingWave = null;
+                    this.animatePixelWave(duration, strengthFactor);
+                } else {
+                    // Crisp clear default state on initial visit (no stuck pixel bug)
+                    this.renderFrame(0.0, 0.0);
+                }
             };
+            this.img.onload = onReady;
             if (this.img.complete && this.img.naturalWidth > 0) {
-                this.isLoaded = true;
-                this.resizeCanvas();
-                this.setupZones();
-                this.renderFrame(0.0, 0.0);
+                onReady();
             }
             this.img.src = this.src;
 
@@ -196,7 +202,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Dynamic pixel wave: bursts into chunky pixels and smoothly resolves to crisp
         animatePixelWave(duration = 2000, strengthFactor = 1.0) {
-            if (!this.isLoaded || !this.ctx) return;
+            if (!this.ctx) return;
+            if (!this.isLoaded) {
+                this.pendingWave = { duration, strengthFactor };
+                return;
+            }
             if (this.rafId) cancelAnimationFrame(this.rafId);
 
             this.animating = true;
@@ -266,17 +276,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ====================================================================
-       2. SCROLL TRIGGER WITH DIMINISHING REPEATS FOR MIDDLE SECTION
+       2. SCROLL TRIGGER & REPEAT WAVE FOR MIDDLE SECTION
        ==================================================================== */
     const collageStage = document.getElementById('collageStage');
-    let middleVisitCount = 0;
-    let isCurrentlyInMiddle = false;
+    let hasAnimatedOnView = false;
+    let lastTriggerTime = 0;
 
     function triggerMiddlePixelation() {
+        const now = Date.now();
+        lastTriggerTime = now;
         // Trigger photos with pleasant organic stagger across photos
         pixelLayers.forEach((layer, idx) => {
             setTimeout(() => {
-                layer.animatePixelWave(2000, 1.0);
+                layer.animatePixelWave(2200, 1.0);
             }, idx * 45);
         });
     }
@@ -298,6 +310,30 @@ document.addEventListener('DOMContentLoaded', () => {
             triggerMiddlePixelation();
         });
     }
+
+    // Auto-pixelation on site refresh / scroll near circles
+    if (collageStage) {
+        const middleObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (!hasAnimatedOnView && (Date.now() - lastTriggerTime > 2500)) {
+                        hasAnimatedOnView = true;
+                        // Organic pixelation wave on every refresh / entry to the circles section
+                        triggerMiddlePixelation();
+                    }
+                } else {
+                    hasAnimatedOnView = false; // Reset so returning to the section triggers again
+                }
+            });
+        }, { threshold: 0.10 });
+
+        middleObserver.observe(collageStage);
+    }
+
+    // Initial smooth pixelation wave on page load as requested
+    setTimeout(() => {
+        triggerMiddlePixelation();
+    }, 400);
 
     photoContainers.forEach(container => {
         container.addEventListener('click', () => {
