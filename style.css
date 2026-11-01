@@ -240,11 +240,17 @@ body {
 }
 
 .action-box--location {
-    padding: 12px 26px;
+    position: relative;
+    padding: 0 26px;
     width: auto;
-    min-width: 320px;
+    min-width: 330px;
+    height: 95px;
     min-height: 95px;
-    cursor: default;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .loc-text {
@@ -253,13 +259,17 @@ body {
     font-weight: 700;
     color: var(--ink-dark);
     letter-spacing: -0.5px;
-    line-height: 1.2;
+    line-height: 1;
     text-align: center;
     margin: 0;
     white-space: nowrap;
 }
 
 .loc-link-btn {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
     font-family: var(--font-body);
     font-size: 0.78rem;
     font-weight: 600;
@@ -269,7 +279,7 @@ body {
     background: none;
     border: none;
     cursor: pointer;
-    margin-top: 6px;
+    white-space: nowrap;
     transition: opacity 0.2s ease, color 0.2s ease;
 }
 
@@ -281,17 +291,24 @@ body {
 .action-box--booking,
 .action-box--examples {
     width: 230px;
+    height: 95px;
     min-height: 95px;
-    padding: 10px 20px;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .action-title {
     font-family: var(--font-deco);
     color: var(--ink-dark);
     letter-spacing: -0.5px;
-    text-transform: lowercase;
+    text-transform: none;
     font-size: 1.45rem;
     font-weight: 700;
+    line-height: 1;
+    margin: 0;
 }
 
 .action-title--lg,
@@ -732,7 +749,7 @@ body {
     font-size: 0.88rem;
     font-weight: 700;
     color: var(--ink-dark);
-    text-transform: lowercase;
+    text-transform: none;
 }
 
 .footer-box--btn {
@@ -765,35 +782,82 @@ body {
    POPUP MODALS (MAP & EXAMPLES)
    ==================================================================== */
 .popup-modal {
-    display: none;
     position: fixed;
     inset: 0;
     z-index: 9999;
+    display: flex;
     align-items: center;
     justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .popup-modal.active {
-    display: flex;
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
 }
 
 .popup-modal__backdrop {
     position: absolute;
     inset: 0;
-    background-color: rgba(6, 7, 20, 0.92);
-    backdrop-filter: blur(6px);
+    background-color: rgba(10, 13, 34, 0.94);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    opacity: 0;
+    transition: opacity 0.22s ease-out;
+}
+
+.popup-modal.active .popup-modal__backdrop {
+    opacity: 1;
 }
 
 .popup-modal__window {
     position: relative;
     width: 90%;
-    max-width: 700px;
+    max-width: 760px;
     background-color: #121638;
     border: 3px solid var(--vanilla);
-    border-radius: 16px;
-    box-shadow: 0 10px 35px rgba(8, 10, 26, 0.85);
+    border-radius: 18px;
+    box-shadow: 0 16px 48px rgba(6, 8, 24, 0.9);
     z-index: 2;
     overflow: hidden;
+    transform: scale(0.92) translateY(12px);
+    opacity: 0;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.22s ease-out;
+    will-change: transform, opacity;
+}
+
+.popup-modal.active .popup-modal__window {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+}
+
+.popup-modal__header-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.popup-modal__external-link {
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--ink-dark);
+    text-decoration: none;
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: 1.5px solid var(--border-dark);
+    background: rgba(14, 18, 48, 0.06);
+    transition: all 0.18s ease;
+}
+
+.popup-modal__external-link:hover {
+    background: var(--ink-dark);
+    color: var(--vanilla);
+    transform: translateY(-1px);
 }
 
 .popup-modal__window--wide {
@@ -816,7 +880,7 @@ body {
     font-size: 1.3rem;
     font-weight: 700;
     color: var(--ink-dark);
-    text-transform: lowercase;
+    text-transform: none;
     letter-spacing: -0.3px;
 }
 

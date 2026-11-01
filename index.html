@@ -87,12 +87,12 @@
 
             <!-- 2. Booking button (large) -->
             <button class="action-box action-box--booking" id="bookingBtn">
-                <span class="action-title action-title--lg">запись</span>
+                <span class="action-title action-title--lg">Запись</span>
             </button>
 
             <!-- 3. Examples button -->
             <button class="action-box action-box--examples" id="examplesBtn">
-                <span class="action-title action-title--md">примеры</span>
+                <span class="action-title action-title--md">Примеры</span>
             </button>
         </div>
     </section>
@@ -282,9 +282,21 @@
             </div>
             <div class="popup-modal__map-frame">
                 <iframe id="mapFrame" src="about:blank"
-                    data-lazy-src="https://yandex.ru/map-widget/v1/?ll=104.281339%2C52.289584&z=16&pt=104.281339%2C52.289584%2Cpm2rdm"
+                    data-lazy-src="https://maps.google.com/maps?q=Иркутск,+ул.+Литвинова,+18&amp;t=&amp;z=17&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
                     width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
             </div>
+        </div>
+    </div>
+
+    <!-- ===== BOOKING POPUP MODAL ===== -->
+    <div class="popup-modal" id="bookingModal" aria-hidden="true">
+        <div class="popup-modal__backdrop" data-close-modal></div>
+        <div class="popup-modal__window">
+            <div class="popup-modal__header">
+                <span class="popup-modal__title">онлайн-запись</span>
+                <button class="popup-modal__close-btn" data-close-modal>&times;</button>
+            </div>
+            <div class="popup-modal__body popup-modal__body--empty"></div>
         </div>
     </div>
 
