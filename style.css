@@ -24,6 +24,7 @@
     --border-dark: #161b42;
     --font-logo: 'Playfair Display', serif;
     --font-body: 'Inter', sans-serif;
+    --font-readable: 'Inter', sans-serif;
     --font-deco: 'Unbounded', sans-serif;
 }
 
@@ -94,6 +95,11 @@ body {
     box-shadow: 0 4px 14px rgba(8, 10, 26, 0.55);
     border: 1px solid rgba(250, 236, 212, 0.12);
     background-color: #121638;
+}
+
+.bento-card:empty {
+    visibility: hidden;
+    pointer-events: none;
 }
 
 .bento-img {
@@ -752,6 +758,20 @@ body {
     text-transform: none;
 }
 
+.footer-box-desc {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    font-family: var(--font-readable);
+    font-size: 0.80rem;
+    line-height: 1.35;
+    color: var(--ink-dark);
+    opacity: 0.78;
+    font-weight: 500;
+}
+
+
 .footer-box--btn {
     cursor: pointer;
     font-family: inherit;
@@ -996,26 +1016,34 @@ body {
 
 .photo-inspector__viewport {
     position: relative;
-    max-width: 88vw;
-    max-height: 82vh;
+    max-width: min(390px, 86vw);
+    max-height: min(350px, 58vh);
+    width: auto;
+    height: auto;
     overflow: hidden;
     border-radius: 14px;
     border: 2.5px solid var(--vanilla);
     background: #121638;
-    box-shadow: 0 24px 60px rgba(8, 10, 26, 0.95);
-    display: flex;
+    box-shadow: 0 20px 50px rgba(8, 10, 26, 0.95);
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    padding: 6px;
+    line-height: 0;
 }
 
 .photo-inspector__img {
-    max-width: 100%;
-    max-height: 82vh;
+    max-width: min(378px, calc(86vw - 12px));
+    max-height: min(338px, calc(58vh - 12px));
+    width: auto;
+    height: auto;
     object-fit: contain;
+    border-radius: 9px;
     display: block;
     user-select: none;
     -webkit-user-drag: none;
+    image-rendering: auto;
     transition: transform 0.25s ease;
 }
 
