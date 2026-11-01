@@ -191,9 +191,14 @@ body {
     text-shadow: 1px 1px 0px rgba(8, 10, 26, 0.12);
 }
 
-/* Row 3 bottom wide cards */
+/* Row 3 bottom photos */
 .bento-card--col2-bot {
-    grid-column: 2 / 4;
+    grid-column: 2;
+    grid-row: 3;
+}
+
+.bento-card--col3-bot {
+    grid-column: 3;
     grid-row: 3;
 }
 
@@ -444,12 +449,11 @@ body {
 }
 
 .organic-blob__content p {
-    font-family: var(--font-body);
-    font-size: 1.05rem;
-    font-weight: 500;
+    font-family: var(--font-deco);
+    font-weight: 700;
     color: var(--ink-dark);
-    line-height: 1.45;
     margin: 0;
+    letter-spacing: -0.015em;
 }
 
 .blob-line {
@@ -459,67 +463,70 @@ body {
 
 /* Blob 1: Top-Left creative contoured lines */
 .organic-blob__content--1 {
-    padding: 78px 30px 25px 48px;
+    padding: 80px 30px 25px 44px;
     text-align: left;
-    max-width: 370px;
-    line-height: 1.42;
+    max-width: 420px;
+    line-height: 1.4;
+    font-size: 0.98rem;
 }
 .blob-line--1-1 { margin-left: 1.2em; }
 .blob-line--1-2 { margin-left: 0.3em; }
 .blob-line--1-3 { margin-left: 0em; }
-.blob-line--1-4 { margin-left: 1.4em; }
-.blob-line--1-5 { margin-left: 2.6em; }
+.blob-line--1-4 { margin-left: 0.6em; }
+.blob-line--1-5 { margin-left: 1.5em; }
+.blob-line--1-6 { margin-left: 2.8em; }
 
-/* Blob 2: Bottom-Left (exact contoured placement matching user photo reference) */
+/* Blob 2: Bottom-Left (larger, exact contoured stair-step matching user reference) */
 .organic-blob__content--2 {
-    padding: 50px 25px 25px 44px;
+    padding: 52px 25px 25px 36px;
     text-align: left;
-    max-width: 400px;
-    line-height: 1.34;
-    font-size: 1.04rem;
+    max-width: 460px;
+    line-height: 1.33;
+    font-size: 1.02rem;
 }
-.blob-line--2-1 { margin-left: 0.55em; }
+.blob-line--2-1 { margin-left: 0.6em; }
 .blob-line--2-2 { margin-left: 0em; }
 .blob-line--2-3 { margin-left: 0em; }
-.blob-line--2-4 { margin-left: 2.1em; }
-.blob-line--2-5 { margin-left: 4.2em; }
-.blob-line--2-6 { margin-left: 8.5em; }
-.blob-line--2-7 { margin-left: 8.4em; }
+.blob-line--2-4 { margin-left: 1.2em; }
+.blob-line--2-5 { margin-left: 2.4em; }
+.blob-line--2-6 { margin-left: 4.8em; }
+.blob-line--2-7 { margin-left: 4.2em; }
 
 /* Blob 3: Middle-Right creative contoured lines */
 .organic-blob__content--3 {
-    padding: 62px 28px 25px 46px;
+    padding: 68px 28px 25px 46px;
     text-align: left;
-    max-width: 375px;
+    max-width: 420px;
     line-height: 1.42;
+    font-size: 0.98rem;
 }
 .blob-line--3-1 { margin-left: 0.8em; }
 .blob-line--3-2 { margin-left: 0em; }
-.blob-line--3-3 { margin-left: 1.2em; }
-.blob-line--3-4 { margin-left: 2.8em; }
+.blob-line--3-3 { margin-left: 1.0em; }
+.blob-line--3-4 { margin-left: 2.2em; }
 
 /* Blob 1: Top-Left */
 .organic-blob--1 {
     top: -10px;
     left: 0px;
-    width: 440px;
-    height: 365px;
+    width: 460px;
+    height: 385px;
 }
 
-/* Blob 2: Bottom-Left (clean, clear of any collage photos) */
+/* Blob 2: Bottom-Left (enlarged, prominent rules blob) */
 .organic-blob--2 {
-    bottom: 5px;
+    bottom: -15px;
     left: -20px;
-    width: 485px;
-    height: 410px;
+    width: 520px;
+    height: 440px;
 }
 
 /* Blob 3: Middle-Right */
 .organic-blob--3 {
-    top: 55px;
+    top: 50px;
     right: -25px;
-    width: 465px;
-    height: 295px;
+    width: 475px;
+    height: 365px;
 }
 
 .fake-btn-link {
@@ -1121,7 +1128,8 @@ body {
     .bento-card--col6-top { grid-column: 3; grid-row: 3; height: 130px; }
     .bento-card--col6-mid { grid-column: 4; grid-row: 3; height: 130px; }
     
-    .bento-card--col2-bot { grid-column: 1 / 3; grid-row: 4; height: 120px; }
+    .bento-card--col2-bot { grid-column: 1; grid-row: 4; height: 120px; }
+    .bento-card--col3-bot { grid-column: 2; grid-row: 4; height: 120px; }
     .bento-card--col4-bot { grid-column: 3 / 5; grid-row: 4; height: 120px; }
 
     .organic-blob--1 { left: 0px; width: 360px; height: 320px; }
@@ -1145,7 +1153,8 @@ body {
     .bento-card--col1-mid { display: none; }
     .bento-card--col6-mid { display: none; }
     .bento-card--col2-bot { grid-column: 1; grid-row: 5; height: 110px; }
-    .bento-card--col4-bot { grid-column: 2; grid-row: 5; height: 110px; }
+    .bento-card--col3-bot { grid-column: 2; grid-row: 5; height: 110px; }
+    .bento-card--col4-bot { grid-column: 1 / 3; grid-row: 6; height: 110px; }
 
     .action-blocks-container {
         flex-direction: column;
