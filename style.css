@@ -408,7 +408,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.9, 0.3, 1), filter 0.8s ease;
+    transform: none;
+    transition: opacity 0.8s ease, filter 0.8s ease;
 }
 
 .organic-blob-svg {
@@ -417,47 +418,85 @@ body {
     width: 100%;
     height: 100%;
     pointer-events: none;
+    transition: transform 0.8s cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+
+.organic-blob--1 .organic-blob-svg {
+    transform: rotate(-3deg);
+}
+
+.organic-blob--2 .organic-blob-svg {
+    transform: rotate(2deg);
+}
+
+.organic-blob--3 .organic-blob-svg {
+    transform: rotate(3deg);
 }
 
 .organic-blob__content {
     position: relative;
     z-index: 20 !important;
     color: var(--ink-dark);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    transform: none !important;
 }
 
 .organic-blob__content p {
     font-family: var(--font-body);
-    font-size: 1.08rem;
-    font-weight: 600;
+    font-size: 1.05rem;
+    font-weight: 500;
     color: var(--ink-dark);
-    line-height: 1.4;
+    line-height: 1.45;
     margin: 0;
 }
 
-/* Blob 1: Asymmetric organic placement (hugging top/left curve, spacious on right) */
+.blob-line {
+    display: block;
+    white-space: nowrap;
+}
+
+/* Blob 1: Top-Left creative contoured lines */
 .organic-blob__content--1 {
-    padding: 78px 30px 25px 50px;
+    padding: 78px 30px 25px 48px;
     text-align: left;
-    max-width: 360px;
-    line-height: 1.38;
+    max-width: 370px;
+    line-height: 1.42;
 }
+.blob-line--1-1 { margin-left: 1.2em; }
+.blob-line--1-2 { margin-left: 0.3em; }
+.blob-line--1-3 { margin-left: 0em; }
+.blob-line--1-4 { margin-left: 1.4em; }
+.blob-line--1-5 { margin-left: 2.6em; }
 
-/* Blob 2: Asymmetric organic placement (sits lower and left, irregular balance) */
+/* Blob 2: Bottom-Left (exact contoured placement matching user photo reference) */
 .organic-blob__content--2 {
-    padding: 50px 28px 25px 50px;
+    padding: 50px 25px 25px 44px;
     text-align: left;
-    max-width: 390px;
-    line-height: 1.30;
-    font-size: 1.05rem;
+    max-width: 400px;
+    line-height: 1.34;
+    font-size: 1.04rem;
 }
+.blob-line--2-1 { margin-left: 0.55em; }
+.blob-line--2-2 { margin-left: 0em; }
+.blob-line--2-3 { margin-left: 0em; }
+.blob-line--2-4 { margin-left: 2.1em; }
+.blob-line--2-5 { margin-left: 4.2em; }
+.blob-line--2-6 { margin-left: 8.5em; }
+.blob-line--2-7 { margin-left: 8.4em; }
 
-/* Blob 3: Asymmetric organic placement (hugging top/left, space towards right tip) */
+/* Blob 3: Middle-Right creative contoured lines */
 .organic-blob__content--3 {
     padding: 62px 28px 25px 46px;
     text-align: left;
-    max-width: 365px;
-    line-height: 1.38;
+    max-width: 375px;
+    line-height: 1.42;
 }
+.blob-line--3-1 { margin-left: 0.8em; }
+.blob-line--3-2 { margin-left: 0em; }
+.blob-line--3-3 { margin-left: 1.2em; }
+.blob-line--3-4 { margin-left: 2.8em; }
 
 /* Blob 1: Top-Left */
 .organic-blob--1 {
@@ -465,7 +504,6 @@ body {
     left: 0px;
     width: 440px;
     height: 365px;
-    transform: rotate(-3deg);
 }
 
 /* Blob 2: Bottom-Left (clean, clear of any collage photos) */
@@ -474,16 +512,14 @@ body {
     left: -20px;
     width: 485px;
     height: 410px;
-    transform: rotate(2deg);
 }
 
-/* Blob 3: Middle-Right (positioned cleanly above the boy & officer photos so it never covers them) */
+/* Blob 3: Middle-Right */
 .organic-blob--3 {
     top: 55px;
     right: -25px;
     width: 465px;
     height: 295px;
-    transform: rotate(3deg);
 }
 
 .fake-btn-link {
@@ -762,13 +798,13 @@ body {
     margin-top: 10px;
     display: flex;
     flex-direction: column;
-    gap: 3px;
-    font-family: var(--font-readable);
-    font-size: 0.80rem;
-    line-height: 1.35;
+    gap: 5px;
+    font-family: var(--font-deco);
+    font-size: 0.74rem;
+    font-weight: 700;
     color: var(--ink-dark);
-    opacity: 0.78;
-    font-weight: 500;
+    opacity: 0.85;
+    line-height: 1.4;
 }
 
 
