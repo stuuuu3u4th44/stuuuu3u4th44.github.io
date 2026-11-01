@@ -47,9 +47,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.isLoaded = true;
                 this.resizeCanvas();
                 this.setupZones();
-                // Draw initial strong heterogeneous pixelated state
-                this.renderFrame(1.0, 1.0);
+                // Crisp clear default state on initial visit (no stuck pixel bug)
+                this.renderFrame(0.0, 0.0);
             };
+            if (this.img.complete && this.img.naturalWidth > 0) {
+                this.isLoaded = true;
+                this.resizeCanvas();
+                this.setupZones();
+                this.renderFrame(0.0, 0.0);
+            }
             this.img.src = this.src;
 
             window.addEventListener('resize', () => {
@@ -188,6 +194,41 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
+                // Dynamic pixel wave: bursts into chunky pixels and smoothly resolves to crisp
+        animatePixelWave(duration = 2000, strengthFactor = 1.0) {
+            if (!this.isLoaded || !this.ctx) return;
+            if (this.rafId) cancelAnimationFrame(this.rafId);
+
+            this.animating = true;
+            const startTime = performance.now();
+
+            const step = (now) => {
+                const elapsed = now - startTime;
+                const progress = Math.min(1, elapsed / duration);
+
+                let waveFactor;
+                if (progress < 0.16) {
+                    // Quick burst into pixels (0 -> 1 over first 16% ~320ms)
+                    waveFactor = progress / 0.16;
+                } else {
+                    // Smooth decay from chunky pixels back to razor-sharp (1 -> 0 with cubic ease-out)
+                    const decayProgress = (progress - 0.16) / 0.84;
+                    waveFactor = 1 - Math.pow(decayProgress, 2.2);
+                }
+
+                this.renderFrame(strengthFactor, waveFactor);
+
+                if (progress < 1) {
+                    this.rafId = requestAnimationFrame(step);
+                } else {
+                    this.animating = false;
+                    this.rafId = null;
+                    this.renderFrame(0, 0); // Always 100% crisp at end
+                }
+            };
+            this.rafId = requestAnimationFrame(step);
+        }
+
         // Animate from initial chunky pixels to crisp image
         animateToSharp(duration = 2400, strengthFactor = 1.0) {
             if (!this.isLoaded || !this.ctx) return;
@@ -231,47 +272,32 @@ document.addEventListener('DOMContentLoaded', () => {
     let middleVisitCount = 0;
     let isCurrentlyInMiddle = false;
 
-    function triggerMiddlePixelation(isFirstTime) {
-        middleVisitCount++;
-        // Diminishing strength each time: 1.0 -> 0.45 -> 0.25 -> 0.12
-        const strength = isFirstTime ? 1.0 : Math.max(0.15, 1.0 / (middleVisitCount * 1.5));
-        const duration = isFirstTime ? 2200 : Math.max(800, 2200 / (middleVisitCount * 1.2));
-
-        // Trigger photos with slight stagger across photos
+    function triggerMiddlePixelation() {
+        // Trigger photos with pleasant organic stagger across photos
         pixelLayers.forEach((layer, idx) => {
             setTimeout(() => {
-                layer.animateToSharp(duration, strength);
-            }, idx * 40);
+                layer.animatePixelWave(2000, 1.0);
+            }, idx * 45);
         });
     }
 
-    if (collageStage) {
-        const middleObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    if (!isCurrentlyInMiddle) {
-                        isCurrentlyInMiddle = true;
-                        triggerMiddlePixelation(middleVisitCount === 0);
-                    }
-                } else {
-                    isCurrentlyInMiddle = false;
-                }
-            });
-        }, { threshold: 0.18 });
+    // Interactive button trigger with tactile press feedback and subsequent pixelation
+    const pixelTriggerBtn = document.getElementById('pixelTriggerBtn');
+    if (pixelTriggerBtn) {
+        pixelTriggerBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
 
-        middleObserver.observe(collageStage);
+            // 1. Button press tactile feedback
+            pixelTriggerBtn.classList.add('is-pressed');
+            setTimeout(() => {
+                pixelTriggerBtn.classList.remove('is-pressed');
+            }, 180);
+
+            // 2. Subsequent pixelation wave across all photos
+            triggerMiddlePixelation();
+        });
     }
-
-    // Interactive Trigger: Clicking any photo or blob produces a fresh pixel dissolve wave!
-    ['blob1', 'blob2', 'blob3'].forEach(id => {
-        const blobEl = document.getElementById(id);
-        if (blobEl) {
-            blobEl.style.cursor = 'pointer';
-            blobEl.addEventListener('click', () => {
-                triggerMiddlePixelation(false);
-            });
-        }
-    });
 
     photoContainers.forEach(container => {
         container.addEventListener('click', () => {
