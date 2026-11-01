@@ -280,17 +280,28 @@ document.addEventListener('DOMContentLoaded', () => {
        ==================================================================== */
     const collageStage = document.getElementById('collageStage');
     let hasAnimatedOnView = false;
+    let isWaveRunning = false;
     let lastTriggerTime = 0;
 
-    function triggerMiddlePixelation() {
+    function triggerMiddlePixelation(force = false) {
         const now = Date.now();
+        // Prevent double-running or overlapping waves
+        if (!force && isWaveRunning && (now - lastTriggerTime < 2400)) {
+            return;
+        }
+        isWaveRunning = true;
         lastTriggerTime = now;
+
         // Trigger photos with pleasant organic stagger across photos
         pixelLayers.forEach((layer, idx) => {
             setTimeout(() => {
                 layer.animatePixelWave(2200, 1.0);
             }, idx * 45);
         });
+
+        setTimeout(() => {
+            isWaveRunning = false;
+        }, 2200 + (pixelLayers.length * 45));
     }
 
     // Interactive button trigger with tactile press feedback and subsequent pixelation
@@ -307,33 +318,27 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 180);
 
             // 2. Subsequent pixelation wave across all photos
-            triggerMiddlePixelation();
+            triggerMiddlePixelation(true);
         });
     }
 
-    // Auto-pixelation on site refresh / scroll near circles
+    // Auto-pixelation: fires exactly ONCE when the user views the circles section or refreshes on it
     if (collageStage) {
         const middleObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    if (!hasAnimatedOnView && (Date.now() - lastTriggerTime > 2500)) {
+                    if (!hasAnimatedOnView && (Date.now() - lastTriggerTime > 5000)) {
                         hasAnimatedOnView = true;
-                        // Organic pixelation wave on every refresh / entry to the circles section
                         triggerMiddlePixelation();
                     }
                 } else {
-                    hasAnimatedOnView = false; // Reset so returning to the section triggers again
+                    hasAnimatedOnView = false; // Reset so returning later can trigger again
                 }
             });
-        }, { threshold: 0.10 });
+        }, { threshold: 0.12 });
 
         middleObserver.observe(collageStage);
     }
-
-    // Initial smooth pixelation wave on page load as requested
-    setTimeout(() => {
-        triggerMiddlePixelation();
-    }, 400);
 
     photoContainers.forEach(container => {
         container.addEventListener('click', () => {
