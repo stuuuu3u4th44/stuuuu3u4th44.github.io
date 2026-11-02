@@ -1277,6 +1277,72 @@ body {
     user-select: none;
 }
 
+/* Rectangular Work Pair (Two portrait photos joined into one horizontal rectangle card) */
+.work-rect-card {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    box-sizing: border-box;
+    background: rgba(14, 18, 43, 0.65);
+    border: 2px solid rgba(250, 236, 212, 0.3);
+    border-radius: 16px;
+    cursor: pointer;
+    transition: transform 0.22s ease, border-color 0.22s ease, background-color 0.22s ease, box-shadow 0.22s ease;
+}
+
+.work-rect-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--vanilla);
+    background-color: rgba(18, 24, 58, 0.85);
+    box-shadow: 0 8px 24px rgba(8, 10, 26, 0.85);
+}
+
+.work-rect-card:hover .work-card-photo {
+    border-color: rgba(250, 236, 212, 0.45);
+}
+
+.work-card-photo--rect-item {
+    width: 146px;
+    height: 260px;
+}
+
+/* Square Work Card (Single square card) */
+.work-square-card {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    box-sizing: border-box;
+    background: rgba(14, 18, 43, 0.65);
+    border: 2px solid rgba(250, 236, 212, 0.3);
+    border-radius: 16px;
+    cursor: pointer;
+    transition: transform 0.22s ease, border-color 0.22s ease, background-color 0.22s ease, box-shadow 0.22s ease;
+}
+
+.work-square-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--vanilla);
+    background-color: rgba(18, 24, 58, 0.85);
+    box-shadow: 0 8px 24px rgba(8, 10, 26, 0.85);
+}
+
+.work-square-card:hover .work-card-photo {
+    border-color: rgba(250, 236, 212, 0.45);
+}
+
+.work-card-photo--square-item {
+    width: 260px;
+    height: 260px;
+}
+
+.work-card-photo--square-item .work-card-img {
+    object-position: center 25%;
+}
+
 /* Backward compatibility for any ex-tile */
 .examples-showcase-grid {
     display: flex;

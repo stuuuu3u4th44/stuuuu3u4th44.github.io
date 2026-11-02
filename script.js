@@ -407,6 +407,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const servicesGroup1 = document.getElementById('servicesGroup1');
 
     if (servicesSection && servicesTrack && servicesGroup1) {
+        // Guarantee continuous infinite coverage across any zoom level / ultrawide display
+        function ensureInfiniteTicker() {
+            const minWidth = Math.max(window.innerWidth * 3 + 4000, 10000);
+            while (servicesTrack.scrollWidth < minWidth) {
+                const clone = servicesGroup1.cloneNode(true);
+                clone.removeAttribute('id');
+                clone.setAttribute('aria-hidden', 'true');
+                servicesTrack.appendChild(clone);
+            }
+        }
+        ensureInfiniteTicker();
+        window.addEventListener('resize', ensureInfiniteTicker);
         let currentX = 0;
         const cruisingSpeed = 0.95; // smooth px per frame
         let currentSpeed = 0.95;
