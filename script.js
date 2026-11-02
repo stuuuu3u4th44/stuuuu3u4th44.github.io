@@ -545,7 +545,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 3. Examples modal tiles (.ex-tile)
-    document.querySelectorAll('.ex-tile').forEach(tile => {
+    document.querySelectorAll('.work-card-photo, .ex-tile').forEach(tile => {
         const img = tile.querySelector('img');
         if (img) {
             tile.style.cursor = 'pointer';
