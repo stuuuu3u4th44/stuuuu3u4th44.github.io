@@ -211,7 +211,7 @@
                     <span class="blob-line blob-line--3-1">Можно обсудить любой вопрос</span>
                     <span class="blob-line blob-line--3-2">по стрижке в личных сообщениях,</span>
                     <span class="blob-line blob-line--3-3">связаться со мной можно</span>
-                    <span class="blob-line blob-line--3-4">благодаря <span class="fake-btn-link" title="Неактивна">этой кнопке</span>.</span>
+                    <span class="blob-line blob-line--3-4">благодаря <a href="https://t.me/LOVECUT2006" target="_blank" rel="noopener noreferrer" class="blob-link-btn" title="Написать в Telegram @LOVECUT2006">этой кнопке</a>.</span>
                 </p>
             </div>
         </div>
@@ -346,18 +346,25 @@
         </div>
     </footer>
 
-    <!-- ===== MAP POPUP MODAL ===== -->
+    <!-- ===== MAP POPUP MODAL (2GIS) ===== -->
     <div class="popup-modal" id="mapModal" aria-hidden="true">
         <div class="popup-modal__backdrop" data-close-modal></div>
         <div class="popup-modal__window">
             <div class="popup-modal__header">
-                <span class="popup-modal__title">Иркутск, Литвинова 18</span>
+                <span class="popup-modal__title">Иркутск, Литвинова 18 — 2ГИС</span>
+                <a href="https://2gis.ru/irkutsk/search/%D0%9B%D0%B8%D1%82%D0%B2%D0%B8%D0%BD%D0%BE%D0%B2%D0%B0%2018" target="_blank" rel="noopener noreferrer" class="popup-modal__external-link" title="Открыть в 2ГИС">Открыть в 2ГИС ↗</a>
                 <button class="popup-modal__close-btn" data-close-modal>&times;</button>
             </div>
-            <div class="popup-modal__map-frame">
-                <iframe id="mapFrame" src="about:blank"
-                    data-lazy-src="https://maps.google.com/maps?q=Иркутск,+ул.+Литвинова,+18&amp;t=&amp;z=17&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
-                    width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+            <div class="popup-modal__map-frame" id="map2gisFrame">
+                <div id="map2gis" class="map-2gis-canvas"></div>
+                <div class="map-2gis-fallback" id="map2gisFallback">
+                    <div class="map-2gis-card">
+                        <div class="map-2gis-badge">2ГИС</div>
+                        <h3 class="map-2gis-name">Lovecut</h3>
+                        <p class="map-2gis-addr">Иркутск, ул. Литвинова, 18</p>
+                        <a href="https://2gis.ru/irkutsk/search/%D0%9B%D0%B8%D1%82%D0%B2%D0%B8%D0%BD%D0%BE%D0%B2%D0%B0%2018" target="_blank" rel="noopener noreferrer" class="map-2gis-link-btn">Открыть в приложении / на сайте 2ГИС ↗</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -382,13 +389,8 @@
                 <span class="popup-modal__title">Примеры работ</span>
                 <button class="popup-modal__close-btn" data-close-modal>&times;</button>
             </div>
-            <div class="examples-showcase-grid">
-                <div class="ex-tile"></div>
-                <div class="ex-tile"></div>
-                <div class="ex-tile"></div>
-                <div class="ex-tile"></div>
-                <div class="ex-tile"></div>
-                <div class="ex-tile"></div>
+            <div class="examples-showcase-container">
+                <div class="examples-work-field" id="examplesWorkField"></div>
             </div>
         </div>
     </div>

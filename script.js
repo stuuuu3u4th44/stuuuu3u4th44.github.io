@@ -442,25 +442,71 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ====================================================================
-       6. POPUP MODALS (MAP & EXAMPLES)
+       6. POPUP MODALS (2GIS MAP & EXAMPLES)
        ==================================================================== */
     const mapModal = document.getElementById('mapModal');
     const openMapBtn = document.getElementById('openMapBtn');
-    const mapFrame = document.getElementById('mapFrame');
+    let dgMapInstance = null;
+
+    function init2GisMap() {
+        if (dgMapInstance) return;
+        const container = document.getElementById('map2gis');
+        const fallback = document.getElementById('map2gisFallback');
+        if (!container) return;
+
+        function renderMap() {
+            if (window.DG && typeof window.DG.map === 'function') {
+                try {
+                    dgMapInstance = DG.map('map2gis', {
+                        center: [52.284347, 104.291772],
+                        zoom: 17,
+                        fullscreenControl: false
+                    });
+                    const marker = DG.marker([52.284347, 104.291772]).addTo(dgMapInstance);
+                    marker.bindPopup('<div style="text-align:center;padding:4px;"><strong style="font-size:14px;">Lovecut</strong><br><span style="font-size:12px;color:#555;">Иркутск, ул. Литвинова, 18</span><br><a href="https://2gis.ru/irkutsk/search/%D0%9B%D0%B8%D1%82%D0%B2%D0%B8%D0%BD%D0%BE%D0%B2%D0%B0%2018" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:6px;color:#2ea83b;font-weight:700;text-decoration:none;">Открыть в 2ГИС ↗</a></div>').openPopup();
+                    if (fallback) fallback.style.display = 'none';
+                    if (container) container.style.display = 'block';
+                } catch (err) {
+                    console.warn('2GIS map creation error:', err);
+                    if (fallback) fallback.style.display = 'flex';
+                    if (container) container.style.display = 'none';
+                }
+            } else {
+                if (fallback) fallback.style.display = 'flex';
+                if (container) container.style.display = 'none';
+            }
+        }
+
+        if (window.DG && typeof window.DG.map === 'function') {
+            renderMap();
+        } else {
+            const script = document.createElement('script');
+            script.src = 'https://maps.api.2gis.ru/2.0/loader.js?pkg=full';
+            script.async = true;
+            script.onload = () => {
+                if (window.DG && typeof window.DG.then === 'function') {
+                    window.DG.then(renderMap);
+                } else {
+                    renderMap();
+                }
+            };
+            script.onerror = () => {
+                if (fallback) fallback.style.display = 'flex';
+                if (container) container.style.display = 'none';
+            };
+            document.head.appendChild(script);
+        }
+    }
 
     const examplesModal = document.getElementById('examplesModal');
     const openExamplesBtn = document.getElementById('examplesBtn');
 
-    // Open Map
+    // Open Map (2GIS)
     if (openMapBtn && mapModal) {
         openMapBtn.addEventListener('click', (e) => {
             e.preventDefault();
             mapModal.classList.add('active');
-            // Lazy load the iframe source
-            if (mapFrame && mapFrame.dataset.lazySrc) {
-                mapFrame.src = mapFrame.dataset.lazySrc;
-                delete mapFrame.dataset.lazySrc;
-            }
+            init2GisMap();
         });
     }
 
