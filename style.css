@@ -512,9 +512,9 @@ body {
     white-space: nowrap;
 }
 
-/* Blob 1: Top-Left creative contoured lines (shifted left as requested) */
+/* Blob 1: Top-Left creative contoured lines (shifted left and higher as requested) */
 .organic-blob__content--1 {
-    padding: 74px 24px 20px 14px;
+    padding: 54px 24px 20px 14px;
     text-align: left;
     max-width: 405px;
     line-height: 1.4;
@@ -527,21 +527,21 @@ body {
 .blob-line--1-5 { margin-left: 0.5em; }
 .blob-line--1-6 { margin-left: 1.3em; }
 
-/* Blob 2: Bottom-Left (Text placement accurately matching user reference photo 1) */
+/* Blob 2: Bottom-Left (Contoured layout matching user text update) */
 .organic-blob__content--2 {
-    padding: 52px 20px 20px 30px;
+    padding: 48px 20px 20px 26px;
     text-align: left;
     max-width: 440px;
-    line-height: 1.38;
-    font-size: 0.97rem;
+    line-height: 1.36;
+    font-size: 0.96rem;
 }
-.blob-line--2-1 { margin-left: 1.6em; }
-.blob-line--2-2 { margin-left: 0.15em; }
+.blob-line--2-1 { margin-left: 1.4em; }
+.blob-line--2-2 { margin-left: 0.2em; }
 .blob-line--2-3 { margin-left: 0em; }
-.blob-line--2-4 { margin-left: 1.2em; }
-.blob-line--2-5 { margin-left: 3.0em; }
-.blob-line--2-6 { margin-left: 6.4em; }
-.blob-line--2-7 { margin-left: 5.8em; }
+.blob-line--2-4 { margin-left: 0.8em; }
+.blob-line--2-5 { margin-left: 2.2em; }
+.blob-line--2-6 { margin-left: 4.6em; }
+.blob-line--2-7 { margin-left: 5.6em; }
 
 /* Blob 3: Middle-Right creative contoured lines (positioned higher, 5 lines) */
 .organic-blob__content--3 {
@@ -553,9 +553,9 @@ body {
 }
 .blob-line--3-1 { margin-left: 0.8em; }
 .blob-line--3-2 { margin-left: 0em; }
-.blob-line--3-3 { margin-left: 0.4em; }
-.blob-line--3-4 { margin-left: 1.2em; }
-.blob-line--3-5 { margin-left: 2.0em; }
+.blob-line--3-3 { margin-left: 0.5em; }
+.blob-line--3-4 { margin-left: 1.4em; }
+.blob-line--3-5 { margin-left: 2.2em; }
 
 /* Uniform typography and color across all 3 organic circles */
 .organic-blob__content,
@@ -704,10 +704,11 @@ body {
     will-change: transform;
 }
 
-/* Objects with vanilla border in normal state: flag, and objects marked with X (redhead, officer) */
+/* Objects with vanilla border in normal state: flag, redhead, officer, and guy with sunglasses */
 .cl-photo--flag,
 .cl-photo--redhead,
-.cl-photo--officer {
+.cl-photo--officer,
+.cl-photo--guy {
     border: 2px solid var(--vanilla) !important;
 }
 
@@ -1197,32 +1198,63 @@ body {
     background-color: #182052;
 }
 
-/* Asymmetric Work Pair Layout (Clean transparent container without empty dark blocks) */
+/* Asymmetric L-Shaped Work Pair Layout (Tightly hugging both photos with zero dead space) */
 .work-pair-card {
+    position: relative;
     display: inline-flex;
     align-items: flex-start;
     gap: 8px;
-    padding: 0;
-    border: none;
-    background: transparent;
-    box-shadow: none;
+    padding: 8px;
+    cursor: pointer;
+    transition: transform 0.22s ease;
+}
+
+.work-pair-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: visible;
+}
+
+.work-pair-shape {
+    fill: rgba(14, 18, 43, 0.65);
+    stroke: rgba(250, 236, 212, 0.3);
+    stroke-width: 2;
+    transition: stroke 0.22s ease, fill 0.22s ease, filter 0.22s ease;
+}
+
+.work-pair-card:hover {
+    transform: translateY(-3px);
+}
+
+.work-pair-card:hover .work-pair-shape {
+    stroke: var(--vanilla);
+    fill: rgba(18, 24, 58, 0.85);
+    filter: drop-shadow(0 8px 24px rgba(8, 10, 26, 0.85));
 }
 
 .work-card-photo {
-    border-radius: 14px;
-    overflow: hidden;
     position: relative;
+    z-index: 1;
+    border-radius: 10px;
+    overflow: hidden;
     background-color: #121638;
-    box-shadow: 0 6px 18px rgba(8, 10, 26, 0.65);
-    border: 2px solid rgba(250, 236, 212, 0.25);
-    transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+    box-shadow: 0 4px 14px rgba(8, 10, 26, 0.5);
+    border: 1.5px solid rgba(250, 236, 212, 0.2);
+    transition: transform 0.2s ease, border-color 0.2s ease;
     cursor: pointer;
+}
+
+.work-pair-card:hover .work-card-photo {
+    border-color: rgba(250, 236, 212, 0.45);
 }
 
 .work-card-photo:hover {
     border-color: var(--vanilla) !important;
-    transform: translateY(-3px) scale(1.015);
-    box-shadow: 0 14px 32px rgba(8, 10, 26, 0.9);
+    transform: scale(1.02);
 }
 
 /* Front View Photo: Tall Portrait (aspect ratio 174 : 310) */
