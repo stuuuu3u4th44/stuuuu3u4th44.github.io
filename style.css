@@ -321,21 +321,33 @@ body {
     left: 50%;
     transform: translateX(-50%);
     font-family: var(--font-body);
-    font-size: 0.78rem;
+    font-size: 0.82rem;
     font-weight: 600;
     color: var(--ink-dark);
-    opacity: 0.75;
-    text-decoration: underline;
-    background: none;
-    border: none;
+    text-decoration: none;
+    border-bottom: 1px dashed rgba(26, 27, 46, 0.45);
+    background: transparent;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
     cursor: pointer;
     white-space: nowrap;
-    transition: opacity 0.2s ease, color 0.2s ease;
+    padding: 0 0 1px 0;
+    line-height: 1.2;
+    transition: color 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
 }
 
 .loc-link-btn:hover {
-    opacity: 1;
-    color: #2b3377;
+    color: var(--ink-dark);
+    border-bottom-style: solid;
+    border-color: var(--ink-dark);
+    transform: translateX(calc(-50% + 2px));
+    background: transparent;
+}
+
+.loc-link-btn:active {
+    transform: translateX(calc(-50% + 2px)) scale(0.98);
 }
 
 .action-box--booking,
@@ -571,32 +583,36 @@ body {
 .blob-link-btn,
 .fake-btn-link {
     display: inline-block;
-    text-decoration: underline;
-    text-decoration-thickness: 1.5px;
-    text-underline-offset: 2px;
-    font-weight: 700;
     color: var(--ink-dark);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px dashed rgba(26, 27, 46, 0.45);
+    background: transparent;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    padding: 0 0 1px 0;
+    margin: 0;
     cursor: pointer;
-    background: rgba(14, 18, 48, 0.09);
-    padding: 2px 8px;
-    border-radius: 6px;
-    border: 1.5px solid rgba(14, 18, 48, 0.25);
-    line-height: 1.25;
-    vertical-align: baseline;
-    transition: background-color 0.18s ease, transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    transition: color 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
 }
 
 .blob-link-btn:hover,
 .fake-btn-link:hover {
-    background: rgba(14, 18, 48, 0.18);
-    border-color: rgba(14, 18, 48, 0.45);
-    transform: translateY(-1.5px);
-    box-shadow: 0 3px 8px rgba(14, 18, 48, 0.14);
+    color: var(--ink-dark);
+    border-bottom-style: solid;
+    border-color: var(--ink-dark);
+    transform: translateX(2px);
+    background: transparent;
 }
 
 .blob-link-btn:active,
 .fake-btn-link:active {
-    transform: translateY(0);
+    transform: translateX(2px) scale(0.98);
 }
 
 /* ====================================================================
@@ -1074,28 +1090,28 @@ body {
 }
 
 .examples-showcase-container {
-    padding: 30px;
-    max-height: 75vh;
-    overflow-y: auto;
+    padding: 24px;
+    height: 100%;
+    min-height: 480px;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: stretch;
+    justify-content: stretch;
 }
 
 .examples-work-field {
     position: relative;
     width: 100%;
-    min-height: 504px;
-    border-radius: 16px;
-    border: 2px dashed rgba(250, 236, 212, 0.25);
-    background-color: #14183d;
-    box-shadow: inset 0 2px 12px rgba(8, 10, 26, 0.35);
+    min-height: 480px;
+    border-radius: 20px;
+    border: 2.5px dashed rgba(250, 236, 212, 0.55);
+    background-color: #151b44;
+    box-shadow: inset 0 3px 18px rgba(8, 10, 26, 0.5);
     transition: border-color 0.25s ease, background-color 0.25s ease;
 }
 
 .examples-work-field:hover {
-    border-color: rgba(250, 236, 212, 0.45);
-    background-color: #161c47;
+    border-color: rgba(250, 236, 212, 0.8);
+    background-color: #182052;
 }
 
 /* Backward compatibility for any ex-tile */
@@ -1340,75 +1356,3 @@ body {
     }
 }
 
-/* 2GIS Map Modal Styles */
-.map-2gis-canvas {
-    width: 100%;
-    height: 100%;
-    min-height: 480px;
-}
-
-.map-2gis-fallback {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    min-height: 480px;
-    background: #14183d;
-    align-items: center;
-    justify-content: center;
-    padding: 40px;
-}
-
-.map-2gis-card {
-    text-align: center;
-    background: #1c2254;
-    border: 2px solid rgba(250, 236, 212, 0.2);
-    border-radius: 16px;
-    padding: 36px 48px;
-    max-width: 440px;
-    box-shadow: 0 10px 30px rgba(8, 10, 26, 0.5);
-}
-
-.map-2gis-badge {
-    display: inline-block;
-    background: #2ea83b;
-    color: #ffffff;
-    font-family: var(--font-body);
-    font-weight: 800;
-    font-size: 0.95rem;
-    padding: 4px 14px;
-    border-radius: 6px;
-    margin-bottom: 14px;
-    letter-spacing: 0.5px;
-}
-
-.map-2gis-name {
-    font-family: var(--font-deco);
-    font-size: 1.6rem;
-    color: var(--vanilla);
-    margin-bottom: 8px;
-}
-
-.map-2gis-addr {
-    font-family: var(--font-body);
-    font-size: 1.05rem;
-    color: rgba(250, 236, 212, 0.85);
-    margin-bottom: 24px;
-}
-
-.map-2gis-link-btn {
-    display: inline-block;
-    background: #2ea83b;
-    color: #ffffff;
-    font-family: var(--font-body);
-    font-weight: 700;
-    font-size: 0.95rem;
-    padding: 12px 24px;
-    border-radius: 10px;
-    text-decoration: none;
-    transition: background 0.2s ease, transform 0.2s ease;
-}
-
-.map-2gis-link-btn:hover {
-    background: #279434;
-    transform: translateY(-2px);
-}
