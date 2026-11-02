@@ -116,8 +116,7 @@ body {
 
 /* Row 1 cards */
 .bento-card--col1-top {
-    grid-column: 1;
-    grid-row: 1;
+    display: none;
 }
 
 .bento-card--col2-top {
@@ -134,6 +133,25 @@ body {
     display: none;
 }
 
+.bento-split-container {
+    grid-column: 5 / 7;
+    grid-row: 1;
+    display: flex;
+    gap: 12px;
+    height: 100%;
+    width: 100%;
+}
+
+.bento-card--split-left {
+    flex: 1;
+    height: 100%;
+}
+
+.bento-card--split-right {
+    flex: 3;
+    height: 100%;
+}
+
 .bento-card--col5-top {
     grid-column: 5;
     grid-row: 1;
@@ -144,10 +162,10 @@ body {
     grid-row: 1;
 }
 
-/* Row 2 tall side cards */
+/* Side tall cards */
 .bento-card--col1-mid {
     grid-column: 1;
-    grid-row: 2 / 4; /* Spans rows 2 and 3 */
+    grid-row: 1 / 4; /* Spans full height: rows 1, 2, and 3 */
 }
 
 .bento-card--col6-mid {
@@ -211,11 +229,23 @@ body {
 }
 
 .bento-img--profile {
-    object-position: center 48%;
+    object-position: center 25%;
 }
 
-.bento-img--bangs {
-    object-position: center 38%;
+.bento-img--blonde-left {
+    object-position: center 24%;
+}
+
+.bento-img--blonde-right {
+    object-position: center 30%;
+}
+
+.bento-img--messy {
+    object-position: center 42%;
+}
+
+.bento-img--curly-tall {
+    object-position: 25% 15%;
 }
 
 /* ====================================================================
@@ -1174,14 +1204,14 @@ body {
         gap: 10px;
     }
     
-    .bento-card--col1-top { grid-column: 1; grid-row: 1; }
+    .bento-card--col1-top { display: none; }
     .bento-card--col2-top { grid-column: 2; grid-row: 1; }
     .bento-card--col3-top { grid-column: 3 / 5; grid-row: 1; }
     .bento-card--col4-top { display: none; }
     .bento-card--col5-top { grid-column: 5; grid-row: 1; }
     .bento-card--col6-top { grid-column: 6; grid-row: 1; }
     
-    .bento-card--col1-mid { grid-column: 1; grid-row: 2 / 4; }
+    .bento-card--col1-mid { grid-column: 1; grid-row: 1 / 4; }
     .bento-card--logo { grid-column: 2 / 6; grid-row: 2; }
     .bento-card--col6-mid { grid-column: 6; grid-row: 2 / 4; }
     
@@ -1201,18 +1231,29 @@ body {
         grid-template-rows: auto;
     }
     
-    .bento-card--col1-top { grid-column: 1; grid-row: 1; height: 120px; }
-    .bento-card--col2-top { grid-column: 2; grid-row: 1; height: 120px; }
+    .bento-card--col1-top { display: none; }
+    .bento-card--col1-mid { grid-column: 1; grid-row: 1; height: 130px; }
+    .bento-card--col1-mid .bento-img { object-position: 15% 25%; }
+    .bento-card--col2-top { grid-column: 2; grid-row: 1; height: 130px; }
     .bento-card--logo { grid-column: 1 / 3; grid-row: 2; height: 130px; }
-    .bento-card--col3-top { grid-column: 1; grid-row: 3; height: 120px; }
-    .bento-card--col4-top { grid-column: 2; grid-row: 3; height: 120px; }
+    .bento-card--col3-top { grid-column: 1 / 3; grid-row: 3; height: 130px; }
+    .bento-card--col3-top .bento-img { object-position: center 32%; }
+    .bento-card--col4-top { display: none; }
+    .bento-split-container {
+        grid-column: 1 / 3;
+        grid-row: 4;
+        height: 130px;
+    }
+    .bento-card--split-left { flex: 1; height: 100%; }
+    .bento-card--split-left .bento-img { object-position: center 28%; }
+    .bento-card--split-right { flex: 3; height: 100%; }
+    .bento-card--split-right .bento-img { object-position: center 38%; }
     .bento-card--col5-top { grid-column: 1; grid-row: 4; height: 120px; }
     .bento-card--col6-top { grid-column: 2; grid-row: 4; height: 120px; }
-    .bento-card--col1-mid { display: none; }
     .bento-card--col6-mid { display: none; }
-    .bento-card--col2-bot { grid-column: 1; grid-row: 5; height: 110px; }
-    .bento-card--col3-bot { grid-column: 2; grid-row: 5; height: 110px; }
-    .bento-card--col4-bot { grid-column: 1 / 3; grid-row: 6; height: 110px; }
+    .bento-card--col2-bot { grid-column: 1; grid-row: 5; height: 115px; }
+    .bento-card--col3-bot { grid-column: 2; grid-row: 5; height: 115px; }
+    .bento-card--col4-bot { grid-column: 1 / 3; grid-row: 6; height: 120px; }
 
     .action-blocks-container {
         flex-direction: column;
