@@ -30,22 +30,25 @@
     <!-- ===== TOP HEADER: ACCURATELY MEASURED BENTO GRID AROUND LOGO ===== -->
     <header class="top-hero-section">
         <div class="bento-container">
-            <!-- Row 1: Top photos -->
+            <!-- Row 1: Top photos (all 5 are squares) -->
             <div class="bento-card bento-card--col2-top">
                 <img src="images/girl_blue.png" alt="Lovecut haircut" class="bento-img">
             </div>
-            <!-- [Photo 2]: updated from user (images/guy_layered_profile.png) -->
+            <!-- [2 in row 1]: guy profile on wood (square) -->
             <div class="bento-card bento-card--col3-top">
                 <img src="images/guy_layered_profile.png" alt="Lovecut haircut" class="bento-img bento-img--profile">
             </div>
-            <!-- Split section for photo 4 into 5 (1/4) and 4 (3/4) -->
-            <div class="bento-split-container">
-                <div class="bento-card bento-card--split-left">
-                    <img src="images/girl_blonde_left.png" alt="Lovecut haircut" class="bento-img bento-img--blonde-left">
-                </div>
-                <div class="bento-card bento-card--split-right">
-                    <img src="images/girl_blonde_right.png" alt="Lovecut haircut" class="bento-img bento-img--blonde-right">
-                </div>
+            <!-- [3 in row 1]: dark shag girl with choker (square) -->
+            <div class="bento-card bento-card--col4-top">
+                <img src="images/girl_dark_shag.png" alt="Lovecut haircut" class="bento-img bento-img--shag-choker">
+            </div>
+            <!-- [4 in row 1]: blonde girl (square) -->
+            <div class="bento-card bento-card--col5-top">
+                <img src="images/girl_blonde.png" alt="Lovecut haircut" class="bento-img bento-img--blonde">
+            </div>
+            <!-- [5 in row 1]: wavy brunette with bangs (square, sharp corners) -->
+            <div class="bento-card bento-card--col6-top bento-card--sharp">
+                <img src="images/girl_brunette_curls.png" alt="Lovecut haircut" class="bento-img bento-img--brunette-curls">
             </div>
 
             <!-- Row 1-3 full-height left card: [Photo 7] (images/guy_curly_striped.png) -->
@@ -216,7 +219,7 @@
                 <!-- ===== CENTRAL PHOTO COLLAGE ===== -->
         <div class="collage-cluster" id="collageCluster">
             <!-- Interactive Pixel Trigger Button (styled vanilla badge) -->
-            <button class="pixel-trigger-btn" id="pixelTriggerBtn" type="button" title="Пикселизация фото" aria-label="Пикселизация фото">
+            <button class="pixel-trigger-btn" id="pixelTriggerBtn" type="button" aria-label="Пикселизация фото">
                 <svg class="pixel-btn-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
                     <rect x="3" y="3" width="5" height="5" rx="1"/>
                     <rect x="10" y="3" width="5" height="5" rx="1"/>
