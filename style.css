@@ -1225,11 +1225,16 @@ body:has(.popup-modal.active) {
 
 .work-column--center {
     width: 242px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
 .work-column--right {
     width: 316px;
-    gap: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
 }
 
 /* Work 1: Asymmetric L-Shaped Card */
@@ -1289,7 +1294,9 @@ body:has(.popup-modal.active) {
 .work-pair-card:hover .work-card-photo,
 .work-rect-card:hover .work-card-photo,
 .work-square-card:hover .work-card-photo,
-.work-trio-card:hover .work-card-photo {
+.work-trio-card:hover .work-card-photo,
+.work-single-card:hover .work-card-photo,
+.work-guy-pair-card:hover .work-card-photo {
     border-color: rgba(250, 236, 212, 0.45);
 }
 
@@ -1360,7 +1367,7 @@ body:has(.popup-modal.active) {
     cursor: pointer;
     transition: transform 0.22s ease, border-color 0.22s ease, background-color 0.22s ease, box-shadow 0.22s ease;
     width: 316px;
-    height: 196px;
+    height: 180px;
 }
 
 .work-rect-card:hover {
@@ -1371,8 +1378,8 @@ body:has(.popup-modal.active) {
 }
 
 .work-card-photo--rect-item {
-    width: 146px;
-    height: 180px;
+    width: 144px;
+    height: 164px;
 }
 
 /* Square Work Card (Work 3: Blonde Wave) */
@@ -1408,19 +1415,152 @@ body:has(.popup-modal.active) {
     object-position: center 25%;
 }
 
-/* Work 4: Asymmetric L-Shaped Trio Card (Blonde Rock) */
-.work-trio-card {
+/* Center Column Lower Group: Work 6 (Curly Boy) + Work 7 (Guy Pair) */
+.work-center-bottom-group {
     position: relative;
-    display: inline-flex;
+    width: 242px;
+    height: 264px;
+}
+
+/* Generic Single Photo Cards (Work 6 & Work 8) */
+.work-single-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 14px;
+    border: 2px solid rgba(250, 236, 212, 0.3);
+    background-color: rgba(14, 18, 43, 0.65);
+    padding: 6px;
+    box-sizing: border-box;
+    cursor: pointer;
+    z-index: 2;
+    transition: transform 0.22s ease, border-color 0.22s ease, background-color 0.22s ease, box-shadow 0.22s ease;
+}
+
+.work-single-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--vanilla);
+    background-color: rgba(18, 24, 58, 0.85);
+    box-shadow: 0 8px 24px rgba(8, 10, 26, 0.85);
+}
+
+.work-single-card .work-card-photo {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    border: 2px solid rgba(250, 236, 212, 0.45);
+    overflow: hidden;
+}
+
+.work-single-card--curly {
+    width: 114px;
+    height: 126px;
+}
+
+.work-card-photo--curly .work-card-img {
+    object-position: center 25%;
+}
+
+/* Work 7: Inverted L-Shaped Guy Pair Card */
+.work-guy-pair-card {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 242px;
+    height: 264px;
+    display: flex;
     align-items: flex-end;
     gap: 8px;
-    padding: 8px;
+    padding: 6px;
     box-sizing: border-box;
     cursor: pointer;
     transition: transform 0.22s ease;
-    clip-path: polygon(158px 0, 100% 0, 100% 100%, 0 100%, 0 135px, 158px 135px);
+}
+
+.work-guy-pair-card:hover {
+    transform: translateY(-3px);
+}
+
+.work-guy-pair-card:hover .work-guy-pair-shape {
+    stroke: var(--vanilla);
+    fill: rgba(18, 24, 58, 0.85);
+    filter: drop-shadow(0 8px 24px rgba(8, 10, 26, 0.85));
+}
+
+.work-guy-pair-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: visible;
+}
+
+.work-guy-pair-shape {
+    fill: rgba(14, 18, 43, 0.65);
+    stroke: rgba(250, 236, 212, 0.3);
+    stroke-width: 2;
+    transition: stroke 0.22s ease, fill 0.22s ease, filter 0.22s ease;
+}
+
+.work-card-photo--guy-profile {
+    width: 108px;
+    height: 124px;
+    border-radius: 10px;
+    border: 2px solid rgba(250, 236, 212, 0.45);
+    overflow: hidden;
+    z-index: 1;
+}
+
+.work-card-photo--guy-profile .work-card-img {
+    object-position: center 30%;
+}
+
+.work-card-photo--guy-front-tall {
+    width: 108px;
+    height: 248px;
+    border-radius: 10px;
+    border: 2px solid rgba(250, 236, 212, 0.45);
+    overflow: hidden;
+    z-index: 1;
+}
+
+.work-card-photo--guy-front-tall .work-card-img {
+    object-position: center 20%;
+}
+
+/* Right Column Lower Group */
+.work-right-bottom-group {
+    position: relative;
     width: 316px;
-    height: 276px;
+    height: 256px;
+}
+
+.work-single-card--mesh {
+    width: 148px;
+    height: 122px;
+}
+
+.work-card-photo--mesh .work-card-img {
+    object-position: center 20%;
+}
+
+/* Work 4: Asymmetric L-Shaped Trio Card (Blonde Rock) */
+.work-trio-card {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: inline-flex;
+    align-items: flex-end;
+    gap: 8px;
+    padding: 6px;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: transform 0.22s ease;
+    clip-path: polygon(154px 0, 100% 0, 100% 100%, 0 100%, 0 128px, 154px 128px);
+    width: 316px;
+    height: 256px;
     margin-top: 0;
 }
 
@@ -1459,21 +1599,27 @@ body:has(.popup-modal.active) {
 }
 
 .work-card-photo--trio-sub {
-    width: 146px;
-    height: 126px;
+    width: 144px;
+    height: 118px;
+    border-radius: 10px;
+    border: 2px solid rgba(250, 236, 212, 0.45);
+    overflow: hidden;
     z-index: 1;
 }
 
 .work-card-photo--trio-sub .work-card-img {
-    object-position: center 40%;
+    object-position: center 50%;
 }
 
 .work-card-photo--trio-item {
-    width: 146px;
-    height: 126px;
+    width: 144px;
+    height: 118px;
+    border-radius: 10px;
+    border: 2px solid rgba(250, 236, 212, 0.45);
+    overflow: hidden;
 }
 
-.work-card-photo--trio-item-34 .work-card-img {
+.work-card-photo--trio-item-front .work-card-img {
     object-position: center 30%;
 }
 
