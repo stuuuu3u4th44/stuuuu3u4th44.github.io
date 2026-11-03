@@ -1187,21 +1187,21 @@ body:has(.popup-modal.active) {
 
 .examples-work-field {
     position: relative;
-    width: 990px;
-    min-width: 990px;
-    height: 530px;
-    min-height: 530px;
+    width: 980px;
+    min-width: 980px;
+    height: 500px;
+    min-height: 500px;
     border-radius: 20px;
     border: 2.5px dashed rgba(250, 236, 212, 0.55);
     background-color: #151b44;
     box-shadow: inset 0 3px 18px rgba(8, 10, 26, 0.5);
-    padding: 24px;
+    padding: 14px;
     box-sizing: border-box;
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 24px;
+    gap: 12px;
     margin: 0 auto;
     flex-shrink: 0;
     transition: border-color 0.25s ease, background-color 0.25s ease;
@@ -1224,12 +1224,12 @@ body:has(.popup-modal.active) {
 }
 
 .work-column--center {
-    width: 196px;
+    width: 242px;
 }
 
 .work-column--right {
     width: 316px;
-    gap: 16px;
+    gap: 0;
 }
 
 /* Work 1: Asymmetric L-Shaped Card */
@@ -1388,7 +1388,7 @@ body:has(.popup-modal.active) {
     border-radius: 16px;
     cursor: pointer;
     transition: transform 0.22s ease, border-color 0.22s ease, background-color 0.22s ease, box-shadow 0.22s ease;
-    width: 196px;
+    width: 242px;
     height: 196px;
 }
 
@@ -1400,7 +1400,7 @@ body:has(.popup-modal.active) {
 }
 
 .work-card-photo--square-item {
-    width: 180px;
+    width: 226px;
     height: 180px;
 }
 
@@ -1418,9 +1418,10 @@ body:has(.popup-modal.active) {
     box-sizing: border-box;
     cursor: pointer;
     transition: transform 0.22s ease;
-    clip-path: polygon(158px 0, 100% 0, 100% 100%, 0 100%, 0 126px, 158px 126px);
+    clip-path: polygon(158px 0, 100% 0, 100% 100%, 0 100%, 0 135px, 158px 135px);
     width: 316px;
-    height: 260px;
+    height: 276px;
+    margin-top: 0;
 }
 
 .work-trio-svg {
@@ -1459,7 +1460,7 @@ body:has(.popup-modal.active) {
 
 .work-card-photo--trio-sub {
     width: 146px;
-    height: 118px;
+    height: 126px;
     z-index: 1;
 }
 
@@ -1469,7 +1470,7 @@ body:has(.popup-modal.active) {
 
 .work-card-photo--trio-item {
     width: 146px;
-    height: 118px;
+    height: 126px;
 }
 
 .work-card-photo--trio-item-34 .work-card-img {
