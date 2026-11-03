@@ -1227,6 +1227,7 @@ body:has(.popup-modal.active) {
 
 .work-column--center {
     width: 242px;
+    height: 472px;
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -1234,6 +1235,7 @@ body:has(.popup-modal.active) {
 
 .work-column--right {
     width: 316px;
+    height: 472px;
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -1248,7 +1250,6 @@ body:has(.popup-modal.active) {
     height: 264px;
     cursor: pointer;
     transition: transform 0.22s ease;
-    clip-path: polygon(0 0, 100% 0, 100% 196px, 160px 196px, 160px 100%, 0 100%);
     box-sizing: border-box;
 }
 
@@ -1267,6 +1268,7 @@ body:has(.popup-modal.active) {
     stroke: rgba(250, 236, 212, 0.3);
     stroke-width: 2;
     transition: stroke 0.22s ease, fill 0.22s ease, filter 0.22s ease;
+    pointer-events: auto;
 }
 
 .work-pair-card:hover {
@@ -1308,18 +1310,18 @@ body:has(.popup-modal.active) {
 /* Front View Photo: Tall Portrait in Work 1 */
 .work-card-photo--front {
     position: absolute;
-    left: 7px;
-    top: 7px;
-    width: 146px;
-    height: 250px;
+    left: 8px;
+    top: 8px;
+    width: 144px;
+    height: 248px;
 }
 
 /* Side Profile View Photo in Work 1 */
 .work-card-photo--side {
     position: absolute;
-    left: 168px;
+    left: 180px;
     top: 8px;
-    width: 198px;
+    width: 186px;
     height: 180px;
 }
 
@@ -1339,15 +1341,14 @@ body:has(.popup-modal.active) {
     width: 374px;
     height: 264px;
     box-sizing: border-box;
-    clip-path: polygon(172px 0, 100% 0, 100% 100%, 0 100%, 0 68px, 172px 68px);
 }
 
 .work-card-photo--glasses-side {
     position: absolute;
-    left: 7px;
+    left: 8px;
     top: 76px;
-    width: 146px;
-    height: 182px;
+    width: 144px;
+    height: 180px;
 }
 
 .work-card-photo--glasses-side .work-card-img {
@@ -1356,10 +1357,10 @@ body:has(.popup-modal.active) {
 
 .work-card-photo--glasses-front {
     position: absolute;
-    left: 168px;
-    top: 7px;
-    width: 198px;
-    height: 251px;
+    left: 180px;
+    top: 8px;
+    width: 186px;
+    height: 248px;
 }
 
 .work-card-photo--glasses-front .work-card-img {
@@ -1369,7 +1370,7 @@ body:has(.popup-modal.active) {
 /* Rectangular Work Pair (Work 5: Guy Shag) */
 .work-rect-card {
     position: relative;
-    display: inline-flex;
+    display: flex;
     align-items: center;
     gap: 12px;
     padding: 8px;
@@ -1398,7 +1399,7 @@ body:has(.popup-modal.active) {
 /* Square Work Card (Work 3: Blonde Wave) */
 .work-square-card {
     position: relative;
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     padding: 8px;
@@ -1440,7 +1441,7 @@ body:has(.popup-modal.active) {
     position: absolute;
     top: 0;
     left: 0;
-    border-radius: 14px;
+    border-radius: 16px;
     border: 2px solid rgba(250, 236, 212, 0.3);
     background-color: rgba(14, 18, 43, 0.65);
     box-sizing: border-box;
@@ -1460,19 +1461,19 @@ body:has(.popup-modal.active) {
     width: 100%;
     height: 100%;
     border-radius: 10px;
-    border: 2px solid rgba(250, 236, 212, 0.45);
+    border: 1.5px solid rgba(250, 236, 212, 0.2);
     overflow: hidden;
 }
 
 .work-single-card--curly {
     width: 114px;
     height: 126px;
-    padding: 6px;
+    padding: 8px;
 }
 
 .work-card-photo--curly {
-    width: 102px;
-    height: 114px;
+    width: 98px;
+    height: 110px;
 }
 
 .work-card-photo--curly .work-card-img {
@@ -1490,7 +1491,6 @@ body:has(.popup-modal.active) {
     box-sizing: border-box;
     cursor: pointer;
     transition: transform 0.22s ease;
-    clip-path: polygon(126px 0, 100% 0, 100% 100%, 0 100%, 0 138px, 126px 138px);
 }
 
 .work-guy-pair-card:hover {
@@ -1518,16 +1518,17 @@ body:has(.popup-modal.active) {
     stroke: rgba(250, 236, 212, 0.3);
     stroke-width: 2;
     transition: stroke 0.22s ease, fill 0.22s ease, filter 0.22s ease;
+    pointer-events: auto;
 }
 
 .work-card-photo--guy-profile {
     position: absolute;
-    left: 6px;
-    top: 144px;
-    width: 102px;
-    height: 114px;
+    left: 8px;
+    top: 146px;
+    width: 98px;
+    height: 110px;
     border-radius: 10px;
-    border: 2px solid rgba(250, 236, 212, 0.45);
+    border: 1.5px solid rgba(250, 236, 212, 0.2);
     overflow: hidden;
     z-index: 1;
 }
@@ -1538,12 +1539,12 @@ body:has(.popup-modal.active) {
 
 .work-card-photo--guy-front-tall {
     position: absolute;
-    left: 132px;
-    top: 6px;
-    width: 104px;
-    height: 252px;
+    left: 134px;
+    top: 8px;
+    width: 100px;
+    height: 248px;
     border-radius: 10px;
-    border: 2px solid rgba(250, 236, 212, 0.45);
+    border: 1.5px solid rgba(250, 236, 212, 0.2);
     overflow: hidden;
     z-index: 1;
 }
@@ -1562,12 +1563,12 @@ body:has(.popup-modal.active) {
 .work-single-card--mesh {
     width: 152px;
     height: 126px;
-    padding: 6px 4px;
+    padding: 8px;
 }
 
 .work-card-photo--mesh {
-    width: 144px;
-    height: 114px;
+    width: 136px;
+    height: 110px;
 }
 
 .work-card-photo--mesh .work-card-img {
@@ -1585,7 +1586,6 @@ body:has(.popup-modal.active) {
     box-sizing: border-box;
     cursor: pointer;
     transition: transform 0.22s ease;
-    clip-path: polygon(164px 0, 100% 0, 100% 100%, 0 100%, 0 138px, 164px 138px);
 }
 
 .work-trio-svg {
@@ -1603,6 +1603,7 @@ body:has(.popup-modal.active) {
     stroke: rgba(250, 236, 212, 0.3);
     stroke-width: 2;
     transition: stroke 0.22s ease, fill 0.22s ease, filter 0.22s ease;
+    pointer-events: auto;
 }
 
 .work-trio-card:hover {
@@ -1617,24 +1618,25 @@ body:has(.popup-modal.active) {
 
 .work-trio-stack {
     position: absolute;
-    left: 168px;
-    top: 18px;
-    bottom: 6px;
+    left: 172px;
+    top: 8px;
+    width: 136px;
+    height: 248px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 12px;
+    gap: 28px;
     z-index: 1;
 }
 
 .work-card-photo--trio-sub {
     position: absolute;
-    left: 4px;
-    top: 144px;
-    width: 144px;
-    height: 114px;
+    left: 8px;
+    top: 146px;
+    width: 136px;
+    height: 110px;
     border-radius: 10px;
-    border: 2px solid rgba(250, 236, 212, 0.45);
+    border: 1.5px solid rgba(250, 236, 212, 0.2);
     overflow: hidden;
     z-index: 1;
 }
@@ -1644,10 +1646,10 @@ body:has(.popup-modal.active) {
 }
 
 .work-card-photo--trio-item {
-    width: 144px;
-    height: 114px;
+    width: 136px;
+    height: 110px;
     border-radius: 10px;
-    border: 2px solid rgba(250, 236, 212, 0.45);
+    border: 1.5px solid rgba(250, 236, 212, 0.2);
     overflow: hidden;
 }
 
@@ -1698,6 +1700,7 @@ body:has(.popup-modal.active) {
         zoom: 0.82;
     }
 }
+
 /* Backward compatibility for any ex-tile */
 .examples-showcase-grid {
     display: flex;
@@ -1706,7 +1709,6 @@ body:has(.popup-modal.active) {
 .ex-tile {
     display: none;
 }
-
 /* ====================================================================
    PHOTO INSPECTOR / LIGHTBOX MODAL (SMOOTH ZOOM & CLOSE INSPECTION)
    ==================================================================== */
