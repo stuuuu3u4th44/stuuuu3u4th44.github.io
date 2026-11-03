@@ -376,59 +376,72 @@
             </div>
             <div class="examples-showcase-container">
                 <div class="examples-work-field" id="examplesWorkField">
-                    <!-- Work 1: Asymmetric L-Shaped Card -->
-                    <div class="work-pair-card" id="workPair1">
-                        <svg class="work-pair-svg" viewBox="0 0 374 276" aria-hidden="true">
-                            <path class="work-pair-shape" d="M 16,1 H 358 A 15,15 0 0,1 373,16 V 181 A 15,15 0 0,1 358,196 H 170 A 12,12 0 0,0 158,208 V 261 A 15,15 0 0,1 143,276 H 16 A 15,15 0 0,1 1,261 V 16 A 15,15 0 0,1 16,1 Z"/>
-                        </svg>
-                        <div class="work-card-photo work-card-photo--front">
-                            <img src="images/work_girl_front.png" alt="Пример стрижки слоями — вид спереди" class="work-card-img" loading="eager">
+                    <!-- Column 1: Left (Works 1 & 2 interlocking Tetris pair) -->
+                    <div class="work-column work-column--left">
+                        <!-- Work 1: Asymmetric L-Shaped Card -->
+                        <div class="work-pair-card" id="workPair1">
+                            <svg class="work-pair-svg" viewBox="0 0 374 276" aria-hidden="true">
+                                <path class="work-pair-shape" d="M 16,1 H 358 A 15,15 0 0,1 373,16 V 181 A 15,15 0 0,1 358,196 H 170 A 12,12 0 0,0 158,208 V 261 A 15,15 0 0,1 143,276 H 16 A 15,15 0 0,1 1,261 V 16 A 15,15 0 0,1 16,1 Z"/>
+                            </svg>
+                            <div class="work-card-photo work-card-photo--front">
+                                <img src="images/work_girl_front.png" alt="Пример стрижки слоями — вид спереди" class="work-card-img" loading="eager">
+                            </div>
+                            <div class="work-card-photo work-card-photo--side">
+                                <img src="images/work_girl_profile.png" alt="Пример стрижки слоями — вид сбоку" class="work-card-img" loading="eager">
+                            </div>
                         </div>
-                        <div class="work-card-photo work-card-photo--side">
-                            <img src="images/work_girl_profile.png" alt="Пример стрижки слоями — вид сбоку" class="work-card-img" loading="eager">
+
+                        <!-- Work 2: Interlocking Inverted L-Shaped Card (Left: 3/4 view, Right larger: front view) -->
+                        <div class="work-pair-card work-pair-card--inverted" id="workPair2">
+                            <svg class="work-pair-svg" viewBox="0 0 374 276" aria-hidden="true">
+                                <path class="work-pair-shape" d="M 170,1 H 358 A 15,15 0 0,1 373,16 V 261 A 15,15 0 0,1 358,276 H 16 A 15,15 0 0,1 1,261 V 96 A 15,15 0 0,1 16,81 H 146 A 12,12 0 0,0 158,69 V 13 A 12,12 0 0,1 170,1 Z"/>
+                            </svg>
+                            <div class="work-card-photo work-card-photo--glasses-side">
+                                <img src="images/work_girl_glasses_34.png" alt="Пример женской стрижки — вид 3/4" class="work-card-img" loading="eager">
+                            </div>
+                            <div class="work-card-photo work-card-photo--glasses-front">
+                                <img src="images/work_girl_glasses_front.png" alt="Пример женской стрижки — вид спереди" class="work-card-img" loading="eager">
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Work 2: Square Card (Photo 3: Blonde Wave) -->
-                    <div class="work-square-card" id="workSquare1">
-                        <div class="work-card-photo work-card-photo--square-item">
-                            <img src="images/work_girl_blonde_wave.jpg" alt="Пример текстурной укладки и завивки" class="work-card-img" loading="eager">
+                    <!-- Column 2: Center (Work 3: Square Blonde Wave) -->
+                    <div class="work-column work-column--center">
+                        <div class="work-square-card" id="workSquare1">
+                            <div class="work-card-photo work-card-photo--square-item">
+                                <img src="images/work_girl_blonde_wave.jpg" alt="Пример текстурной укладки и завивки" class="work-card-img" loading="eager">
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Work 4: Rectangular Pair (Guy Shag) -->
-                    <div class="work-rect-card" id="workRect1">
-                        <div class="work-card-photo work-card-photo--rect-item">
-                            <img src="images/work_guy_shag_front.png" alt="Пример мужской стрижки — вид спереди" class="work-card-img" loading="eager">
+                    <!-- Column 3: Right (Work 5 & Work 4) -->
+                    <div class="work-column work-column--right">
+                        <!-- Work 5: Rectangular Pair (Guy Shag) -->
+                        <div class="work-rect-card" id="workRect1">
+                            <div class="work-card-photo work-card-photo--rect-item">
+                                <img src="images/work_guy_shag_front.png" alt="Пример мужской стрижки — вид спереди" class="work-card-img" loading="eager">
+                            </div>
+                            <div class="work-card-photo work-card-photo--rect-item">
+                                <img src="images/work_guy_shag_34.png" alt="Пример мужской стрижки — вид 3/4" class="work-card-img" loading="eager">
+                            </div>
                         </div>
-                        <div class="work-card-photo work-card-photo--rect-item">
-                            <img src="images/work_guy_shag_34.png" alt="Пример мужской стрижки — вид 3/4" class="work-card-img" loading="eager">
-                        </div>
-                    </div>
 
-                    <!-- Row Break for exact layout alignment (Row 1: 1, 2, 4 | Row 2: 3, 5) -->
-                    <div class="work-row-break"></div>
-
-                    <!-- Work 3: Rectangular Pair (Girl with Glasses) -->
-                    <div class="work-rect-card" id="workRect2">
-                        <div class="work-card-photo work-card-photo--rect-item">
-                            <img src="images/work_girl_glasses_front.png" alt="Пример женской стрижки — вид спереди" class="work-card-img" loading="eager">
-                        </div>
-                        <div class="work-card-photo work-card-photo--rect-item">
-                            <img src="images/work_girl_glasses_34.png" alt="Пример женской стрижки — вид 3/4" class="work-card-img" loading="eager">
-                        </div>
-                    </div>
-
-                    <!-- Work 5: Trio Card (Photos 3-5 joined: 5 5 5) -->
-                    <div class="work-rect-card" id="workTrio1">
-                        <div class="work-card-photo work-card-photo--rect-item">
-                            <img src="images/work_girl_blonde_rock_front.png" alt="Пример стрижки — вид спереди" class="work-card-img" loading="eager">
-                        </div>
-                        <div class="work-card-photo work-card-photo--rect-item">
-                            <img src="images/work_girl_blonde_rock_34.png" alt="Пример стрижки — вид 3/4" class="work-card-img" loading="eager">
-                        </div>
-                        <div class="work-card-photo work-card-photo--rect-item">
-                            <img src="images/work_girl_blonde_rock_profile.png" alt="Пример стрижки — вид в профиль" class="work-card-img" loading="eager">
+                        <!-- Work 4: Asymmetric L-Shaped Trio Card (Blonde Rock) -->
+                        <div class="work-trio-card" id="workTrio1">
+                            <svg class="work-trio-svg" viewBox="0 0 316 276" aria-hidden="true">
+                                <path class="work-trio-shape" d="M 170,1 H 300 A 15,15 0 0,1 315,16 V 261 A 15,15 0 0,1 300,276 H 16 A 15,15 0 0,1 1,261 V 150 A 15,15 0 0,1 16,135 H 146 A 12,12 0 0,0 158,123 V 13 A 12,12 0 0,1 170,1 Z"/>
+                            </svg>
+                            <div class="work-card-photo work-card-photo--trio-sub">
+                                <img src="images/work_girl_blonde_rock_front.png" alt="Пример стрижки — вид спереди" class="work-card-img" loading="eager">
+                            </div>
+                            <div class="work-trio-stack">
+                                <div class="work-card-photo work-card-photo--trio-item work-card-photo--trio-item-34">
+                                    <img src="images/work_girl_blonde_rock_34.png" alt="Пример стрижки — вид 3/4" class="work-card-img" loading="eager">
+                                </div>
+                                <div class="work-card-photo work-card-photo--trio-item work-card-photo--trio-item-profile">
+                                    <img src="images/work_girl_blonde_rock_profile.png" alt="Пример стрижки — вид в профиль" class="work-card-img" loading="eager">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

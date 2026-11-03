@@ -1187,8 +1187,8 @@ body {
     box-sizing: border-box;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
     align-items: flex-start;
-    align-content: flex-start;
     gap: 20px;
     transition: border-color 0.25s ease, background-color 0.25s ease;
 }
@@ -1198,22 +1198,26 @@ body {
     background-color: #182052;
 }
 
-/* Row Break to guarantee layout matching user design (Row 1: 1, 2, 4 | Row 2: 3, 5) */
-.work-row-break {
-    flex-basis: 100%;
-    width: 100%;
-    height: 0;
-    margin: 0;
-    padding: 0;
+/* Portfolio Columns */
+.work-column {
+    display: flex;
+    flex-direction: column;
 }
 
-@media (max-width: 1080px) {
-    .work-row-break {
-        display: none;
-    }
+.work-column--left {
+    width: 374px;
 }
 
-/* Asymmetric L-Shaped Work Pair Layout (Tightly hugging both photos with zero dead space) */
+.work-column--center {
+    width: 276px;
+}
+
+.work-column--right {
+    width: 316px;
+    gap: 20px;
+}
+
+/* Work 1: Asymmetric L-Shaped Card */
 .work-pair-card {
     position: relative;
     display: inline-flex;
@@ -1222,6 +1226,10 @@ body {
     padding: 8px;
     cursor: pointer;
     transition: transform 0.22s ease;
+    clip-path: polygon(0 0, 100% 0, 100% 196px, 158px 196px, 158px 100%, 0 100%);
+    box-sizing: border-box;
+    width: 374px;
+    height: 276px;
 }
 
 .work-pair-svg {
@@ -1263,7 +1271,10 @@ body {
     cursor: pointer;
 }
 
-.work-pair-card:hover .work-card-photo {
+.work-pair-card:hover .work-card-photo,
+.work-rect-card:hover .work-card-photo,
+.work-square-card:hover .work-card-photo,
+.work-trio-card:hover .work-card-photo {
     border-color: rgba(250, 236, 212, 0.45);
 }
 
@@ -1292,7 +1303,35 @@ body {
     user-select: none;
 }
 
-/* Rectangular Work Pair (Two portrait photos joined into one horizontal rectangle card) */
+/* Work 2: Interlocking Inverted L-Shaped Card */
+.work-pair-card--inverted {
+    align-items: flex-end;
+    margin-top: -60px;
+    width: 374px;
+    height: 276px;
+    box-sizing: border-box;
+    clip-path: polygon(0 80px, 158px 80px, 158px 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.work-card-photo--glasses-side {
+    width: 146px;
+    height: 180px;
+}
+
+.work-card-photo--glasses-side .work-card-img {
+    object-position: center 25%;
+}
+
+.work-card-photo--glasses-front {
+    width: 202px;
+    height: 260px;
+}
+
+.work-card-photo--glasses-front .work-card-img {
+    object-position: center 20%;
+}
+
+/* Rectangular Work Pair (Work 5: Guy Shag) */
 .work-rect-card {
     position: relative;
     display: inline-flex;
@@ -1305,6 +1344,8 @@ body {
     border-radius: 16px;
     cursor: pointer;
     transition: transform 0.22s ease, border-color 0.22s ease, background-color 0.22s ease, box-shadow 0.22s ease;
+    width: 316px;
+    height: 276px;
 }
 
 .work-rect-card:hover {
@@ -1314,16 +1355,12 @@ body {
     box-shadow: 0 8px 24px rgba(8, 10, 26, 0.85);
 }
 
-.work-rect-card:hover .work-card-photo {
-    border-color: rgba(250, 236, 212, 0.45);
-}
-
 .work-card-photo--rect-item {
     width: 146px;
     height: 260px;
 }
 
-/* Square Work Card (Single square card) */
+/* Square Work Card (Work 3: Blonde Wave) */
 .work-square-card {
     position: relative;
     display: inline-flex;
@@ -1336,6 +1373,8 @@ body {
     border-radius: 16px;
     cursor: pointer;
     transition: transform 0.22s ease, border-color 0.22s ease, background-color 0.22s ease, box-shadow 0.22s ease;
+    width: 276px;
+    height: 276px;
 }
 
 .work-square-card:hover {
@@ -1343,10 +1382,6 @@ body {
     border-color: var(--vanilla);
     background-color: rgba(18, 24, 58, 0.85);
     box-shadow: 0 8px 24px rgba(8, 10, 26, 0.85);
-}
-
-.work-square-card:hover .work-card-photo {
-    border-color: rgba(250, 236, 212, 0.45);
 }
 
 .work-card-photo--square-item {
@@ -1358,6 +1393,102 @@ body {
     object-position: center 25%;
 }
 
+/* Work 4: Asymmetric L-Shaped Trio Card (Blonde Rock) */
+.work-trio-card {
+    position: relative;
+    display: inline-flex;
+    align-items: flex-end;
+    gap: 8px;
+    padding: 8px;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: transform 0.22s ease;
+    width: 316px;
+    height: 276px;
+}
+
+.work-trio-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: visible;
+}
+
+.work-trio-shape {
+    fill: rgba(14, 18, 43, 0.65);
+    stroke: rgba(250, 236, 212, 0.3);
+    stroke-width: 2;
+    transition: stroke 0.22s ease, fill 0.22s ease, filter 0.22s ease;
+}
+
+.work-trio-card:hover {
+    transform: translateY(-3px);
+}
+
+.work-trio-card:hover .work-trio-shape {
+    stroke: var(--vanilla);
+    fill: rgba(18, 24, 58, 0.85);
+    filter: drop-shadow(0 8px 24px rgba(8, 10, 26, 0.85));
+}
+
+.work-trio-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 1;
+}
+
+.work-card-photo--trio-sub {
+    width: 146px;
+    height: 126px;
+    z-index: 1;
+}
+
+.work-card-photo--trio-sub .work-card-img {
+    object-position: center 40%;
+}
+
+.work-card-photo--trio-item {
+    width: 146px;
+    height: 126px;
+}
+
+.work-card-photo--trio-item-34 .work-card-img {
+    object-position: center 30%;
+}
+
+.work-card-photo--trio-item-profile .work-card-img {
+    object-position: center 50%;
+}
+
+@media (max-width: 1080px) {
+    .examples-work-field {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .examples-showcase-container {
+        padding: 10px;
+    }
+    .examples-work-field {
+        padding: 12px;
+        gap: 16px;
+    }
+    .work-column--left {
+        transform: scale(0.88);
+        transform-origin: top center;
+        margin-bottom: -50px;
+    }
+    .work-column--right {
+        transform: scale(0.92);
+        transform-origin: top center;
+        margin-bottom: -30px;
+    }
+}
 /* Backward compatibility for any ex-tile */
 .examples-showcase-grid {
     display: flex;
