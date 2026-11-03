@@ -1221,6 +1221,10 @@ body:has(.popup-modal.active) {
 
 .work-column--left {
     width: 374px;
+    height: 472px;
+    position: relative;
+    background-color: #0e122b;
+    border-radius: 16px;
 }
 
 .work-column--center {
@@ -1332,12 +1336,13 @@ body:has(.popup-modal.active) {
     width: 374px;
     height: 276px;
     box-sizing: border-box;
+    padding: 8px 8px 12px 8px;
     clip-path: polygon(0 80px, 158px 80px, 158px 0, 100% 0, 100% 100%, 0 100%);
 }
 
 .work-card-photo--glasses-side {
     width: 146px;
-    height: 180px;
+    height: 172px;
 }
 
 .work-card-photo--glasses-side .work-card-img {
@@ -1346,7 +1351,7 @@ body:has(.popup-modal.active) {
 
 .work-card-photo--glasses-front {
     width: 202px;
-    height: 260px;
+    height: 252px;
 }
 
 .work-card-photo--glasses-front .work-card-img {
@@ -1453,8 +1458,9 @@ body:has(.popup-modal.active) {
 }
 
 .work-single-card--curly {
-    width: 106px;
+    width: 112px;
     height: 126px;
+    padding: 8px;
 }
 
 .work-card-photo--curly .work-card-img {
@@ -1470,11 +1476,12 @@ body:has(.popup-modal.active) {
     height: 264px;
     display: flex;
     align-items: flex-end;
-    gap: 8px;
-    padding: 6px;
+    gap: 12px;
+    padding: 8px;
     box-sizing: border-box;
     cursor: pointer;
     transition: transform 0.22s ease;
+    clip-path: polygon(124px 0, 100% 0, 100% 100%, 0 100%, 0 138px, 124px 138px);
 }
 
 .work-guy-pair-card:hover {
@@ -1505,8 +1512,8 @@ body:has(.popup-modal.active) {
 }
 
 .work-card-photo--guy-profile {
-    width: 104px;
-    height: 114px;
+    width: 96px;
+    height: 110px;
     border-radius: 10px;
     border: 2px solid rgba(250, 236, 212, 0.45);
     overflow: hidden;
@@ -1518,8 +1525,8 @@ body:has(.popup-modal.active) {
 }
 
 .work-card-photo--guy-front-tall {
-    width: 118px;
-    height: 250px;
+    width: 104px;
+    height: 248px;
     border-radius: 10px;
     border: 2px solid rgba(250, 236, 212, 0.45);
     overflow: hidden;
@@ -1538,8 +1545,9 @@ body:has(.popup-modal.active) {
 }
 
 .work-single-card--mesh {
-    width: 150px;
+    width: 152px;
     height: 126px;
+    padding: 8px;
 }
 
 .work-card-photo--mesh .work-card-img {
@@ -1551,14 +1559,14 @@ body:has(.popup-modal.active) {
     position: absolute;
     bottom: 0;
     left: 0;
-    display: inline-flex;
+    display: flex;
     align-items: flex-end;
-    gap: 8px;
-    padding: 6px;
+    gap: 12px;
+    padding: 8px;
     box-sizing: border-box;
     cursor: pointer;
     transition: transform 0.22s ease;
-    clip-path: polygon(150px 0, 100% 0, 100% 100%, 0 100%, 0 138px, 150px 138px);
+    clip-path: polygon(164px 0, 100% 0, 100% 100%, 0 100%, 0 138px, 164px 138px);
     width: 316px;
     height: 264px;
     margin-top: 0;
@@ -1594,13 +1602,13 @@ body:has(.popup-modal.active) {
 .work-trio-stack {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 26px;
     z-index: 1;
 }
 
 .work-card-photo--trio-sub {
-    width: 144px;
-    height: 114px;
+    width: 136px;
+    height: 110px;
     border-radius: 10px;
     border: 2px solid rgba(250, 236, 212, 0.45);
     overflow: hidden;
@@ -1608,23 +1616,23 @@ body:has(.popup-modal.active) {
 }
 
 .work-card-photo--trio-sub .work-card-img {
-    object-position: center 30%;
+    object-position: center 50%;
 }
 
 .work-card-photo--trio-item {
-    width: 144px;
-    height: 114px;
+    width: 136px;
+    height: 110px;
     border-radius: 10px;
     border: 2px solid rgba(250, 236, 212, 0.45);
     overflow: hidden;
 }
 
 .work-card-photo--trio-item-front .work-card-img {
-    object-position: center 30%;
+    object-position: center 50%;
 }
 
 .work-card-photo--trio-item-profile .work-card-img {
-    object-position: center 30%;
+    object-position: center 50%;
 }
 
 @media (max-width: 1040px) and (min-width: 881px) {
