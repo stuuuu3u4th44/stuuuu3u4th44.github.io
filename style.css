@@ -1312,7 +1312,7 @@ body:has(.popup-modal.active) {
 /* Front View Photo: Tall Portrait (aspect ratio 174 : 310) */
 .work-card-photo--front {
     width: 146px;
-    height: 260px;
+    height: 256px;
 }
 
 /* Side Profile View Photo: Shorter Square-ish (aspect ratio 246 : 220) */
@@ -1336,13 +1336,13 @@ body:has(.popup-modal.active) {
     width: 374px;
     height: 276px;
     box-sizing: border-box;
-    padding: 8px 8px 12px 8px;
+    padding: 8px 8px 8px 8px;
     clip-path: polygon(0 80px, 158px 80px, 158px 0, 100% 0, 100% 100%, 0 100%);
 }
 
 .work-card-photo--glasses-side {
     width: 146px;
-    height: 172px;
+    height: 184px;
 }
 
 .work-card-photo--glasses-side .work-card-img {
@@ -1351,7 +1351,7 @@ body:has(.popup-modal.active) {
 
 .work-card-photo--glasses-front {
     width: 202px;
-    height: 252px;
+    height: 260px;
 }
 
 .work-card-photo--glasses-front .work-card-img {
@@ -1364,7 +1364,7 @@ body:has(.popup-modal.active) {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 8px;
+    padding: 8px 6px;
     box-sizing: border-box;
     background: rgba(14, 18, 43, 0.65);
     border: 2px solid rgba(250, 236, 212, 0.3);
@@ -1393,7 +1393,7 @@ body:has(.popup-modal.active) {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 8px;
+    padding: 8px 6px;
     box-sizing: border-box;
     background: rgba(14, 18, 43, 0.65);
     border: 2px solid rgba(250, 236, 212, 0.3);
@@ -1458,9 +1458,15 @@ body:has(.popup-modal.active) {
 }
 
 .work-single-card--curly {
-    width: 112px;
+    left: 2px;
+    width: 114px;
     height: 126px;
-    padding: 8px;
+    padding: 4px;
+}
+
+.work-card-photo--curly {
+    width: 102px;
+    height: 114px;
 }
 
 .work-card-photo--curly .work-card-img {
@@ -1476,12 +1482,12 @@ body:has(.popup-modal.active) {
     height: 264px;
     display: flex;
     align-items: flex-end;
-    gap: 12px;
+    gap: 10px;
     padding: 8px;
     box-sizing: border-box;
     cursor: pointer;
     transition: transform 0.22s ease;
-    clip-path: polygon(124px 0, 100% 0, 100% 100%, 0 100%, 0 138px, 124px 138px);
+    clip-path: polygon(120px 0, 100% 0, 100% 100%, 0 100%, 0 136px, 120px 136px);
 }
 
 .work-guy-pair-card:hover {
@@ -1512,8 +1518,8 @@ body:has(.popup-modal.active) {
 }
 
 .work-card-photo--guy-profile {
-    width: 96px;
-    height: 110px;
+    width: 102px;
+    height: 114px;
     border-radius: 10px;
     border: 2px solid rgba(250, 236, 212, 0.45);
     overflow: hidden;
@@ -1525,7 +1531,7 @@ body:has(.popup-modal.active) {
 }
 
 .work-card-photo--guy-front-tall {
-    width: 104px;
+    width: 114px;
     height: 248px;
     border-radius: 10px;
     border: 2px solid rgba(250, 236, 212, 0.45);
@@ -1545,9 +1551,15 @@ body:has(.popup-modal.active) {
 }
 
 .work-single-card--mesh {
-    width: 152px;
+    left: 2px;
+    width: 158px;
     height: 126px;
-    padding: 8px;
+    padding: 4px;
+}
+
+.work-card-photo--mesh {
+    width: 146px;
+    height: 114px;
 }
 
 .work-card-photo--mesh .work-card-img {
@@ -1561,12 +1573,12 @@ body:has(.popup-modal.active) {
     left: 0;
     display: flex;
     align-items: flex-end;
-    gap: 12px;
+    gap: 8px;
     padding: 8px;
     box-sizing: border-box;
     cursor: pointer;
     transition: transform 0.22s ease;
-    clip-path: polygon(164px 0, 100% 0, 100% 100%, 0 100%, 0 138px, 164px 138px);
+    clip-path: polygon(160px 0, 100% 0, 100% 100%, 0 100%, 0 134px, 160px 134px);
     width: 316px;
     height: 264px;
     margin-top: 0;
@@ -1602,13 +1614,13 @@ body:has(.popup-modal.active) {
 .work-trio-stack {
     display: flex;
     flex-direction: column;
-    gap: 26px;
+    gap: 20px;
     z-index: 1;
 }
 
 .work-card-photo--trio-sub {
-    width: 136px;
-    height: 110px;
+    width: 146px;
+    height: 114px;
     border-radius: 10px;
     border: 2px solid rgba(250, 236, 212, 0.45);
     overflow: hidden;
@@ -1620,8 +1632,8 @@ body:has(.popup-modal.active) {
 }
 
 .work-card-photo--trio-item {
-    width: 136px;
-    height: 110px;
+    width: 146px;
+    height: 114px;
     border-radius: 10px;
     border: 2px solid rgba(250, 236, 212, 0.45);
     overflow: hidden;
