@@ -1,4 +1,4 @@
-/* ====================================================================
+﻿/* ====================================================================
    LOVECUT — Stylesheet
    
    PALETTE:
@@ -1223,8 +1223,6 @@ body:has(.popup-modal.active) {
     width: 374px;
     height: 472px;
     position: relative;
-    background-color: #0e122b;
-    border-radius: 16px;
 }
 
 .work-column--center {
@@ -1243,17 +1241,15 @@ body:has(.popup-modal.active) {
 
 /* Work 1: Asymmetric L-Shaped Card */
 .work-pair-card {
-    position: relative;
-    display: inline-flex;
-    align-items: flex-start;
-    gap: 8px;
-    padding: 8px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 374px;
+    height: 264px;
     cursor: pointer;
     transition: transform 0.22s ease;
-    clip-path: polygon(0 0, 100% 0, 100% 196px, 158px 196px, 158px 100%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 196px, 160px 196px, 160px 100%, 0 100%);
     box-sizing: border-box;
-    width: 374px;
-    height: 276px;
 }
 
 .work-pair-svg {
@@ -1309,15 +1305,21 @@ body:has(.popup-modal.active) {
     transform: scale(1.02);
 }
 
-/* Front View Photo: Tall Portrait (aspect ratio 174 : 310) */
+/* Front View Photo: Tall Portrait in Work 1 */
 .work-card-photo--front {
+    position: absolute;
+    left: 7px;
+    top: 7px;
     width: 146px;
-    height: 256px;
+    height: 250px;
 }
 
-/* Side Profile View Photo: Shorter Square-ish (aspect ratio 246 : 220) */
+/* Side Profile View Photo in Work 1 */
 .work-card-photo--side {
-    width: 202px;
+    position: absolute;
+    left: 168px;
+    top: 8px;
+    width: 198px;
     height: 180px;
 }
 
@@ -1329,20 +1331,23 @@ body:has(.popup-modal.active) {
     user-select: none;
 }
 
-/* Work 2: Interlocking Inverted L-Shaped Card */
+/* Work 2: Interlocking Inverted L-Shaped Card (Separated by 12px gap from Work 1) */
 .work-pair-card--inverted {
-    align-items: flex-end;
-    margin-top: -80px;
+    top: 208px;
+    left: 0;
+    margin-top: 0;
     width: 374px;
-    height: 276px;
+    height: 264px;
     box-sizing: border-box;
-    padding: 8px 8px 8px 8px;
-    clip-path: polygon(0 80px, 158px 80px, 158px 0, 100% 0, 100% 100%, 0 100%);
+    clip-path: polygon(172px 0, 100% 0, 100% 100%, 0 100%, 0 68px, 172px 68px);
 }
 
 .work-card-photo--glasses-side {
+    position: absolute;
+    left: 7px;
+    top: 76px;
     width: 146px;
-    height: 184px;
+    height: 182px;
 }
 
 .work-card-photo--glasses-side .work-card-img {
@@ -1350,8 +1355,11 @@ body:has(.popup-modal.active) {
 }
 
 .work-card-photo--glasses-front {
-    width: 202px;
-    height: 260px;
+    position: absolute;
+    left: 168px;
+    top: 7px;
+    width: 198px;
+    height: 251px;
 }
 
 .work-card-photo--glasses-front .work-card-img {
@@ -1363,8 +1371,8 @@ body:has(.popup-modal.active) {
     position: relative;
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: 8px 6px;
+    gap: 12px;
+    padding: 8px;
     box-sizing: border-box;
     background: rgba(14, 18, 43, 0.65);
     border: 2px solid rgba(250, 236, 212, 0.3);
@@ -1383,7 +1391,7 @@ body:has(.popup-modal.active) {
 }
 
 .work-card-photo--rect-item {
-    width: 146px;
+    width: 144px;
     height: 180px;
 }
 
@@ -1393,7 +1401,7 @@ body:has(.popup-modal.active) {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 8px 6px;
+    padding: 8px;
     box-sizing: border-box;
     background: rgba(14, 18, 43, 0.65);
     border: 2px solid rgba(250, 236, 212, 0.3);
@@ -1435,7 +1443,6 @@ body:has(.popup-modal.active) {
     border-radius: 14px;
     border: 2px solid rgba(250, 236, 212, 0.3);
     background-color: rgba(14, 18, 43, 0.65);
-    padding: 6px;
     box-sizing: border-box;
     cursor: pointer;
     z-index: 2;
@@ -1458,10 +1465,9 @@ body:has(.popup-modal.active) {
 }
 
 .work-single-card--curly {
-    left: 2px;
     width: 114px;
     height: 126px;
-    padding: 4px;
+    padding: 6px;
 }
 
 .work-card-photo--curly {
@@ -1473,21 +1479,18 @@ body:has(.popup-modal.active) {
     object-position: center 25%;
 }
 
-/* Work 7: Inverted L-Shaped Guy Pair Card */
+/* Work 7: Inverted L-Shaped Guy Pair Card (Separated by 12px gap from Work 6) */
 .work-guy-pair-card {
     position: absolute;
-    bottom: 0;
+    top: 0;
     left: 0;
     width: 242px;
     height: 264px;
-    display: flex;
-    align-items: flex-end;
-    gap: 10px;
-    padding: 8px;
+    display: block;
     box-sizing: border-box;
     cursor: pointer;
     transition: transform 0.22s ease;
-    clip-path: polygon(120px 0, 100% 0, 100% 100%, 0 100%, 0 136px, 120px 136px);
+    clip-path: polygon(126px 0, 100% 0, 100% 100%, 0 100%, 0 138px, 126px 138px);
 }
 
 .work-guy-pair-card:hover {
@@ -1518,6 +1521,9 @@ body:has(.popup-modal.active) {
 }
 
 .work-card-photo--guy-profile {
+    position: absolute;
+    left: 6px;
+    top: 144px;
     width: 102px;
     height: 114px;
     border-radius: 10px;
@@ -1531,8 +1537,11 @@ body:has(.popup-modal.active) {
 }
 
 .work-card-photo--guy-front-tall {
-    width: 114px;
-    height: 248px;
+    position: absolute;
+    left: 132px;
+    top: 6px;
+    width: 104px;
+    height: 252px;
     border-radius: 10px;
     border: 2px solid rgba(250, 236, 212, 0.45);
     overflow: hidden;
@@ -1551,14 +1560,13 @@ body:has(.popup-modal.active) {
 }
 
 .work-single-card--mesh {
-    left: 2px;
-    width: 158px;
+    width: 152px;
     height: 126px;
-    padding: 4px;
+    padding: 6px 4px;
 }
 
 .work-card-photo--mesh {
-    width: 146px;
+    width: 144px;
     height: 114px;
 }
 
@@ -1566,22 +1574,18 @@ body:has(.popup-modal.active) {
     object-position: center 20%;
 }
 
-/* Work 4: Asymmetric L-Shaped Trio Card (Blonde Rock) */
+/* Work 4: Asymmetric L-Shaped Trio Card (Blonde Rock, Separated by 12px gap from Work 8) */
 .work-trio-card {
     position: absolute;
-    bottom: 0;
+    top: 0;
     left: 0;
-    display: flex;
-    align-items: flex-end;
-    gap: 8px;
-    padding: 8px;
+    width: 316px;
+    height: 264px;
+    display: block;
     box-sizing: border-box;
     cursor: pointer;
     transition: transform 0.22s ease;
-    clip-path: polygon(160px 0, 100% 0, 100% 100%, 0 100%, 0 134px, 160px 134px);
-    width: 316px;
-    height: 264px;
-    margin-top: 0;
+    clip-path: polygon(164px 0, 100% 0, 100% 100%, 0 100%, 0 138px, 164px 138px);
 }
 
 .work-trio-svg {
@@ -1612,14 +1616,22 @@ body:has(.popup-modal.active) {
 }
 
 .work-trio-stack {
+    position: absolute;
+    left: 168px;
+    top: 18px;
+    bottom: 6px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    justify-content: space-between;
+    gap: 12px;
     z-index: 1;
 }
 
 .work-card-photo--trio-sub {
-    width: 146px;
+    position: absolute;
+    left: 4px;
+    top: 144px;
+    width: 144px;
     height: 114px;
     border-radius: 10px;
     border: 2px solid rgba(250, 236, 212, 0.45);
@@ -1632,7 +1644,7 @@ body:has(.popup-modal.active) {
 }
 
 .work-card-photo--trio-item {
-    width: 146px;
+    width: 144px;
     height: 114px;
     border-radius: 10px;
     border: 2px solid rgba(250, 236, 212, 0.45);
