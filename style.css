@@ -1319,9 +1319,9 @@ body:has(.popup-modal.active) {
 /* Side Profile View Photo in Work 1 */
 .work-card-photo--side {
     position: absolute;
-    left: 168px;
+    left: 160px;
     top: 8px;
-    width: 198px;
+    width: 206px;
     height: 180px;
 }
 
@@ -1347,7 +1347,7 @@ body:has(.popup-modal.active) {
     position: absolute;
     left: 8px;
     top: 76px;
-    width: 156px;
+    width: 164px;
     height: 180px;
 }
 
@@ -1525,7 +1525,7 @@ body:has(.popup-modal.active) {
     position: absolute;
     left: 8px;
     top: 146px;
-    width: 110px;
+    width: 118px;
     height: 110px;
     border-radius: 10px;
     border: 1.5px solid rgba(250, 236, 212, 0.2);
@@ -1632,7 +1632,7 @@ body:has(.popup-modal.active) {
     position: absolute;
     left: 8px;
     top: 146px;
-    width: 148px;
+    width: 156px;
     height: 110px;
     border-radius: 10px;
     border: 1.5px solid rgba(250, 236, 212, 0.2);
@@ -1647,6 +1647,7 @@ body:has(.popup-modal.active) {
 .work-card-photo--trio-item {
     width: 136px;
     height: 118px;
+    flex: 1;
     border-radius: 10px;
     border: 1.5px solid rgba(250, 236, 212, 0.2);
     overflow: hidden;
