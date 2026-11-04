@@ -1624,7 +1624,7 @@ body:has(.popup-modal.active) {
     height: 248px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 8px;
     z-index: 1;
 }
 
@@ -1652,7 +1652,7 @@ body:has(.popup-modal.active) {
 }
 
 .work-card-photo--trio-item-front {
-    height: 126px;
+    height: 130px;
     flex: none;
 }
 
