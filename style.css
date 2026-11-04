@@ -1646,11 +1646,19 @@ body:has(.popup-modal.active) {
 
 .work-card-photo--trio-item {
     width: 136px;
-    height: 118px;
-    flex: 1;
     border-radius: 10px;
     border: 1.5px solid rgba(250, 236, 212, 0.2);
     overflow: hidden;
+}
+
+.work-card-photo--trio-item-front {
+    height: 126px;
+    flex: none;
+}
+
+.work-card-photo--trio-item-profile {
+    height: 110px;
+    flex: none;
 }
 
 .work-card-photo--trio-item-front .work-card-img {
