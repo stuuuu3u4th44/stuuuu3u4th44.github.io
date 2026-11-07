@@ -1,4 +1,4 @@
-﻿/* ====================================================================
+/* ====================================================================
    LOVECUT — Stylesheet
    
    PALETTE:
@@ -1863,6 +1863,10 @@ body:has(.popup-modal.active) {
     .organic-blob--3 { right: 0px; width: 380px; height: 300px; }
 }
 
+.collage-inner {
+    display: contents;
+}
+
 @media (max-width: 768px) {
     *, *::before, *::after {
         box-sizing: border-box !important;
@@ -1876,29 +1880,31 @@ body:has(.popup-modal.active) {
         padding: 0 !important;
     }
 
-    /* 1. TOP HERO: PRESERVE EXACT 6-COLUMN BENTO GRID AROUND LOGO */
+    /* 1. TOP HERO: PRESERVE EXACT 6-COLUMN BENTO GRID AROUND LOGO, NARROW & SLEEK */
     .top-hero-section {
-        padding: 14px 10px 10px !important;
+        padding: 12px 6px 6px !important;
         width: 100% !important;
-        max-width: 100% !important;
+        max-width: 330px !important;
+        margin: 0 auto !important;
         box-sizing: border-box !important;
     }
     .bento-container {
         display: grid !important;
-        grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
-        grid-template-rows: minmax(42px, 13vw) minmax(54px, 16.5vw) minmax(42px, 13vw) !important;
-        gap: 5px !important;
+        grid-template-columns: repeat(6, 1fr) !important;
+        grid-template-rows: 44px 58px 44px !important;
+        gap: 4px !important;
         width: 100% !important;
         max-width: 100% !important;
         margin: 0 auto !important;
         box-sizing: border-box !important;
     }
     .bento-card {
-        border-radius: 8px !important;
+        border-radius: 6px !important;
         display: block !important;
         visibility: visible !important;
         border-width: 1px !important;
         min-width: 0 !important;
+        overflow: hidden !important;
     }
     .bento-card--sharp {
         border-radius: 0 !important;
@@ -1924,10 +1930,10 @@ body:has(.popup-modal.active) {
         grid-row: 2 !important;
         height: auto !important;
         border-width: 1.5px !important;
-        border-radius: 8px !important;
+        border-radius: 6px !important;
     }
     .logo-title {
-        font-size: clamp(1.4rem, 4.8vw, 2.2rem) !important;
+        font-size: 1.45rem !important;
         letter-spacing: -0.5px !important;
     }
     .bento-card--col6-mid {
@@ -1941,16 +1947,18 @@ body:has(.popup-modal.active) {
     .bento-card--col4-bot { grid-column: 4 / 6 !important; grid-row: 3 !important; height: auto !important; }
     .bento-card--col5-bot { display: none !important; }
 
-    /* 2. THREE ACTION BLOCKS: CLEAN BALANCED GRID */
+    /* 2. THREE ACTION BLOCKS: CLEAN COMPACT NARROW GRID */
     .action-blocks-section {
-        padding: 12px 10px 14px !important;
+        padding: 6px !important;
         width: 100% !important;
+        max-width: 330px !important;
+        margin: 0 auto !important;
         box-sizing: border-box !important;
     }
     .action-blocks-container {
         display: grid !important;
         grid-template-columns: 1fr 1fr !important;
-        gap: 8px !important;
+        gap: 6px !important;
         width: 100% !important;
         max-width: 100% !important;
         margin: 0 auto !important;
@@ -1963,26 +1971,27 @@ body:has(.popup-modal.active) {
         min-width: 0 !important;
         max-width: 100% !important;
         height: auto !important;
-        min-height: 48px !important;
-        padding: 10px 14px !important;
-        border-radius: 12px !important;
+        min-height: 50px !important;
+        padding: 8px 10px !important;
+        border-radius: 10px !important;
         display: flex !important;
-        flex-direction: row !important;
-        justify-content: space-between !important;
+        flex-direction: column !important;
+        justify-content: center !important;
         align-items: center !important;
+        gap: 2px !important;
         box-sizing: border-box !important;
     }
     .action-box--location .loc-text {
-        font-size: clamp(0.78rem, 3.2vw, 0.90rem) !important;
+        font-size: 0.82rem !important;
         margin: 0 !important;
         white-space: nowrap !important;
         font-weight: 700 !important;
-        text-align: left !important;
+        text-align: center !important;
     }
     .action-box--location .loc-link-btn {
         position: static !important;
         transform: none !important;
-        font-size: clamp(0.72rem, 3vw, 0.80rem) !important;
+        font-size: 0.70rem !important;
         margin: 0 !important;
         white-space: nowrap !important;
     }
@@ -1991,10 +2000,10 @@ body:has(.popup-modal.active) {
         width: 100% !important;
         min-width: 0 !important;
         max-width: 100% !important;
-        height: 50px !important;
-        min-height: 50px !important;
+        height: 46px !important;
+        min-height: 46px !important;
         padding: 0 !important;
-        border-radius: 12px !important;
+        border-radius: 10px !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
@@ -2002,30 +2011,41 @@ body:has(.popup-modal.active) {
     }
     .action-title--lg,
     .action-title--md {
-        font-size: clamp(1.05rem, 4vw, 1.2rem) !important;
+        font-size: 1.05rem !important;
     }
 
     /* 3. SERVICES RUNNING TICKER */
     .services-rectangle {
-        height: 42px !important;
+        width: 100vw !important;
+        max-width: 100vw !important;
+        overflow: hidden !important;
+        height: 38px !important;
         margin: 8px 0 !important;
+        padding: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        box-sizing: border-box !important;
+    }
+    .services-marquee-track {
+        overflow: hidden !important;
     }
     .svc-item {
-        font-size: 0.80rem !important;
+        font-size: 0.74rem !important;
         gap: 6px !important;
-        padding: 0 14px !important;
+        padding: 2px 10px !important;
     }
 
-    /* 4. MAIN STAGE: BLOBS & COLLAGE */
+    /* 4. MAIN STAGE: BLOBS & COLLAGE IN NARROW COLUMN */
     .main-collage-stage {
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
-        gap: 16px !important;
-        padding: 8px 10px 24px !important;
+        gap: 14px !important;
+        padding: 8px 6px 20px !important;
         min-height: auto !important;
         width: 100% !important;
-        max-width: 100% !important;
+        max-width: 330px !important;
+        margin: 0 auto !important;
         overflow: hidden !important;
         box-sizing: border-box !important;
     }
@@ -2038,7 +2058,7 @@ body:has(.popup-modal.active) {
         right: auto !important;
         transform: none !important;
         width: 100% !important;
-        max-width: 345px !important;
+        max-width: 285px !important;
         margin: 0 auto !important;
         display: flex !important;
         align-items: center !important;
@@ -2063,65 +2083,86 @@ body:has(.popup-modal.active) {
     /* Blob 1 (Payment only in cash / deposit info) */
     .organic-blob--1 {
         order: 1 !important;
-        height: 245px !important;
+        height: 215px !important;
     }
     .organic-blob__content--1 {
-        padding: 12px 18px 10px 14px !important;
-        font-size: clamp(0.68rem, 2.9vw, 0.74rem) !important;
+        padding: 8px 16px 8px 12px !important;
+        font-size: 0.65rem !important;
         line-height: 1.34 !important;
-        max-width: 295px !important;
+        max-width: 240px !important;
         margin: 0 auto !important;
     }
 
-    /* Central Photo Collage: scaled to fit mobile screens symmetrically */
+    /* Central Photo Collage: scaled to fit narrow width cleanly without layout overflow */
     .collage-cluster {
         order: 2 !important;
         position: relative !important;
-        width: 480px !important;
-        height: 750px !important;
-        left: 50% !important;
-        margin: 6px 0 0 -216.5px !important;
-        transform-origin: 216.5px top !important;
-        transform: scale(calc((100vw - 36px) / 724)) !important;
-        margin-bottom: calc(-750px * (1 - ((100vw - 36px) / 724))) !important;
+        width: 285px !important;
+        height: 295px !important;
+        margin: 6px auto !important;
+        left: auto !important;
+        right: auto !important;
+        overflow: visible !important;
+        box-sizing: border-box !important;
     }
+    .collage-inner {
+        display: block !important;
+        position: relative !important;
+        width: 724px !important;
+        height: 745px !important;
+        transform-origin: 0 0 !important;
+        transform: scale(calc(285 / 724)) !important;
+    }
+    .cl-photo--dark { left: 0px !important; }
+    .cl-photo--guy { left: 120px !important; }
+    .cl-photo--flag { left: 215px !important; }
+    .cl-photo--plaid { left: 220px !important; }
+    .cl-photo--redhead { left: 320px !important; }
+    .cl-photo--smile { left: 315px !important; }
+    .cl-photo--texture { left: 250px !important; }
+    .cl-photo--sitting { left: 190px !important; }
+    .cl-photo--boy67 { left: 460px !important; }
+    .cl-photo--officer { left: 605px !important; }
+    .pixel-trigger-btn { left: 355px !important; }
 
     /* Blob 3 (Telegram link) */
     .organic-blob--3 {
         order: 3 !important;
-        height: 235px !important;
+        height: 200px !important;
     }
     .organic-blob__content--3 {
-        padding: 10px 20px 10px 18px !important;
-        font-size: clamp(0.65rem, 2.7vw, 0.70rem) !important;
+        padding: 8px 16px 8px 14px !important;
+        font-size: 0.63rem !important;
         line-height: 1.32 !important;
-        max-width: 300px !important;
+        max-width: 245px !important;
         margin: 0 auto !important;
     }
 
     /* Blob 2 (Rules) */
     .organic-blob--2 {
         order: 4 !important;
-        height: 255px !important;
+        height: 220px !important;
     }
     .organic-blob__content--2 {
-        padding: 10px 18px 10px 18px !important;
-        font-size: clamp(0.66rem, 2.8vw, 0.72rem) !important;
+        padding: 8px 16px 8px 14px !important;
+        font-size: 0.63rem !important;
         line-height: 1.32 !important;
-        max-width: 305px !important;
+        max-width: 245px !important;
         margin: 0 auto !important;
     }
 
     /* 5. FOOTER: CONTACTS FULL-WIDTH, 3 BUTTONS IN A ROW */
     .footer-section {
-        padding: 16px 10px 36px !important;
+        padding: 14px 6px 36px !important;
         width: 100% !important;
+        max-width: 330px !important;
+        margin: 0 auto !important;
         box-sizing: border-box !important;
     }
     .footer-boxes-container {
         display: grid !important;
         grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-        gap: 8px !important;
+        gap: 6px !important;
         width: 100% !important;
         max-width: 100% !important;
         margin: 0 auto !important;
@@ -2131,15 +2172,15 @@ body:has(.popup-modal.active) {
     .footer-box--contacts {
         grid-column: 1 / 4 !important;
         width: 100% !important;
-        padding: 14px 16px !important;
+        padding: 12px 14px !important;
         min-height: auto !important;
         box-sizing: border-box !important;
     }
     .footer-box--btn {
         width: 100% !important;
-        min-height: 64px !important;
-        padding: 8px 4px !important;
-        border-radius: 12px !important;
+        min-height: 60px !important;
+        padding: 6px 4px !important;
+        border-radius: 10px !important;
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
@@ -2148,32 +2189,37 @@ body:has(.popup-modal.active) {
         box-sizing: border-box !important;
     }
     .footer-box--btn .footer-box-title {
-        font-size: clamp(0.85rem, 3.2vw, 0.98rem) !important;
+        font-size: 0.85rem !important;
         margin-bottom: 2px !important;
     }
     .footer-box--btn .footer-box-desc {
-        font-size: clamp(0.58rem, 2.2vw, 0.65rem) !important;
+        font-size: 0.58rem !important;
         line-height: 1.2 !important;
     }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 340px) {
+    .top-hero-section,
+    .action-blocks-section,
+    .main-collage-stage,
+    .footer-section {
+        max-width: 295px !important;
+    }
     .bento-container {
-        gap: 4px !important;
+        grid-template-rows: 40px 52px 40px !important;
+        gap: 3px !important;
     }
     .logo-title {
-        font-size: 1.35rem !important;
+        font-size: 1.28rem !important;
     }
-    .action-box--location .loc-text {
-        font-size: 0.74rem !important;
+    .organic-blob {
+        max-width: 255px !important;
     }
-    .action-box--location .loc-link-btn {
-        font-size: 0.68rem !important;
+    .collage-cluster {
+        width: 255px !important;
+        height: 265px !important;
     }
-    .footer-box--btn .footer-box-title {
-        font-size: 0.82rem !important;
-    }
-    .footer-box--btn .footer-box-desc {
-        font-size: 0.55rem !important;
+    .collage-inner {
+        transform: scale(calc(255 / 724)) !important;
     }
 }
