@@ -1,4 +1,4 @@
-/* ====================================================================
+﻿/* ====================================================================
    LOVECUT — Stylesheet
    
    PALETTE:
@@ -1864,89 +1864,316 @@ body:has(.popup-modal.active) {
 }
 
 @media (max-width: 768px) {
-    .bento-container {
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: auto;
-        width: 100%;
+    *, *::before, *::after {
+        box-sizing: border-box !important;
     }
-    
-    .bento-card--col1-top { display: none; }
-    .bento-card--col1-mid { grid-column: 1; grid-row: 1; height: 130px; }
-    .bento-card--col1-mid .bento-img { object-position: 15% 25%; }
-    .bento-card--col2-top { grid-column: 2; grid-row: 1; height: 130px; }
-    
-    .bento-card--logo { grid-column: 1 / 3; grid-row: 2; height: 130px; }
-    
-    .bento-card--col3-top { grid-column: 1; grid-row: 3; height: 130px; }
-    .bento-card--col3-top .bento-img { object-position: center 30%; }
-    
-    .bento-card--col4-top { grid-column: 2; grid-row: 3; height: 130px; }
-    .bento-card--col4-top .bento-img { object-position: center 25%; }
-    
-    .bento-card--col5-top { grid-column: 1; grid-row: 4; height: 130px; }
-    .bento-card--col5-top .bento-img { object-position: 68% 34%; }
-    
-    .bento-card--col6-top { grid-column: 2; grid-row: 4; height: 130px; }
-    .bento-card--col6-top .bento-img { object-position: center 34%; }
-    
-    .bento-card--col6-mid { display: none; }
-    .bento-card--col2-bot { grid-column: 1; grid-row: 5; height: 115px; }
-    .bento-card--col3-bot { grid-column: 2; grid-row: 5; height: 115px; }
-    .bento-card--col4-bot { grid-column: 1 / 3; grid-row: 6; height: 120px; }
 
-    .action-blocks-container {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .action-box {
+    html, body {
+        overflow-x: hidden !important;
         width: 100% !important;
-        max-width: 340px;
+        max-width: 100vw !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
-    
-    .main-collage-stage {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 30px;
-        padding-top: 10px;
-        min-height: auto;
+
+    /* 1. TOP HERO: PRESERVE EXACT 6-COLUMN BENTO GRID AROUND LOGO */
+    .top-hero-section {
+        padding: 14px 10px 10px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
     }
-    
-    .organic-blob {
-        position: relative;
-        inset: auto !important;
+    .bento-container {
+        display: grid !important;
+        grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+        grid-template-rows: minmax(42px, 13vw) minmax(54px, 16.5vw) minmax(42px, 13vw) !important;
+        gap: 5px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 auto !important;
+        box-sizing: border-box !important;
+    }
+    .bento-card {
+        border-radius: 8px !important;
+        display: block !important;
+        visibility: visible !important;
+        border-width: 1px !important;
+        min-width: 0 !important;
+    }
+    .bento-card--sharp {
+        border-radius: 0 !important;
+        transform: scale(0.97) !important;
+    }
+    .bento-card--col1-top { display: none !important; }
+    .bento-card--col1-mid {
+        grid-column: 1 !important;
+        grid-row: 1 / 4 !important;
+        height: auto !important;
+    }
+    .bento-card--col1-mid .bento-img {
+        object-position: 25% 15% !important;
+    }
+    .bento-card--col2-top { grid-column: 2 !important; grid-row: 1 !important; height: auto !important; }
+    .bento-card--col3-top { grid-column: 3 !important; grid-row: 1 !important; height: auto !important; }
+    .bento-card--col4-top { grid-column: 4 !important; grid-row: 1 !important; height: auto !important; }
+    .bento-card--col5-top { grid-column: 5 !important; grid-row: 1 !important; height: auto !important; }
+    .bento-card--col6-top { grid-column: 6 !important; grid-row: 1 !important; height: auto !important; }
+
+    .bento-card--logo {
+        grid-column: 2 / 6 !important;
+        grid-row: 2 !important;
+        height: auto !important;
+        border-width: 1.5px !important;
+        border-radius: 8px !important;
+    }
+    .logo-title {
+        font-size: clamp(1.4rem, 4.8vw, 2.2rem) !important;
+        letter-spacing: -0.5px !important;
+    }
+    .bento-card--col6-mid {
+        display: block !important;
+        grid-column: 6 !important;
+        grid-row: 2 / 4 !important;
+        height: auto !important;
+    }
+    .bento-card--col2-bot { grid-column: 2 !important; grid-row: 3 !important; height: auto !important; }
+    .bento-card--col3-bot { grid-column: 3 !important; grid-row: 3 !important; height: auto !important; }
+    .bento-card--col4-bot { grid-column: 4 / 6 !important; grid-row: 3 !important; height: auto !important; }
+    .bento-card--col5-bot { display: none !important; }
+
+    /* 2. THREE ACTION BLOCKS: CLEAN BALANCED GRID */
+    .action-blocks-section {
+        padding: 12px 10px 14px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    .action-blocks-container {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 8px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+    }
+    .action-box--location {
+        grid-column: 1 / 3 !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        height: auto !important;
+        min-height: 48px !important;
+        padding: 10px 14px !important;
+        border-radius: 12px !important;
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        box-sizing: border-box !important;
+    }
+    .action-box--location .loc-text {
+        font-size: clamp(0.78rem, 3.2vw, 0.90rem) !important;
+        margin: 0 !important;
+        white-space: nowrap !important;
+        font-weight: 700 !important;
+        text-align: left !important;
+    }
+    .action-box--location .loc-link-btn {
+        position: static !important;
         transform: none !important;
-        width: 100%;
-        max-width: 360px;
-        height: 310px;
+        font-size: clamp(0.72rem, 3vw, 0.80rem) !important;
+        margin: 0 !important;
+        white-space: nowrap !important;
     }
-    
+    .action-box--booking,
+    .action-box--examples {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        height: 50px !important;
+        min-height: 50px !important;
+        padding: 0 !important;
+        border-radius: 12px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-sizing: border-box !important;
+    }
+    .action-title--lg,
+    .action-title--md {
+        font-size: clamp(1.05rem, 4vw, 1.2rem) !important;
+    }
+
+    /* 3. SERVICES RUNNING TICKER */
+    .services-rectangle {
+        height: 42px !important;
+        margin: 8px 0 !important;
+    }
+    .svc-item {
+        font-size: 0.80rem !important;
+        gap: 6px !important;
+        padding: 0 14px !important;
+    }
+
+    /* 4. MAIN STAGE: BLOBS & COLLAGE */
+    .main-collage-stage {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 16px !important;
+        padding: 8px 10px 24px !important;
+        min-height: auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: hidden !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Speech Blobs */
+    .organic-blob {
+        position: relative !important;
+        inset: auto !important;
+        left: auto !important;
+        right: auto !important;
+        transform: none !important;
+        width: 100% !important;
+        max-width: 345px !important;
+        margin: 0 auto !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-sizing: border-box !important;
+    }
+    .organic-blob-svg {
+        position: absolute !important;
+        inset: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        transform: none !important;
+    }
+    .organic-blob__content {
+        position: relative !important;
+        z-index: 20 !important;
+        width: 100% !important;
+        text-align: center !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Blob 1 (Payment only in cash / deposit info) */
+    .organic-blob--1 {
+        order: 1 !important;
+        height: 245px !important;
+    }
+    .organic-blob__content--1 {
+        padding: 12px 18px 10px 14px !important;
+        font-size: clamp(0.68rem, 2.9vw, 0.74rem) !important;
+        line-height: 1.34 !important;
+        max-width: 295px !important;
+        margin: 0 auto !important;
+    }
+
+    /* Central Photo Collage: scaled to fit mobile screens symmetrically */
     .collage-cluster {
-        width: 100%;
-        max-width: 360px;
-        height: 580px;
-        margin: 20px auto;
-        transform: scale(0.85);
+        order: 2 !important;
+        position: relative !important;
+        width: 480px !important;
+        height: 750px !important;
+        left: 50% !important;
+        margin: 6px 0 0 -216.5px !important;
+        transform-origin: 216.5px top !important;
+        transform: scale(calc((100vw - 36px) / 724)) !important;
+        margin-bottom: calc(-750px * (1 - ((100vw - 36px) / 724))) !important;
     }
-    
+
+    /* Blob 3 (Telegram link) */
+    .organic-blob--3 {
+        order: 3 !important;
+        height: 235px !important;
+    }
+    .organic-blob__content--3 {
+        padding: 10px 20px 10px 18px !important;
+        font-size: clamp(0.65rem, 2.7vw, 0.70rem) !important;
+        line-height: 1.32 !important;
+        max-width: 300px !important;
+        margin: 0 auto !important;
+    }
+
+    /* Blob 2 (Rules) */
+    .organic-blob--2 {
+        order: 4 !important;
+        height: 255px !important;
+    }
+    .organic-blob__content--2 {
+        padding: 10px 18px 10px 18px !important;
+        font-size: clamp(0.66rem, 2.8vw, 0.72rem) !important;
+        line-height: 1.32 !important;
+        max-width: 305px !important;
+        margin: 0 auto !important;
+    }
+
+    /* 5. FOOTER: CONTACTS FULL-WIDTH, 3 BUTTONS IN A ROW */
+    .footer-section {
+        padding: 16px 10px 36px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
     .footer-boxes-container {
-        grid-template-columns: repeat(2, 1fr);
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 8px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
     }
-    
-    .examples-showcase-grid {
-        grid-template-columns: 1fr;
+    .footer-box--contacts {
+        grid-column: 1 / 4 !important;
+        width: 100% !important;
+        padding: 14px 16px !important;
+        min-height: auto !important;
+        box-sizing: border-box !important;
+    }
+    .footer-box--btn {
+        width: 100% !important;
+        min-height: 64px !important;
+        padding: 8px 4px !important;
+        border-radius: 12px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        box-sizing: border-box !important;
+    }
+    .footer-box--btn .footer-box-title {
+        font-size: clamp(0.85rem, 3.2vw, 0.98rem) !important;
+        margin-bottom: 2px !important;
+    }
+    .footer-box--btn .footer-box-desc {
+        font-size: clamp(0.58rem, 2.2vw, 0.65rem) !important;
+        line-height: 1.2 !important;
     }
 }
 
-@media (max-width: 480px) {
-    .footer-boxes-container {
-        grid-template-columns: 1fr;
+@media (max-width: 360px) {
+    .bento-container {
+        gap: 4px !important;
     }
-    
-    .collage-cluster {
-        transform: scale(0.72);
-        margin: -40px auto;
+    .logo-title {
+        font-size: 1.35rem !important;
+    }
+    .action-box--location .loc-text {
+        font-size: 0.74rem !important;
+    }
+    .action-box--location .loc-link-btn {
+        font-size: 0.68rem !important;
+    }
+    .footer-box--btn .footer-box-title {
+        font-size: 0.82rem !important;
+    }
+    .footer-box--btn .footer-box-desc {
+        font-size: 0.55rem !important;
     }
 }
-
