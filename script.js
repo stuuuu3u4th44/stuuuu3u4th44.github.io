@@ -584,5 +584,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Dynamic stage scaling for mobile to match PC layout exactly
+    function fitMobileStage() {
+        const stage = document.getElementById('collageStage');
+        if (stage && window.innerWidth <= 768) {
+            stage.style.zoom = Math.min(1, window.innerWidth / 1150);
+        } else if (stage) {
+            stage.style.zoom = '';
+        }
+    }
+    fitMobileStage();
+    window.addEventListener('resize', fitMobileStage);
+
     console.log('Lovecut site v4 initialized successfully.');
 });

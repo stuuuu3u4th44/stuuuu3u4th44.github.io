@@ -1883,7 +1883,6 @@ body:has(.popup-modal.active) {
     /* 1. CONTAINERS: RESPONSIVE FLUID WIDTH (FILL PHONE WITH CLEAN GUTTERS) */
     .top-hero-section,
     .action-blocks-section,
-    .main-collage-stage,
     .footer-section {
         width: 100% !important;
         max-width: 480px !important;
@@ -2074,119 +2073,135 @@ body:has(.popup-modal.active) {
         white-space: nowrap !important;
     }
 
-    /* 5. MAIN STAGE: BLOBS & COLLAGE IN CLEAN PROPORTIONATE COLUMN */
+    /* 5. MAIN STAGE: 3 ORGANIC BLOBS + CENTRAL COLLAGE EXACTLY AS ON PC */
     .main-collage-stage {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        gap: 20px !important;
-        padding-top: 10px !important;
-        padding-bottom: 30px !important;
-        min-height: auto !important;
-        overflow: hidden !important;
+        display: block !important;
+        position: relative !important;
+        z-index: 10 !important;
+        width: 1150px !important;
+        min-width: 1150px !important;
+        max-width: 1150px !important;
+        height: 880px !important;
+        min-height: 880px !important;
+        margin: 15px auto 25px !important;
+        padding: 20px 20px 60px !important;
+        zoom: 0.34;
+        zoom: calc(100vw / 1150px) !important;
+        overflow: visible !important;
         box-sizing: border-box !important;
     }
 
-    /* Speech Blobs */
     .organic-blob {
-        position: relative !important;
-        inset: auto !important;
-        left: auto !important;
-        right: auto !important;
-        transform: none !important;
-        width: 100% !important;
-        max-width: 360px !important;
-        margin: 0 auto !important;
+        position: absolute !important;
+        z-index: 15 !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
+        transform: none !important;
         box-sizing: border-box !important;
     }
+
+    .organic-blob--1 {
+        top: -10px !important;
+        left: 0px !important;
+        width: 440px !important;
+        height: 365px !important;
+    }
+
+    .organic-blob--2 {
+        top: auto !important;
+        bottom: 5px !important;
+        left: -20px !important;
+        width: 470px !important;
+        height: 380px !important;
+    }
+
+    .organic-blob--3 {
+        top: 55px !important;
+        right: -25px !important;
+        left: auto !important;
+        width: 440px !important;
+        height: 340px !important;
+    }
+
     .organic-blob-svg {
         position: absolute !important;
         inset: 0 !important;
         width: 100% !important;
         height: 100% !important;
-        transform: none !important;
+        pointer-events: none !important;
     }
+
+    .organic-blob--1 .organic-blob-svg { transform: rotate(-3deg) !important; }
+    .organic-blob--2 .organic-blob-svg { transform: rotate(2deg) !important; }
+    .organic-blob--3 .organic-blob-svg { transform: rotate(3deg) !important; }
+
     .organic-blob__content {
         position: relative !important;
         z-index: 20 !important;
-        width: 100% !important;
-        text-align: center !important;
+        color: var(--ink-dark) !important;
+        font-family: var(--font-deco) !important;
+        font-weight: 700 !important;
+        letter-spacing: -0.015em !important;
         box-sizing: border-box !important;
     }
 
-    /* Blob 1 (Payment only in cash / deposit info) */
-    .organic-blob--1 {
-        order: 1 !important;
-        height: 230px !important;
-    }
     .organic-blob__content--1 {
-        padding: 10px 24px !important;
-        font-size: clamp(0.72rem, 3.2vw, 0.82rem) !important;
+        padding: 54px 24px 20px 14px !important;
+        text-align: left !important;
+        max-width: 405px !important;
         line-height: 1.4 !important;
-        max-width: 290px !important;
-        margin: 0 auto !important;
+        font-size: 0.96rem !important;
+        margin: 0 !important;
     }
 
-    /* Central Photo Collage: responsive scaling matching screen width */
+    .organic-blob__content--2 {
+        padding: 48px 20px 20px 26px !important;
+        text-align: left !important;
+        max-width: 440px !important;
+        line-height: 1.36 !important;
+        font-size: 0.96rem !important;
+        margin: 0 !important;
+    }
+
+    .organic-blob__content--3 {
+        padding: 38px 24px 20px 36px !important;
+        text-align: left !important;
+        max-width: 410px !important;
+        line-height: 1.36 !important;
+        font-size: 0.92rem !important;
+        margin: 0 !important;
+    }
+
     .collage-cluster {
-        order: 2 !important;
         position: relative !important;
-        width: min(360px, calc(100vw - 24px)) !important;
-        height: calc(min(360px, calc(100vw - 24px)) * 1.03) !important;
-        margin: 8px auto !important;
+        width: 480px !important;
+        height: 760px !important;
+        margin: 40px auto 0 !important;
+        z-index: 10 !important;
+        transform: none !important;
         left: auto !important;
         right: auto !important;
         overflow: visible !important;
         box-sizing: border-box !important;
     }
+
     .collage-inner {
-        display: block !important;
-        position: relative !important;
-        width: 724px !important;
-        height: 748px !important;
-        transform-origin: 0 0 !important;
-        transform: scale(calc(min(360px, calc(100vw - 24px)) / 724)) !important;
-    }
-    .cl-photo--dark { left: 0px !important; }
-    .cl-photo--guy { left: 120px !important; }
-    .cl-photo--flag { left: 215px !important; }
-    .cl-photo--plaid { left: 220px !important; }
-    .cl-photo--redhead { left: 320px !important; }
-    .cl-photo--smile { left: 315px !important; }
-    .cl-photo--texture { left: 250px !important; }
-    .cl-photo--sitting { left: 190px !important; }
-    .cl-photo--boy67 { left: 460px !important; }
-    .cl-photo--officer { left: 605px !important; }
-    .pixel-trigger-btn { left: 355px !important; }
-
-    /* Blob 3 (Telegram link) */
-    .organic-blob--3 {
-        order: 3 !important;
-        height: 210px !important;
-    }
-    .organic-blob__content--3 {
-        padding: 10px 24px !important;
-        font-size: clamp(0.72rem, 3.2vw, 0.82rem) !important;
-        line-height: 1.4 !important;
-        max-width: 290px !important;
-        margin: 0 auto !important;
+        display: contents !important;
     }
 
-    /* Blob 2 (Rules) */
-    .organic-blob--2 {
-        order: 4 !important;
-        height: 230px !important;
-    }
-    .organic-blob__content--2 {
-        padding: 10px 24px !important;
-        font-size: clamp(0.72rem, 3.2vw, 0.82rem) !important;
-        line-height: 1.4 !important;
-        max-width: 290px !important;
-        margin: 0 auto !important;
-    }
+    /* 10 Collage photos in their desktop positions */
+    .cl-photo--dark { top: 200px !important; left: -145px !important; width: 114px !important; height: 152px !important; }
+    .cl-photo--guy { top: 195px !important; left: -15px !important; width: 130px !important; height: 173px !important; }
+    .cl-photo--flag { top: 195px !important; left: 110px !important; width: 210px !important; height: 140px !important; }
+    .cl-photo--plaid { top: 105px !important; left: 85px !important; width: 114px !important; height: 152px !important; }
+    .cl-photo--redhead { top: 0px !important; left: 180px !important; width: 110px !important; height: 146px !important; }
+    .cl-photo--smile { top: 340px !important; left: 170px !important; width: 122px !important; height: 163px !important; }
+    .cl-photo--texture { top: 495px !important; left: 105px !important; width: 110px !important; height: 146px !important; }
+    .cl-photo--sitting { top: 595px !important; left: 45px !important; width: 110px !important; height: 146px !important; }
+    .cl-photo--boy67 { top: 355px !important; left: 315px !important; width: 130px !important; height: 173px !important; }
+    .cl-photo--officer { top: 360px !important; left: 460px !important; width: 118px !important; height: 157px !important; }
+    .pixel-trigger-btn { top: 295px !important; left: 188px !important; }
 
     /* 6. FOOTER: CONTACTS FULL-WIDTH, 3 ACTION BUTTONS */
     .footer-section {
