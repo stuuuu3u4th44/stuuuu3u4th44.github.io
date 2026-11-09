@@ -556,8 +556,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 3. Examples modal tiles (.ex-tile)
-    document.querySelectorAll('.work-card-photo, .ex-tile').forEach(tile => {
+    // 3. Examples modal tiles (.ex-tile) and review photos
+    document.querySelectorAll('.work-card-photo, .ex-tile, .review-photo-item').forEach(tile => {
         const img = tile.querySelector('img');
         if (img) {
             tile.style.cursor = 'pointer';
@@ -576,6 +576,26 @@ document.addEventListener('DOMContentLoaded', () => {
             openInspector(svyazMeme.src);
         });
     }
+
+    // 5. Review "Хочу так же" CTA buttons
+    document.querySelectorAll('[data-review-action="booking"]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const reviewsModal = document.getElementById('reviewsModal');
+            if (reviewsModal) {
+                reviewsModal.classList.remove('active');
+            }
+            const bookingBtn = document.getElementById('bookingBtn');
+            if (bookingBtn) {
+                bookingBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                bookingBtn.focus();
+                bookingBtn.style.transform = 'translate(2px, 2px) scale(0.97)';
+                setTimeout(() => {
+                    bookingBtn.style.transform = '';
+                }, 220);
+            }
+        });
+    });
 
     // Close on backdrop, close button, viewport click, or [data-close-inspector]
     document.addEventListener('click', (e) => {
