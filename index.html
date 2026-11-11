@@ -488,12 +488,98 @@
     <!-- ===== FAQ POPUP MODAL ===== -->
     <div class="popup-modal" id="faqModal" aria-hidden="true">
         <div class="popup-modal__backdrop" data-close-modal></div>
-        <div class="popup-modal__window">
-            <div class="popup-modal__header">
-                <span class="popup-modal__title">Faq</span>
-                <button class="popup-modal__close-btn" data-close-modal>&times;</button>
+        <div class="popup-modal__window popup-modal__window--faq">
+            <div class="popup-modal__header popup-modal__header--faq">
+                <div class="faq-header-titles">
+                    <span class="popup-modal__title">FAQ</span>
+                    <p class="faq-modal-subtitle">Частые вопросы и ответы</p>
+                </div>
+                <button class="popup-modal__close-btn" data-close-modal aria-label="Закрыть">&times;</button>
             </div>
-            <div class="popup-modal__body popup-modal__body--empty"></div>
+            <div class="faq-modal-body">
+                <div class="faq-list">
+                    <!-- FAQ 1: Как добраться -->
+                    <details class="faq-item" open>
+                        <summary class="faq-item__summary">
+                            <span class="faq-item__q-icon">?</span>
+                            <span class="faq-item__q-text">Как добраться до парикмахерской?</span>
+                            <span class="faq-item__chevron" aria-hidden="true">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </span>
+                        </summary>
+                        <div class="faq-item__content">
+                            <p class="faq-item__answer">
+                                Адрес: Литвинова 18, а ниже прикреплены видео куда именно идти, что бы попасть в салон.
+                            </p>
+                            <div class="faq-address-card">
+                                <div class="faq-address-info">
+                                    <span class="faq-address-pin">📍</span>
+                                    <span class="faq-address-title">г. Иркутск, ул. Литвинова, 18</span>
+                                </div>
+                                <a href="https://2gis.ru/irkutsk/search/%D0%9B%D0%B8%D1%82%D0%B2%D0%B8%D0%BD%D0%BE%D0%B2%D0%B0%2018" target="_blank" rel="noopener noreferrer" class="faq-map-link">
+                                    <span>2ГИС</span>
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                                        <polyline points="7 7 17 7 17 17"></polyline>
+                                    </svg>
+                                </a>
+                            </div>
+                            <div class="faq-video-section">
+                                <div class="faq-video-card">
+                                    <div class="faq-video-card__inner">
+                                        <div class="faq-video-icon-wrap">
+                                            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                                                <polygon points="6 4 20 12 6 20 6 4"></polygon>
+                                            </svg>
+                                        </div>
+                                        <div class="faq-video-details">
+                                            <span class="faq-video-label">Видео маршрута</span>
+                                            <span class="faq-video-status">Видео готовится к загрузке</span>
+                                        </div>
+                                    </div>
+                                    <div class="faq-video-slot" id="faqVideoSlot">
+                                        <video class="faq-video-player" id="faqRouteVideo" controls playsinline preload="metadata" style="display: none;">
+                                            <source src="" type="video/mp4">
+                                            Ваш браузер не поддерживает воспроизведение видео.
+                                        </video>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </details>
+
+                    <!-- FAQ 2: Будут ли другие люди -->
+                    <details class="faq-item" open>
+                        <summary class="faq-item__summary">
+                            <span class="faq-item__q-icon">?</span>
+                            <span class="faq-item__q-text">Будут ли там другие люди?</span>
+                            <span class="faq-item__chevron" aria-hidden="true">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </span>
+                        </summary>
+                        <div class="faq-item__content">
+                            <p class="faq-item__answer">
+                                Да, ведь салон не является собственностью Андрея.
+                            </p>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- FAQ Footer Note / Ask Question in TG -->
+                <div class="faq-modal-footer">
+                    <span class="faq-modal-footer__text">Не нашли ответ на свой вопрос?</span>
+                    <a href="https://t.me/LOVECUT2006" target="_blank" rel="noopener noreferrer" class="faq-modal-footer__link">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.52 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .37z"/>
+                        </svg>
+                        Написать мастеру в Telegram
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -526,10 +612,6 @@
                     <div class="reviews-stat-chip">
                         <span class="reviews-stat-label">Рейтинг мастера:</span>
                         <strong class="reviews-stat-val">★ 5.0</strong>
-                    </div>
-                    <div class="reviews-stat-chip reviews-stat-chip--highlight">
-                        <span class="reviews-stat-label">Рекомендация:</span>
-                        <strong class="reviews-stat-val">100%</strong>
                     </div>
                 </div>
 

@@ -483,6 +483,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Open modal via URL hash (e.g. #faqModal or #reviewsModal)
+    if (window.location.hash) {
+        try {
+            const hashModal = document.querySelector(window.location.hash);
+            if (hashModal && hashModal.classList.contains('popup-modal')) {
+                hashModal.classList.add('active');
+            }
+        } catch (_) {}
+    }
+
     // Generic Modal Close via [data-close-modal]
     document.addEventListener('click', (e) => {
         if (e.target.hasAttribute('data-close-modal')) {
