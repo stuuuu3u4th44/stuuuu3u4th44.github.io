@@ -3199,51 +3199,57 @@ body:has(.popup-modal.active) {
     word-break: break-word;
 }
 
-.about-features-grid {
+.about-photos-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 10px;
+    gap: 12px;
     width: 100%;
     flex-shrink: 0;
 }
 
-.about-feature-card {
-    background: rgba(20, 24, 61, 0.75);
-    border: 1.5px solid rgba(250, 236, 212, 0.2);
-    border-radius: 12px;
-    padding: 14px 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
+.about-photo-card {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    border-radius: 14px;
+    border: 2px solid rgba(250, 236, 212, 0.25);
+    background-color: #14183d;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    cursor: zoom-in;
+    transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, box-shadow 0.2s ease;
     box-sizing: border-box;
-    transition: transform 0.2s ease, border-color 0.2s ease;
+    display: flex;
 }
 
-.about-feature-card:hover {
-    transform: translateY(-2px);
-    border-color: rgba(250, 236, 212, 0.4);
+.about-photo-card:hover {
+    transform: translateY(-3px) scale(1.02);
+    border-color: rgba(250, 236, 212, 0.55);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
 }
 
-.about-feature-icon {
-    font-size: 1.3rem;
-    line-height: 1;
-    margin-bottom: 2px;
+.about-photo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
 }
 
-.about-feature-title {
-    font-family: var(--font-deco);
-    font-size: 0.88rem;
-    font-weight: 700;
-    color: var(--vanilla);
-    margin: 0;
+.about-photo-img--1 {
+    object-position: center 20%;
 }
 
-.about-feature-desc {
-    font-family: var(--font-body);
-    font-size: 0.8rem;
-    line-height: 1.45;
-    color: rgba(250, 236, 212, 0.78);
-    margin: 0;
+.about-photo-img--2 {
+    object-position: center 50%;
+}
+
+.about-photo-img--3 {
+    object-position: center 25%;
+}
+
+.about-photo-card:hover .about-photo-img {
+    transform: scale(1.05);
 }
 
 .about-portfolio-section {
@@ -3362,9 +3368,15 @@ body:has(.popup-modal.active) {
     .about-hero-card {
         padding: 14px 14px;
     }
-    .about-features-grid {
-        grid-template-columns: 1fr;
+    .about-photos-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 8px;
+    }
+    .about-photo-card {
+        border-radius: 10px;
+    }
+    .about-photo-img {
+        border-radius: 8px;
     }
     .about-portfolio-section {
         padding: 14px 14px;

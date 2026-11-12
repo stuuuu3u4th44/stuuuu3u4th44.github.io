@@ -655,8 +655,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 3. Examples modal tiles (.ex-tile) and review photos
-    document.querySelectorAll('.work-card-photo, .ex-tile, .review-photo-item').forEach(tile => {
+    // 3. Examples modal tiles (.ex-tile), review photos, and about modal master photos (.about-photo-card)
+    document.querySelectorAll('.work-card-photo, .ex-tile, .review-photo-item, .about-photo-card').forEach(tile => {
         const img = tile.querySelector('img');
         if (img) {
             tile.style.cursor = 'pointer';
