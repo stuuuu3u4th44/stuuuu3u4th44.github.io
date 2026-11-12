@@ -3237,15 +3237,15 @@ body:has(.popup-modal.active) {
 }
 
 .about-photo-img--1 {
-    object-position: center 20%;
+    object-position: center 15%;
 }
 
 .about-photo-img--2 {
-    object-position: center 50%;
+    object-position: center 20%;
 }
 
 .about-photo-img--3 {
-    object-position: center 25%;
+    object-position: center 20%;
 }
 
 .about-photo-card:hover .about-photo-img {
@@ -3336,8 +3336,7 @@ body:has(.popup-modal.active) {
     font-weight: 700;
     line-height: 1.2;
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    overflow: visible;
 }
 
 .about-social-handle {
@@ -3346,8 +3345,7 @@ body:has(.popup-modal.active) {
     color: rgba(250, 236, 212, 0.65);
     line-height: 1.2;
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    overflow: visible;
     transition: color 0.2s ease;
 }
 
