@@ -499,6 +499,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const activeModal = e.target.closest('.popup-modal');
             if (activeModal) {
                 activeModal.classList.remove('active');
+                if (activeModal.id === 'faqModal') {
+                    pauseFaqVideos();
+                }
             }
         }
     });
@@ -506,11 +509,97 @@ document.addEventListener('DOMContentLoaded', () => {
     // Close on Escape key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
-            document.querySelectorAll('.popup-modal.active').forEach(m => m.classList.remove('active'));
+            document.querySelectorAll('.popup-modal.active').forEach(m => {
+                m.classList.remove('active');
+                if (m.id === 'faqModal') {
+                    pauseFaqVideos();
+                }
+            });
             if (photoInspector && photoInspector.classList.contains('active')) {
                 closeInspector();
             }
         }
+    });
+
+    // Helper to pause FAQ videos
+    function pauseFaqVideos() {
+        const faqModal = document.getElementById('faqModal');
+        if (faqModal) {
+            faqModal.querySelectorAll('video').forEach(v => {
+                try { v.pause(); } catch (_) {}
+            });
+        }
+    }
+
+    // Smooth FAQ Accordion (Smooth Expand & Collapse)
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach((details) => {
+        const summary = details.querySelector('.faq-item__summary');
+        const content = details.querySelector('.faq-item__content');
+        if (!summary || !content) return;
+
+        let animation = null;
+        let isClosing = false;
+        let isOpening = false;
+
+        summary.addEventListener('click', (e) => {
+            e.preventDefault();
+            content.style.overflow = 'hidden';
+
+            if (isClosing || !details.open) {
+                // OPEN
+                if (isClosing && animation) {
+                    animation.cancel();
+                }
+                details.open = true;
+                isOpening = true;
+                isClosing = false;
+
+                const startHeight = `${content.offsetHeight}px`;
+                const endHeight = `${content.scrollHeight}px`;
+
+                animation = content.animate({
+                    height: [startHeight, endHeight],
+                    opacity: [0.2, 1]
+                }, {
+                    duration: 260,
+                    easing: 'cubic-bezier(0.16, 1, 0.3, 1)'
+                });
+
+                animation.onfinish = () => {
+                    content.style.overflow = '';
+                    content.style.height = '';
+                    content.style.opacity = '';
+                    isOpening = false;
+                };
+            } else if (isOpening || details.open) {
+                // CLOSE
+                if (isOpening && animation) {
+                    animation.cancel();
+                }
+                isClosing = true;
+                isOpening = false;
+
+                const startHeight = `${content.offsetHeight}px`;
+                const endHeight = '0px';
+
+                animation = content.animate({
+                    height: [startHeight, endHeight],
+                    opacity: [1, 0]
+                }, {
+                    duration: 240,
+                    easing: 'cubic-bezier(0.16, 1, 0.3, 1)'
+                });
+
+                animation.onfinish = () => {
+                    details.open = false;
+                    content.style.overflow = '';
+                    content.style.height = '';
+                    content.style.opacity = '';
+                    isClosing = false;
+                };
+            }
+        });
     });
 
     // Booking button: pure decorative feedback (as requested: "чисто интерфейс")
